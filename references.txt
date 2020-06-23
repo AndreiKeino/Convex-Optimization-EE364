@@ -1,0 +1,62 @@
+convex optimization:
+
+http://stanford.edu/~boyd/cvxbook/
+
+video
+
+https://www.youtube.com/playlist?list=PL3940DD956CDF0622
+
+https://www.youtube.com/playlist?list=PLbBM_dvjud8oFj09MqqYnGSrT6zek42Q0
+
+
+python solvers:
+
+https://www.cvxpy.org/
+http://cvxopt.org/
+
+matlab:
+
+http://cvxr.com/cvx/
+
+http://www.seas.ucla.edu/~vandenbe/ee236b/ee236b.html
+
+http://stanford.edu/~boyd/cvxbook/
+
+https://web.stanford.edu/class/ee364b/
+
+
+google search: EE364A video
+
+https://www.google.com/search?q=EE364A+video&oq=EE364A+video&aqs=chrome..69i57j0l3.6568j0j9&sourceid=chrome&ie=UTF-8
+
+homework:
+Lecture notes:
+
+http://www.seas.ucla.edu/~vandenbe/ee236b/ee236b.html
+
+!!! prerequisites !!!
+!!!  https://see.stanford.edu/Course/EE263 !!!
+
+Lecture slides:
+
+https://web.stanford.edu/class/ee364b/lectures.html
+
+homeworks:
+https://web.stanford.edu/class/ee364a/homework.html
+https://web.stanford.edu/class/ee364b/homework.html
+
+
+homework and solutions:
+
+ee364a hw4 - google search
+
+https://web.stanford.edu/class/ee364a/homework.html
+https://web.stanford.edu/class/ee364b/homework.html
+
+https://see.stanford.edu/materials/lsocoee364b/hw1sol.pdf
+https://see.stanford.edu/materials/lsocoee364b/hw2sol.pdf
+
+https://see.stanford.edu/materials/lsocoee364a/hw1sol.pdf
+https://see.stanford.edu/materials/lsocoee364a/hw2sol.pdf
+and so on...
+

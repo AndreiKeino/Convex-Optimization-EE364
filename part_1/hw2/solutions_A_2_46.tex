@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\begin{document}
+
+\title{Solutions to hw2 homework on Convex Optimization https://web.stanford.edu/class/ee364a/homework.html}
+\author{Andrei Keino}
+\maketitle
+% 3.22, 3.28, 3.39, A2.23, A2.42, A2.46
+\section*{2.46}
+
+Curvature of some order statistics. For $x \in R^n$, with $n > 1$, $x_{[k]} $ denotes the kt-h largest entry
+of $x$, for $k = 1,...,n$, so, for example, $x_{[1]} = max_{i=1,...,n} \, x_i$ and $x_{[n]} = min_{i=1,...n} \, xi$. Functions
+that depend on these sorted values are called order statistics or order functions. Determine the
+curvature of the order statistics below, from the choices convex, concave, or neither. For each
+function, explain why the function has the curvature you claim. If you say it is neither convex nor
+concave, give a counterexample showing it is not convex, and a counterexample showing it is not
+concave. All functions below have domain $R^n$. \\
+
+(a) $median(x) = x_{[(n+1)/{2}]}$. (You can assume that n is odd.)
+\\ Neither convex nor concave. The average of median of $(2, 0, 0)$ and $(0, 2, 0)$ is $0$, but median of their average $(1, 1, 0)$ is $1$, that violates convexity. The median of $(0, 0, -2)$ and $(0, -2, 0)$ is $0$, but median of their average $(0, - 1, -1)$ is $-1$, that violates concavity.\\
+
+(b) The range of values, $x_{[1]} - x_{[n]}$. \\
+This is a convex function because this is a sum of two convex functions.\\
+
+(c) The midpoint of the range, $(x_{[1]} + x_{[n]}) / 2$.\\
+Neither convex nor concave. The average of midpoint of $(1, 1, 0)$ and $(0, 1, 1)$ is $1/2$ and midpoint of their average is $3/4$, that violates convexity. The midpoint of $(1, 0, 0)$ and $(0, 0, 1)$ is $1/2$ and midpoint of their average is $1/4$, that violates concavity.\\
+
+(d) Interquartile range, defined as $x_{[n/4]} - x_{[3n/4]}$. (You can assume that n/4 is an integer.) \\
+Neither convex nor concave. The interquartile range of 
+$(0, 1, 1, 1, 1)$ and $(1, 0, 1, 1, 1)$ is $0$ and interquartile range of their average is $1/2$, that violates convexity. The interquartile range of $(0, 0, 0, -1, -1)$ and $(0, 0, 0, 1, 1)$ is $1$ and interquartile range of their average is $0$, that violates concavity.
+
+(e) Symmetric trimmed mean (STM), defined as \\
+$$\frac{x_{[n / 10]} + x_{[n / 10 + 1]} + ... + x_{[9n / 10]}}
+	{0.8 n + 1}$$\\
+	
+Neither convex nor concave. The STM of $x \in R^{20}: x_1 = 1, 
+x_2 = 1 x_i = 0 \, \forall \, i \in (3,..., 20)$ is $0$ and the STM of $y \in R^{20}: y_3 = 1, y_4 = 0, y_i = 1 \, \forall \, i \neq 
+(3, 4)$ is $0$, but the STM of their average is $1/17$, that violates convexity.  The STM of $u = \boldsymbol 1 - x$ is $10/17$ and the STM of $v = \boldsymbol 1 - y$ is $10/17$, but the STM of their average is $19/34$, that violates concavity. \\
+
+(f) Lower trimmed mean, defined as 
+$$\frac{x_{[1]} + x_{[2]} + ... + x_{[9n/10]}}{0.9 n + 1} $$ \\
+
+It's convex. This is the sum of the $9n/10$ largest elements, which is convex, multiplied by a constant.
+
+\end{document}
+

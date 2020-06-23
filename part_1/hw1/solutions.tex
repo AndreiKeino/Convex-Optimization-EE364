@@ -1,0 +1,120 @@
+\documentclass{article}
+%\usepackage{graphicx}
+\usepackage{amsmath}
+
+\begin{document}
+
+\title{Solutions to hw1 homework on Convex Optimization https://web.stanford.edu/class/ee364a/homework.html}
+\author{Andrei Keino}
+\maketitle
+
+\section*{2.8}
+
+Which of the following sets S are polyhedra? If possible, express S in the form $S = \{x | Ax \preceq b , Fx = g\}$\\
+(a)\\ $S = \{y_1 a_1 + y_2 a_2 \,| -1 \leq y_1 \leq 1 , -1 \leq y_2 \leq 1 \}$ where $a_1, a_2 \in R^n$\\
+Solution:\\
+Yes, this is a polyhedron. Namely, this is a parallelogram with corners ${-a_1 - a_2, a_1 - a_2, -a_1 + a_2, a_1 + a_2}$\\
+(b)\\ $S = \{x \in R^n \, | \, x \succeq 0, \, \boldsymbol1^T x = 1, \, \sum_{i = 1}^{n}  x_i a_i = b_1, \, \sum_{i = 1}^{n}  x_i a_i^2 = b_2\},$ where ${a_1, ..., a_n \in R}$ and ${b_1, b_2 \in R} $\\
+Solution:\\
+Yes, this is a polyhedron. It's defined by inequality and three equality constraints. \\
+(c) \\ 
+$S = \{x \in R^n \, |\, x \succeq 0, \, x^T y < 1, \, for\, all \, y \, with \, ||y||_2 = 1 \}$\\
+Solution:\\
+No, it's not a polyhedron. It's something with a spherical shape.\\
+(d)\\
+$S = \{x \in R^n \, |\, x \succeq 0, \, x^T y < 1, \, for\, all \, y \, with \, \sum_{i=1}^{n} |y| = 1 \}$\\
+Solution:\\
+First prove what $[x_k| < 1 \forall \, k \in \{1...n\}$:\\
+1. Suppose what $x_i = 1 / y_i$ for $i: y_i = max\{y_k\}$ and $x_k = 0 \, \forall \, k \neq i$. Then $ x^T y = 1$, that is shouldn't be.\\
+But if $[x_k| < 1$ then\\
+$x^T y = \sum_{i=1}^{n} x_i y_i \le \sum_{i=1}^{n} |x_i| |y_i| \le \sum_{i=1}^{n} |y_i| = 1$, \\so the inequality $x^T y < 1$ holds for all $[x_k| < 1$.
+\\So, yes, this is a polyhedron, equilateral rhombus for 2d.
+
+\section*{2.13}
+Consider the set of rank-k outer products, defined as:\\
+$\{XX^T: X \in R^{n \times k}, \, \boldsymbol{rank} \, X = k\}$. 
+\\ Describe its conic hull in simple terms.
+\\ Solution:\\
+As $XX^T$ is a positive semi-definite matrix of rank $k$, we have a conic combination of a positive semi-definite matrices 
+of rank $k$ and dimension $k \times k$. The conic combination of such matrices cannot have rang less than $k$, because this is a linear combination of full - rank matrices consisting of linearly independent vectors. So, conic combination of positive semi-definite matrices of rank $k$ is also a positive semi-definite matrix of rank of $k$.
+
+\section*{2.22}
+Finish the proof of the separating hyperplane theorem in \S 2.5.1: Show that a separating
+hyperplane exists for two disjoint convex sets C and D. You can use the result proved
+in \S 2.5.1, i.e., that a separating hyperplane exists when there exist points in the two sets
+whose distance is equal to the distance between the two sets.\\
+{\bf Hint}. If C and D are disjoint convex sets, then the set $\{x - y ,\ | \, x \in C , y \in D\}$ is convex
+and does not contain the origin. \\ 
+Solution: \\
+Prove first what the set $S = \{x - y ,\ | \, x \in C , y \in D\}$ is convex: \\
+As the sets C and D is disjoint, $0 \notin S$.There are two cases: \\ First case: \\ $0 \notin \boldsymbol{cl} \, S$ Then the result proved in the \S 2.5.1 is applied to sets 0 and S, i. e. exists a matrix $a \ne 0$ such what ${a^T (x - y) > 0} \, \forall x \in C, \forall y \in D$, i. e. ${a^T x > a^T y} \, \, \forall x \in C, \forall y \in D$
+\\Second case: \\ Assume $0 \in \boldsymbol{cl} \, S$. 
+As $0 \notin S$, the zero point should be on the boundary of S. \\ If S has empty inferior, it contained in a hyperplane $\{z\, | \,a^Tz = 0\}$, in other words, ${a^T x = a^T y} \, \, \forall x \in C, \forall y \in D$, and the separating hyperplane is trivial. 
+\\ Now if S has nonempty inferior, consider the set 
+${S_{- \epsilon} = \{z \,| \,B(z,\epsilon)  \subseteq S\}}$
+where $B(z,\epsilon)$ is the Ecludian ball with radius $\epsilon > 0$ and the center in $z$. $S_{- \epsilon}$ is a subset of S, it is closed and convex, and does not contain $0$. So, by result in \S 2.5.1 it is separated from $0$ by at least one separating hyperplane with normal vector $a(\epsilon)$: $a(\epsilon)^T z > 0 \, \forall \, z \in S(-\epsilon)$. We can assume what $||a_{\epsilon}||_2 = 1$. Now let $\epsilon_k, k = 1, 2, ... $ be a sequence of positive values with $\lim_{x \to \infty} \epsilon_k = 0$. As $||a_{\epsilon_k}||_2 = 1$, the sequence $a(\epsilon_k)$ contains a convergent subsequence with limit $\overline{a}$. So we have $a(\epsilon_k)^T z > 0$ for all $z \in S_{- \epsilon_k}$ for all k, so $\overline{a}_{\epsilon_k} z > 0$ for all $z \in \boldsymbol{int} \, S$. As $z = x - y$, it means what 
+$\overline{a}x > \overline{a}y$ for all $x \in C$ for all $y \in D$.
+
+
+\section*{A1.5}
+Dual and intersection of cones. Let C and D be closed convex cones. In this problem we will show what \\
+$(C \cap D )^* = C^* + D^*$. \\
+Here $+$ denotes set addition: $C^* + D^*$ is the set 
+$\{u + v \, | \, u \in C^*, v \in D^*\}$ \\
+In other words, the dual of the intersection of two closed convex cones is the sum of the dual cones. \\
+
+(a) Show what $(C \cap D )^*$ and $C^* + D^*$ are convex cones. (In fact, these are closed, but
+we won't ask you to show this.) \\
+Solution: \\
+Let $x \in (C \cap D )$. It means what $x \in C$ and $x \in D$. It implies $\theta x \in C$ and $\theta x \in D$ 
+for any $\theta \geq 0$. Therefore $\theta x \in D \cap C$ for any $\theta \geq 0$. This implies what the $D \cap C$ is a cone. As intersection of a convex sets is convex, it implies what the $D \cap C$ is convex also. So, we proved what intersection of two convex cones is a convex cone also. \\
+As $C^*$ and $D^*$ are closed convex cones, then $C^* + D^*$ is a conic hull of $C^* \cup D^*$ and therefore is a convex cone.\\ \\
+
+(b) Show what $(C \cap D)^* \supseteq C^* + D^*$\\
+Solution:\\
+Let $x \in C^* + D^*$. We can write $x = u + v$ where 
+$u \in C^*$ and $v \in D^*$. Then, by definition of dual cone, $u^T y \geq 0$ for all $y \in C$ and 
+$v^T y \geq 0$ for all $y \in D$, it means 
+$x^T y = u^T y + v^T y \geq 0$ for all $y \in C \cap D$. It shows what x is in the dual cone of $C \cap D$, i.e 
+$x \in C^* \cap D^*$, and so $(C \cap D)^* \supseteq C^* + D^*$. \\
+
+(c) Show what $(C \cap D)^* \subseteq C^* + D^*$ \\
+Solution: \\
+We showed in (a) what $C \cap D$ and $C^* + D^*$ are closed convex cones. Therefore 
+$(C \cap D)^{**} = (C \cap D)$ and 
+$C^* + D^* = (C^* + D^*)^{**}$. 
+\\ It means \\ 
+$(C \cap D)^* \subseteq C^* + D^* \Longleftrightarrow 
+C \cap D \supseteq (C^* + D^*)^*$ \\
+Suppose $x \in (C^* + D^*)^*$. $x^T y \geq 0 $ for all 
+$y = u + v$, $u \in C^*$, $v \in D^*$. It can be written as $x^T u + v^T v \geq 0$  for all $u \in C^*$, $v \in D^*$. As $0 \in C^*$ and $0 \in D^*$, taking $v = 0$ we get $x^T u \geq 0$,  taking $u = 0$ we get $x^T v \geq 0$
+This implies $x \in C^{**} = C$ and $x \in D^{**} = D$, 
+i.e $x \in C \cap D$. We have shown what $(C \cap D)^* \subseteq C^* + D^*$ and $(C \cap D)^* \supseteq C^* + D^*$. It means $(C \cap D)^* = C^* + D^*$. \\
+
+(d) Show that the dual of the polyhedral cone 
+$V = \{x | Ax \geq 0 \}$ can be expressed as 
+$V^* = \{A^Tv | v \geq 0 \}$. \\
+Solution:\\
+Using the previous result we can write: \\
+$V^* = \{x | a_1^Tx \geq 0 \} + \{x | a_2^Tx \geq 0 \}  + ... + \{x | a_m^Tx \geq 0 \}$. \\ The dual of 
+$\{x | a_i^Tx \geq 0 \}$ is 
+$\{\theta a_i | \theta \geq 0 \}$, so we get \\
+$V^* = \{\theta a_1 | \theta \geq 0 \}  + ... + \{\theta a_m | \theta \geq 0 \} = 
+{\{\theta_1 a_1 \geq 0 + ... + \theta_m a_m \succeq 0 | \theta_{1 ... m} \geq 0 \}}$, which can be written as $V^* = \{A^Tv | v \geq 0 \}$.
+
+\section*{A1.9}
+Correlation matrices. Determine if the following subsets of $S^n$ are convex: ...
+Solution:\\
+See example 2.15 in \S{2.4.1}. The positive semidefinite
+cone $S^n$ is a proper cone in $S^n$, therefore it is convex, besides all. 
+
+Alternatively, let $A, B \in S^n$. Then for 
+$0 \leq \theta \leq 1$, \\ 
+$x^T(\theta A + (1 - \theta) B) x = \theta x^T A x + (1-\theta) x^T B x$. 
+\\As $A, B \in S^n$,  $x^T A x \geq 0$ $\forall x$, and 
+$x^T B x \geq 0$ $\forall x$. \\Therefore
+$x^T(\theta A + (1 - \theta) B) x = \theta x^T A x + (1-\theta) x^T B x \geq 0$ $\forall x$ as a sum of two nonegative numbers. It means what set of positive semidefinite matrices $S^n$ is a convex one.
+
+As the set of a correlation matrices (and a covariance matrices) is a subset of $S^n$, it implies what set of a correlation (or covariance) matrices is convex.
+\end{document}
+

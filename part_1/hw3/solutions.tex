@@ -1,0 +1,371 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{Solutions to hw3 homework on Convex Optimization https://web.stanford.edu/class/ee364a/homework.html}
+\author{Andrei Keino}
+\maketitle
+% 3.15, 3.25, 3.55, A2.21, A12.1a-c, A16.1.
+\section*{3.15}
+
+A family of concave utility functions. For $0 < a \leq 1$ let
+$$u_a(x) = \frac{x^a - 1}{a}$$\\
+with $dom \, u_a = R_{++}$. We also define 
+$$u_0(x) = log (x)$$ (with $dom \, u_0 = R_{++}$). \\
+
+(a) Show that for $x > 0$, 
+$$u_0(x) = \lim_{a \to 0}{u_a(x)} $$\\ \\
+Solution:\\
+Using Taylor series for small values of $a$: 
+$$x^a = e^{a \, log(x)} \approx 1 + a \,log(x)$$ \\
+So, for small 
+$a$ $$u_a(x) = \frac{x^a - 1}{a} \approx \frac{1 + a \,log(x) - 1}{a} = log(x)$$ \\
+
+(b) Show that $u_a$ are concave, monotone increasing, and all satisfy $u_a(1) = 0$. \\ \\
+Solution:\\
+Second derivative of $u_a$ is \\
+
+$$ u''_a(x) = (a - 1) x^{a - 2} < 0 \, \forall x \in dom \, u_a $$\\ i. e. $u_a$ is concave as its second derivative is negative on all of its domain. \\ \\
+
+$$ u'_a(x) = x^{a - 1} > 0 \, \forall x \in dom \, u_a $$\\ i. e. $u_a$ is monotone increasing. \\
+
+$u_a(1) = 0$: for large values of $a$ it is evident from the definition of $u_a$, for small values of $a$ it is evident from the definition of $u_0.$
+
+\section*{3.25}
+Maximum probability distance between distributions. 
+Let $p, q \in R $ represent two probability
+distributions on $\{1, ..., n\}$ 
+(so $p, q \succeq 0, \, \boldsymbol{1}^T p = 1, \, \boldsymbol{1}^T q = 1$). We define the maximum
+probability distance $d_{mp}(p, q)$ between $p$ and $q$ as the maximum difference in probability assigned by $p$ and $q$, over all events: \\
+$$d_{mp}(p, q) = max\{prob(p, C) - prob(q, C) \, | 
+\, C \subseteq \{1, ... n\} \} $$ \\
+Here $prob(p, C)$ is the probability of $C$ under the distribution of $p$: \\
+$prob(p, C) = \sum_{i \in C} p_i.$\\
+Find a simple expression for $d_{mp}(p, q),$ involving 
+$||p - q||_1 = \sum_{i = 1}^{n} |p_i - q_i|$ and show that
+$d_{mp}(p, q),$ is a convex function on $R^n \times R^n$
+(Its domain is \\
+$\{p, q \succeq 0, \, \boldsymbol{1}^T p = 1, \, \boldsymbol{1}^T q = 1\},$ but
+it has a natural extension to all of $R^n \times R^n.$ \\
+Solution: \\
+
+I can't find such dependency. The Python code:
+\begin{verbatim}
+# -*- coding: utf-8 -*-
+import numpy as np
+
+N = 7
+p = np.random.rand(N)
+q = np.random.rand(N)
+
+p = np.array(np.abs(p))
+q = np.array(np.abs(q))
+
+p = p / p.sum()
+q = q / q.sum()
+
+print('p = ', p)
+print('q = ', q)
+
+print('p.sum() = ', p.sum())
+print('q.sum() = ', q.sum())
+print('np.abs(p - q) = ', np.abs(p - q))
+print('np.sum(np.abs(p - q)) = ', np.sum(np.abs(p - q)))
+print('np.max(np.abs(p - q)) = ', np.max(np.abs(p - q))) 
+
+ret = np.sum(np.abs(p - q)) / np.max(np.abs(p - q))
+
+print('np.sum(np.abs(p - q)) / np.max(np.abs(p - q)) = ', ret)     
+\end{verbatim}
+for $N \leq 3$ 
+\begin{verbatim}
+np.sum(np.abs(p - q)) / np.max(np.abs(p - q))
+\end{verbatim} 
+is 2, but for $N \geq 4$ 
+\begin{verbatim}
+np.sum(np.abs(p - q)) / np.max(np.abs(p - q))
+\end{verbatim} 
+is a real number greater than 2.
+
+\section*{3.55} % - cvxbook p. 124
+% log - concave - cvxbook p. 104
+Log-concavity of the cumulative distribution function of a log-concave probability density.
+In this problem we extend the result of exercise 3.54. 
+Let $g(t) = exp(-h(t))$ be a differentiable
+log-concave probability density function, and let 
+$$ f(x) = \int_{- \infty}^{x} g(t) \,dt  = 
+\int_{- \infty}^{x} e^{-h(t)} \,dt$$ \\
+
+(a) Express the derivatives of f in terms of the function $h$. Verify that 
+$f(x)f{''}(x) < f{'}^2(x)$ if $h^{'}(x) > 0$ \\ \\
+Solution: \\
+
+The  condition that $log(g(t))$ is concave means that $- h(x)$ is concave and $h(t)$ is convex, which means 
+$h^{''} \geq 0$. So, we have:
+$$f^{'}(x) = e^{-h(x)}$$
+$$f^{''}(x) = - h^{'}(x) e^{-h(x)}$$
+So, $$f(x)f{''}(x) = 
+- h^{'}(x) e^{-2h(x)}$$ and 
+$$f{'}^2(x) = e^{-2h(x)}$$ \\ 
+As $e^{-2h(x)} > 0,$ and $h(x) \geq 0$ we have: \\
+$$f(x)f{''}(x) = 
+-h^{'}(x) e^{-2h(x)} < 
+ e^{-2h(x)}  = f{'}^2(x)$$
+ 
+(b) Assume that $h{'}(x) < 0.$ Use the inequality 
+$$ h(t) \ge h(x) + h^{'}(x) (t - x)$$ (which follows from convexity of $h$) to show that
+$$\int_{- \infty}^{x} e^{-h(t)} \,dt \leq -\frac{e^{-h(x)}}{h^{'}(x)}$$ \\
+Solution:\\
+
+As $ h(t) \ge h(x) + h^{'}(x) (t - x)$ we have:
+$$\int_{- \infty}^{x} e^{-h(t)} \,dt \leq \int_{- \infty}^{x} e^{- (h(x) + h^{'}(x) (t - x))}\,dt = 
+e^{-h(x) + h{'}(x) x} \int_{- \infty}^{x} e^{{-h{'}(x)}t} \,dt = -\frac{e^{-h(x)}}{h^{'}(x)} $$
+
+\section*{A2.21} % - p. 8
+ Symmetric convex functions of eigenvalues. A function 
+ $f: R^n \rightarrow R$ is said to be symmetric if it is
+ invariant with respect to a permutation of its arguments, i.e., 
+ $f(x) = f(Px)$ for any permutation matrix $P.$ An example of a symmetric function is 
+ $f(x) = log(\sum_{k = 1}^{n}x_k).$\\
+ In this problem we show that if $f: R^n \rightarrow R$ 
+ is convex and symmetric, then the function
+ $g: S^n \rightarrow R$ defined as 
+ $g(X) = f(\lambda(X))$ is convex, where 
+ $\lambda(X) = (\lambda_1(X), ... ,\lambda_n(X))$ is the vector of  eigenvalues of $X.$ This implies, for example, that the function 
+ $$g(X) = log(tr(e^X)) = 
+ log(\sum_{k = 1}^{n} e ^ {\lambda_k(X)})$$
+ is convex on $S^n$. \\
+ 
+ (a) A square matrix $S$ is doubly stochastic if its elements are nonnegative and all row sums and
+ column sums are equal to one. It can be shown that every doubly stochastic matrix is a convex
+ combination of permutation matrices.
+ Show that if $f$ is convex and symmetric and $S$ is doubly stochastic, then
+ $$f(Sx) \leq f(x)$$
+ 
+ Solution: \\
+ 
+ As every doubly stochastic matrix is a convex
+ combination of permutation matrices then 
+  $$Sx = \sum_{k = 1}^{n} \theta_k P_k x, $$ 
+  where $\sum_{k = 1}^{n}\theta_k = 1$ and 
+  $\theta_k \geq 0.$ \\
+  From convexity and symmetry of $f(X)$ we have: \\
+  
+  $$f(Sx) = f(\sum_{k = 1}^{n} \theta_k P_k x) \leq  \sum_{k = 1}^{n} \theta_k f(P_k x)$$ 
+  It means what $f(Sx)$ is convex by the definition of convexity. \\
+  
+  (b) Let $Y = Q \, diag(\lambda) \, Q^T$ be an eigenvalue decomposition of $Y \in S^n$ with $Q$ orthogonal. Show that $n \times n$ matrix S with elements $S_{ij} = Q^2_{ij}$ is doubly stochastic and that $diag(Y) = S \lambda$ \\
+  
+  Solution: \\
+  As $Q$ is orthogonal it means $ QQ^T = \boldsymbol{I}$, i. e. $\sum_{k = 1}^{n}q_{ik}^2 = 1.$ Also, from $ Q^TQ = \boldsymbol{I}$ we have $\sum_{k = 1}^{n}q_{ki}^2 = 1.$ So, matrix with elements $S_{ij}$ is doubly stochastic. \\
+  As $Y = Q \, diag(\lambda) \, Q^T,$ then $Y_{ii} = \lambda_i \sum_{k = 1}^{n}q_{ik}q_{ki} = \lambda_i S_{ii},$ so, $diag(Y) = S \lambda.$ \\
+  
+  (c) Use the results in parts (a) and (b) to show that if $f$ is convex and symmetric and $X \in S^n$ then 
+  $$f(\lambda(X)) = \sup_{V \in \mathcal{V}} f(diag(V^TXV))$$ \\
+  
+  Solution: \\
+  
+  From (a) and (b) we have that for any symmetric $X$ 
+  $$f(diag(X)) \leq f(\lambda(X))$$
+  But if $V$ is orthogonal, then 
+  $\lambda(X) = \lambda(VXV^T).$ It means that
+$$f(diag(VXV^T)) \leq f(\lambda(X)) $$ for all orthogonal $V$ with equality if $V = Q.$ It means that 
+$$f(\lambda(X)) = \sup_{V \in \mathcal{V}} f(diag(V^TXV))$$
+
+\section*{A 12.1 a-c}
+FIR low-pass filter design. Consider the (symmetric, linear phase) finite impulse response (FIR)
+filter described by its frequency response
+$$H(\omega) = a_0 + \sum_{k = 1}^{N} a_k cos(k \omega)$$
+where $\omega \in [0, \pi]$ is the frequency. The design variables in our problems are the real coefficients 
+$a = \{a_0, ... , a_n\} \in R^{N + 1},$ where $N$ is called the order or length of the FIR filter. In this problem we will explore the design of a low-pass filter, with specifications:\\
+\begin{itemize}
+	\item For $0 \leq \omega \leq \pi/3,$ 
+	$0.89 \leq H(\omega) \leq 1.12$ i.e., the filter has about $\pm 1$ Db ripple in the `passband' $[0, \pi/3].$
+	\item For $\omega_c \leq \omega \leq \pi,$, $|H_{\omega}| \leq \alpha.$ In other words, the filter achieves an attenuation given by $\alpha$ in the 'stopband' $[\omega_c, \pi].$ Here $\omega_c$ is called the filter 'cutoff frequency'.
+	
+\end{itemize}
+(It is called a low-pass filter since low frequencies are allowed to pass, but frequencies above the cutoff frequency are attenuated.) These specifications are depicted graphically in the figure below.  \\
+For parts (a) - (c), explain how to formulate the given problem as a convex or quasiconvex optimization problem.\\
+
+(a) Maximum stopband attenuation. We fix $\omega_c$ and 
+$N,$ and wish to maximize the stopband attenuation,
+i.e., minimize $\alpha.$ \\
+
+Solution:\\
+minimize $\alpha$\\
+subject to:\\
+$f_1(\alpha) \leq 1.12$ \\
+$f_2(\alpha) \geq 0.89$ \\
+$f_3(\alpha) \leq \alpha$ \\
+$f_4(\alpha) \geq \alpha$ \\
+where:\\
+$f_1(\alpha) = \sup_{0 \leq \omega \leq \pi/3} H(\omega) $\\
+$f_2(\alpha) = \inf_{0 \leq \omega \leq \pi/3} H(\omega) $\\
+$f_3(\alpha) = \sup_{\omega_c \leq \omega \leq \pi} H(\omega)$ \\
+$f_4(\alpha) = \inf_{\omega_c \leq \omega \leq \pi} H(\omega)$ \\ \\
+The functions $f_1, f_3$ are convex and $f_2, f_4$ are concave. So, the problem is convex.\\
+
+(b) Minimum transition band. We fix $N$ and $\alpha$ 
+and want to minimize $\omega_c$ i.e. we set the stopband
+attenuation and filter length, and wish to minimize the `transition' band (between $pi/3$ and $\omega_c$)\\
+
+Solution:\\
+This problem can be expressed as:\\
+minimize $f_5(\alpha)$
+subject to:\\
+$f_1(\alpha) \leq 1.12$ \\
+$f_2(\alpha) \geq 0.89$ \\
+$f_5(a) \leq \alpha$ \\
+Where $f_1(\alpha), f_2(\alpha)$ are the same, and \\
+$f_5(a) = \inf \{\Omega: 
+-\alpha \leq H(\omega) \leq \alpha $ for 
+$ \Omega \leq \omega \leq \pi \}$ \\
+
+This problem is quasiconvex because $f_1$ is convex, 
+$f_2$ is concave and $f_5$ is quasiconvex, its sublevel sets are:\\
+$\{a| \, f_5(a) \leq \Omega\} = 
+\{a| -\alpha \leq H(\omega) \leq \alpha $ for 
+$ \Omega \leq \omega \leq \pi \},$ i.e., the intersection of an infinite number of halfspaces. \\
+
+(c) Shortest length filter. We fix $\omega_c$ and $N$ and wish to find the smallest $N$ that can meet the
+specfications, i.e., we seek the shortest length FIR filter that can meet the specifiations. \\
+
+Solution:\\
+This problem can be expressed as:\\
+minimize $f_6(\alpha)$
+subject to:\\
+$f_1(\alpha) \leq 1.12$ \\
+$f_2(\alpha) \geq 0.89$ \\
+$f_3(\alpha) \leq \alpha$ \\
+$f_4(\alpha) \geq \alpha$ \\
+Where $f_1(\alpha), f_2(\alpha), f_3(\alpha), f_4(\alpha)$ are the same, and \\
+$f_6(a) = min\{k| \, a_{k+1} = , ... ,  = a_N = 0\}$\\
+the sublevel sets of $f_6(a)$ are affine sets, \\
+$\{a| \, f_6(a) \leq k\} = 
+\{a| \, a_{k+1} = , ... ,  = a_N = 0\}$ \\
+It means that $f_6(a)$ is affine function and the problem is quasiconvex.
+
+% A16.1
+\section*{A 16.1} % p. 183
+
+A hypergraph with nodes $1, . . . , m$ is a set of nonempty subsets of $\{1, 2, ... , m\} $ called edges. An ordinary graph is a special case in which the edges contain no more than two nodes. We consider a hypergraph with m nodes and assume coordinate vectors $x_j \in R^p, \, j = 1, ... , m $ are
+associated with the nodes. Some nodes are fixed and their coordinate vectors $x_j$ are given. The other nodes are free, and their coordinate vectors will be the optimization variables in the problem. The objective is to place the free nodes in such a way that some measure of the physical size of the nets is small.
+
+As an example application, we can think of the nodes as modules in an integrated circuit, placed at positions $x_j \in R^2.$
+Every edge is an interconnect network that carries a signal from one module to one or more other modules. 
+
+To define a measure of the size of a net, we store the vectors $x_j$ as columns of a matrix $X \in R^{p \times m}.$ For each edge $S$ in the hypergraph, we use $X_S$ to denote the 
+$ p \times |S|$ submatrix of X with the
+columns associated with the nodes of $S$. We define
+$$ f_S(X) = inf_y ||X_S - y \boldsymbol{1}^T || \qquad (50) $$
+as the size of the edge $S,$ where $|| \cdot ||$ 
+is a matrix norm, and $\boldsymbol{1}$ is a vector of ones of length $S$.\\
+
+(a) Show that the optimization problem\\
+$$ minimize \, \sum_{edges \, S} f_S(X)$$
+is convex in the free node coordinates $x_j.$\\
+
+Solution: \\
+
+Any norm is a convex function (matrix norm also is).
+Let's show that $inf_y ||X_S - y \boldsymbol{1}^T ||$ is a convex function of $X$.\\
+
+Proof:
+
+% https://ljk.imag.fr/membres/Anatoli.Iouditski/cours/convex/chapitre_3.pdf 
+% p. 60
+We should proof the [stability under partial minimization] first:\\
+If $f(x, y) : R^m_x \times R^m_y$ is convex 
+(as a function $z = f(x, y);$ this is called joint convexity) and the function $g(x)= \inf_y f(x, y)$ is proper, i.e. is 
+$> - \infty$ everywhere and is finite at least at one point, then $g$ is convex.
+
+Proof:\\
+\url{https://ljk.imag.fr/membres/Anatoli.Iouditski/cours/convex/chapitre_3.pdf} \\
+p. 60 \\
+$[stability \, under \, partial \, minimization] $\\
+We should prove that if $x, x' \in dom(g)$ and 
+$x'' = \lambda x + (1 - \lambda) x'$ with 
+$\lambda \in [0, 1],$ then $x'' \in dom(g)$ and 
+$g(x'') \leq \lambda g(x) + (1 - \lambda) g(x').$
+Given positive $\epsilon$ we can find $y, y'$ such that 
+$(x, y) \in dom(f), (x', y') \in dom(f)$ and 
+$g(x) + \epsilon > f(x, y), \, g(x') + \epsilon > f(x', y')$
+Taking weighted sum of these two inequalities, we get
+$$ \lambda g(x) + (1 - \lambda) g(x') + \epsilon
+\leq \lambda f(x, y) + (1 - \lambda) f(x', y') \geq$$
+(since f is convex)
+$$f(\lambda x + (1 - \lambda x', 
+\lambda y + (1 - \lambda) y')  = 
+f(x'', \lambda y + (1 - \lambda) y')$$ 
+As $g(x)= \inf_y f(x, y),$ the concluding quantity in the chain \\
+$f(x'', \lambda y + (1 - \lambda) y') \geq g(x'')$
+and we get 
+$g(x'') \leq \lambda g(x) + (1 - \lambda) g(x') + \epsilon.$ \\
+In particular $x'' \in dom(g).$ Moreover, since the resulting inequality is valid for all $\epsilon > 0$, we come to
+$g(x'') \leq \lambda g(x) + (1 - \lambda) g(x')$
+\\
+It means that $\inf_y f(x, y)$ is a convex function of $x$.
+A sum of convex functions is also a convex function. 
+So, $inf_y ||X_S - y \boldsymbol{1}^T ||$ is a convex function of $X$.\\
+
+(b) The size  $f_S(X)$ of a net $S$ obviously depends on the norm used in the definition (50). We consider five norms.
+
+\begin{itemize}
+	\item Frobenius norm:
+	$$||X_S - y \boldsymbol{1}^T ||_F = 
+	(\sum_{j \in S}\sum_{i = 1}^{p} (x_{ij} - y_i)^2)^{1/2} $$
+	
+	\item Maximum Euclidean column norm:
+	$$||X_S - y \boldsymbol{1}^T ||_{2, 1} = 
+	\max_{j \in S}(\sum_{i = 1}^{p} (x_{ij} - y_i)^2)^{1/2} $$
+	
+	\item Maximum column sum norm:
+	$$||X_S - y \boldsymbol{1}^T ||_{1, 1} = 
+	\max_{j \in S}\sum_{i = 1}^{p} |x_{ij} - y_i| $$
+	
+	\item Sum of absolute values norm:
+	$$||X_S - y \boldsymbol{1}^T ||_{sav} = 
+	\sum_{j \in S}\sum_{i = 1}^{p} |x_{ij} - y_i| $$
+	
+	\item Sum-row-max norm:
+	$$||X_S - y \boldsymbol{1}^T ||_{srm} = 
+	\sum_{i = 1}^{p} \max_{j \in S} |x_{ij} - y_i| $$
+	
+\end{itemize}
+
+For which of these norms does $f_S$ have the following interpretations? \\
+
+(i) $f_S(X)$ is the radius of the smallest Euclidean ball that contains the nodes of $S$.\\
+
+Solution: Item 2.\\
+
+
+(ii) $f_S(X)$ is (proportional to) the perimeter of the smallest rectangle that contains the nodes of $S$:
+$$ f_S(X) = \frac{1}{4} \sum_{i = 1}^{p} 
+(\max_{j \in S} x_{ij} - \min_{j \in S} x_{ij})$$ \\
+
+Solution: Item 3.\\
+
+(iii) $f_S(X)$ is the squareroot of the sum of the squares of the Euclidean distances to the mean
+of the coordinates of the nodes in $S$: \\
+
+$$f_S(X) = (\sum_{j \in S} 
+||x_{ij} - \overline x||^2_2)^{1/2}  \quad where \quad
+\overline x_i = \frac{1}{S} \sum_{k \in S} x_{ik} $$  
+
+Solution: Item 1.\\
+
+(iv) $f_S(X)$  is the sum of the `1-distances to the (coordinate-wise) median of the coordinates
+of the nodes in $S$:
+$$f_S(X) = 
+\sum_{j \in S} ||x_{ij} - \hat x_i|| \quad where \quad
+\hat x_i = median(\{x_ik \, | \, k \in S\}), \, 
+i = 1, ... , p$$ \\
+
+Solution: Item 4.\\
+
+\end{document}
+

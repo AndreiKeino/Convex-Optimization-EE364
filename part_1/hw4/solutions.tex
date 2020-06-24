@@ -142,6 +142,54 @@ i.e. the dual problem can be reformulated as:
 where $F(c, \lambda) = - \lambda f^*(-c/\lambda), $
 where $f^*$ is the conjugate function of $f,$ and it is always convex.  $F(c, \lambda)$ is the concave function, as it is the negative perspective of the convex function $f^*$.
 
+\section*{5.12}
+Analytic centering. Derive a dual problem for 
+$$\text{minimize } - \sum_{i = 1}^{m} log(b_i - a_i^T x)$$
+with domain 
+$\{x\; | \;  a_i^T x \leq b_i, \; i = 1, ..., m\}.$ First introduce new variables $y_i$ and equality constraints $y_i = b_i - a_i^T x.$ (The solution of this problem is called the analytic center of the linear inequalities $a_i^T x \leq b_i, \; i = 1, ..., m\}.$ 
+Analytic centers have geometric applications and play an
+important role in barrier methods. \\
+
+Solution:
+
+This problem is equivalent to:
+\begin{align*}
+\text{minimize } \qquad & - \sum_{i = 1}^{m} log(y_i) \\
+\text{subject to } \qquad &y + A^T x - b = 0 \\
+\end{align*}
+
+where the matrix $A$ composed from the rows $a_i^T.$ \\
+Then the Lagrangian is\\
+$$
+L(x, y, \nu) = - \sum_{i = 1}^{m} log(y_i) + 
+\nu^T(y + A^T x - b)
+$$
+The dual function is
+$$
+g(v) = \inf_{x, y}( - \sum_{i = 1}^{m} log(y_i) + 
+\nu^T(y + A^T x - b))
+$$
+
+The term $\nu^TA^Tx$ is unbounded below as 
+$x \rightarrow \infty,$ so \\
+
+\begin{equation*}
+g(\nu) =
+\begin{cases}
+\sum_{i = 1}^{m} log(y_i) + m - \nu^T b , 	
+& \nu^TA^T = 0, \; \nu_i \geq 0  \\
+- \infty, 					& \nu^TA^T \neq 0 
+\end{cases}       
+\end{equation*}
+
+and the dual problem is:
+
+\begin{align*}
+\text{maximize } \qquad 
+& \sum_{i = 1}^{m} log(\nu_i) + m - \nu^T b \\
+\text{subject to } \qquad & \nu^TA^T = 0
+\end{align*}
+
 
 \end{document}
 

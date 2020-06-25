@@ -155,30 +155,29 @@ Solution:
 This problem is equivalent to:
 \begin{align*}
 \text{minimize } \qquad & - \sum_{i = 1}^{m} log(y_i) \\
-\text{subject to } \qquad &y + A^T x - b = 0 \\
+\text{subject to } \qquad &y + A x - b = 0 \\
 \end{align*}
-
-where the matrix $A$ composed from the rows $a_i^T.$ \\
+where the matrix $A$ composed from the rows $a_i^T,$ the $i$ - th row of $A$ is $a_i^T$\\
 Then the Lagrangian is\\
 $$
 L(x, y, \nu) = - \sum_{i = 1}^{m} log(y_i) + 
-\nu^T(y + A^T x - b)
+\nu^T(y + A x - b)
 $$
 The dual function is
 $$
 g(v) = \inf_{x, y}( - \sum_{i = 1}^{m} log(y_i) + 
-\nu^T(y + A^T x - b))
+\nu^T(y + A x - b))
 $$
 
-The term $\nu^TA^Tx$ is unbounded below as 
+The term $\nu^TAx$ is unbounded below as 
 $x \rightarrow \infty,$ so \\
 
 \begin{equation*}
 g(\nu) =
 \begin{cases}
 \sum_{i = 1}^{m} log(y_i) + m - \nu^T b , 	
-& \nu^TA^T = 0, \; \nu_i \geq 0  \\
-- \infty, 					& \nu^TA^T \neq 0 
+& A \nu = 0, \; \nu_i \geq 0  \\
+- \infty, 					& A \nu \neq 0 
 \end{cases}       
 \end{equation*}
 
@@ -187,8 +186,86 @@ and the dual problem is:
 \begin{align*}
 \text{maximize } \qquad 
 & \sum_{i = 1}^{m} log(\nu_i) + m - \nu^T b \\
-\text{subject to } \qquad & \nu^TA^T = 0
+\text{subject to } \qquad & A \nu = 0
 \end{align*}
+
+\section*{A3.3}
+Reformulating constraints in CVX*. Each of the following CVX code fragments describes a convex
+constraint on the scalar variables x, y, and z, but violates the CVX rule set, and so is invalid. Briely explain why each fragment is invalid. Then, rewrite each one in an equivalent form that conforms to the CVX rule set. In your reformulations, you can use linear equality and inequality constraints, and inequalities constructed using CVX functions. You can also introduce additional variables, or use LMIs. Be sure to explain (briefly) why your reformulation is equivalent to the original constraint, if it is not obvious.
+Check your reformulations by creating a small problem that includes these constraints, and solving it using CVX. Your test problem doesn't have to be feasible; it's enough to verify that CVX processes your constraints without error.
+Remark. This looks like a problem about `how to use CVX software', or `tricks for using CVX'.
+But it really checks whether you understand the various composition rules, convex analysis, and
+constraint reformulation rules.\\ \\
+(a) norm([x + 2*y, x - y]) == 0 \\
+(b) square(square(x + y)) \textless= x - y\\
+(c) 1/x + 1/y <= 1; x \textgreater = 0; y \textgreater = 0\\
+(d) norm([max(x,1), max(y,2)]) \textless= 3*x + y\\
+(e) x*y \textgreater= 1; x \textgreater= 0; y \textgreater= 0\\
+(f) (x + y)\^{}2/sqrt(y) \textless= x - y + 5\\
+(g) x\^{}3 + y\^{}3 <= 1; x \textgreater= 0; y \textgreater= 0\\
+(h) x + z <= 1 + sqrt(x*y - z\^{}2); x \textgreater= 0; y \textgreater= 0\\
+
+Solution: \\
+
+(a)  norm([x + 2*y, x - y]) == 0 \\
+
+This constraint is invalid because {\bf Three types of constraints may be specified in disciplined convex programs:\\
+}
+
+\begin{itemize}
+	\item An equality constraint, constructed using ==, where both sides are affine.
+	\item A less-than inequality constraint, using <=, where the left side is convex and the right side is concave.
+	\item A greater-than inequality constraint, using >=, where the left side is concave and the right side is convex.
+\end{itemize}
+
+\url{http://web.cvxr.com/cvx/doc/dcp.html#constraints}
+
+Expression in (a) violates the first rule - both sides must be affine. The workaround:
+
+\begin{verbatim}
+subject to
+	x + 2*y == 0;
+	x - y == 0;
+\end{verbatim}
+
+The test script: \\
+\begin{verbatim}
+cvx_begin
+variable x;
+variable y;
+minimize(norm(x + y + 1));
+subject to
+x + 2*y == 0;
+x - y == 0;
+cvx_end
+
+fprintf('status:'); 
+disp(cvx_status);
+
+fprintf('optimal value:'); 
+disp(cvx_optval )
+
+fprintf('optimal x:\n'); 
+disp(x)
+
+fprintf('optimal y:\n'); 
+disp(y)
+\end{verbatim}
+
+The script output:
+\begin{verbatim}
+Status: Solved
+Optimal value (cvx_optval): +1
+
+status:Solved
+optimal value:    1.0000
+
+optimal x:
+0
+
+optimal y:
+0
+\end{verbatim}
 
 
 \end{document}

@@ -220,52 +220,16 @@ This constraint is invalid because {\bf Three types of constraints may be specif
 
 \url{http://web.cvxr.com/cvx/doc/dcp.html#constraints}
 
-Expression in (a) violates the first rule - both sides must be affine. The workaround:
+Expression in (a) violates the first rule - both sides must be affine. As the given norm could be zero only if $(x, y) = (0, 0)$, the workaround:
 
 \begin{verbatim}
 subject to
-	x + 2*y == 0;
-	x - y == 0;
+	x == 0;
+	y == 0;
 \end{verbatim}
 
-The test script: \\
-\begin{verbatim}
-cvx_begin
-variable x;
-variable y;
-minimize(norm(x + y + 1));
-subject to
-x + 2*y == 0;
-x - y == 0;
-cvx_end
-
-fprintf('status:'); 
-disp(cvx_status);
-
-fprintf('optimal value:'); 
-disp(cvx_optval )
-
-fprintf('optimal x:\n'); 
-disp(x)
-
-fprintf('optimal y:\n'); 
-disp(y)
-\end{verbatim}
-
-The script output:
-\begin{verbatim}
-Status: Solved
-Optimal value (cvx_optval): +1
-
-status:Solved
-optimal value:    1.0000
-
-optimal x:
-0
-
-optimal y:
-0
-\end{verbatim}
+The test script can be found in the file 
+ex\_A\_3\_3\_a.m \\
 
 
 \end{document}

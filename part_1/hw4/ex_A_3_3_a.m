@@ -3,8 +3,8 @@ cvx_begin
     variable y;
     minimize(norm(x + y + 1));
     subject to
-        x + 2*y == 0;
-        x - y == 0;
+        x == 0;
+        y == 0;
 cvx_end
 
 fprintf('status:'); 

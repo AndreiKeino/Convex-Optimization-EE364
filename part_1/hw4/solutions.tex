@@ -396,6 +396,106 @@ disp(y)
 
 (f) (x + y)\^{}2/sqrt(y) \textless= x - y + 5\\
 
+This is not a \textbf{valid call to a function in the atom library with a convex result.} To maid it a valid call we should use the 
+quad\_over\_lin((x + y), sqrt(y)) function from the atom libary. I do not know why its working in this case.\\
+
+The test script:\\
+\begin{verbatim}
+cvx_begin
+variable x;
+variable y;
+minimize(norm(x + y + 1));
+subject to
+quad_over_lin((x + y), sqrt(y)) <= x - y + 5;
+y >= 0;
+x >= y - 5;
+cvx_end
+
+fprintf('status:'); 
+disp(cvx_status);
+
+fprintf('optimal value:'); 
+disp(cvx_optval )
+
+fprintf('optimal x:\n'); 
+disp(x)
+
+fprintf('optimal y:\n'); 
+disp(y)
+\end{verbatim}
+
+(g) x\^{}3 + y\^{}3 <= 1; x \textgreater= 0; y \textgreater= 0\\
+CVX rejects this code because the function  x\^{}3 is not convex when  x \textless 0. The functions POW\_P, POW\_POS, or POW\_ABS can be used instead.
+
+The test script:\\
+\begin{verbatim}
+cvx_begin
+variable x;
+variable y;
+minimize(norm(x + y + 1));
+subject to
+pow_p(x, 3) + pow_p(y, 3) <= 1;
+x >= 0;
+y >= 0;
+cvx_end
+
+fprintf('status:'); 
+disp(cvx_status);
+
+fprintf('optimal value:'); 
+disp(cvx_optval )
+
+fprintf('optimal x:\n'); 
+disp(x)
+
+fprintf('optimal y:\n'); 
+disp(y)
+\end{verbatim}
+
+(h) x + z <= 1 + sqrt(x*y - z\^{}2); x \textgreater= 0; y \textgreater= 0\\
+
+The problem is that x*y is not a concave function. But we can reformulate sqrt(x*y - z\^{}2) as sqrt(x * (y - z\^{}2 / x)). Then sqrt can be replaced with geo\_mean(x, (y - quad\_over\_lin(z, x)). This works because geo\_mean is concave and not decreasing and can accept a concave functions as arguments, and  y - quad\_over\_lin(z, x) is concave.
+
+The test script:\\
+\begin{verbatim}
+cvx_begin
+variable x;
+variable y;
+variable z;
+minimize(norm(x + y + z + 1));
+subject to
+x + z <= 1 + geo_mean([x, (y - quad_over_lin(z, x))])
+x >= 0;
+y >= 0;
+cvx_end
+
+fprintf('status:'); 
+disp(cvx_status);
+
+fprintf('optimal value:'); 
+disp(cvx_optval )
+
+fprintf('optimal x:\n'); 
+disp(x)
+
+fprintf('optimal y:\n'); 
+disp(y)
+
+fprintf('optimal z:\n'); 
+disp(z)
+\end{verbatim}
+
+\section*{A3.10}
+
+3.10 Linear programming with random cost vector. We consider the linear program 
+
+\begin{align*}
+\text{minimize } &c^T x \\
+\text{subject to } &A x \succ 0 \\
+\end{align*} 
+
+Here, however, the cost vector $c$ is random, normally distributed with mean
+$E(c) = c_0$ and covariance $E((c - c_o)(c - c_0)^T) = \Sigma, $ ($A$, $b$, $x$ are deterministic). Thus, for a given $x \in R^n$ the cost $c^T x$ is a scalar random Gaussian variable. We can attach several different meanings to the goal `minimize $c^T x;$ we explore some of these below.
 
 \end{document}
 

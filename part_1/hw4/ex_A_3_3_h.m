@@ -1,11 +1,12 @@
 cvx_begin
     variable x;
     variable y;
-    minimize(norm(x + y + 1));
+    variable z;
+    minimize(norm(x + y + z + 1));
     subject to
-        quad_over_lin((x + y), sqrt(y)) <= x - y + 5;
+        x + z <= 1 + geo_mean([x, (y - quad_over_lin(z, x))])
+        x >= 0;
         y >= 0;
-        x >= y - 5;
 cvx_end
 
 fprintf('status:'); 
@@ -20,3 +21,5 @@ disp(x)
 fprintf('optimal y:\n'); 
 disp(y)
 
+fprintf('optimal z:\n'); 
+disp(z)

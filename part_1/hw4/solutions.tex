@@ -491,11 +491,33 @@ disp(z)
 
 \begin{align*}
 \text{minimize } &c^T x \\
-\text{subject to } &A x \succ 0 \\
+\text{subject to } &A x \preceq 0 \\
 \end{align*} 
 
 Here, however, the cost vector $c$ is random, normally distributed with mean
-$E(c) = c_0$ and covariance $E((c - c_o)(c - c_0)^T) = \Sigma, $ ($A$, $b$, $x$ are deterministic). Thus, for a given $x \in R^n$ the cost $c^T x$ is a scalar random Gaussian variable. We can attach several different meanings to the goal `minimize $c^T x;$ we explore some of these below.
+$E(c) = c_0$ and covariance $E((c - c_o)(c - c_0)^T) = \Sigma, $ ($A$, $b$, $x$ are deterministic). Thus, for a given $x \in R^n$ the cost $c^T x$ is a scalar random Gaussian variable. We can attach several different meanings to the goal `minimize $c^T x;$ we explore some of these below. \\
+
+(a) How would you minimize the expected cost $E(c^T x)$ subject to 
+$A x \preceq 0?$ \\
+
+(b) In general there is a tradeoff between small expected cost and small cost variance. One way to take variance into account is to minimize a linear combination:
+$$
+E(c^T x) + \gamma var(c^T x)
+$$
+of the expected value $E(c^T x)$ and the variance 
+$var(c^T x) = E((c^T x)^2) - E(c^T x)^2.$ This is called the 'risk - sensitive cost' and the parameter $\gamma \geq 0$ is called the risk - aversion parameter since it set the relative values of cost variance and expected value. (For $\gamma > 0$ we are willing to tradeoff an increase in expected cost for a decrease in cost variance). How would you minimize the risk - sensitive cost? Is this problem a convex optimization problem? Be as specifc as you can. \\
+
+(c) We can also minimize the risk-sensitive cost, but with $\gamma < 0.$ This is called `risk-seeking'. Is this problem a convex optimization problem? \\
+
+(d) Another way to deal with the randomness in the cost $c^T x$ is to formulate the problem as 
+
+\begin{align*}
+\text{minimize } &\beta \\
+\text{subject to } &\boldsymbol{prob}(c^T x \geq \beta ) \leq \alpha \\
+&A x \preceq 0 \\
+\end{align*} 
+
+Here, $\alpha$ is a fixed parameter, which corresponds roughly to the reliability we require, and might typically have a value of $0.01$. Is this problem a convex optimization problem? Be as specific as you can. Can you obtain risk-seeking by choice of $\alpha?$ Explain.
 
 \end{document}
 

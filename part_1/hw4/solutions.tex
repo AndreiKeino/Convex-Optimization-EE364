@@ -507,7 +507,8 @@ $$
 of the expected value $E(c^T x)$ and the variance 
 $var(c^T x) = E((c^T x)^2) - E(c^T x)^2.$ This is called the 'risk - sensitive cost' and the parameter $\gamma \geq 0$ is called the risk - aversion parameter since it set the relative values of cost variance and expected value. (For $\gamma > 0$ we are willing to tradeoff an increase in expected cost for a decrease in cost variance). How would you minimize the risk - sensitive cost? Is this problem a convex optimization problem? Be as specifc as you can. \\
 
-(c) We can also minimize the risk-sensitive cost, but with $\gamma < 0.$ This is called `risk-seeking'. Is this problem a convex optimization problem? \\
+(c) We can also minimize the risk-sensitive cost, but with $
+\gamma < 0.$ This is called `risk-seeking'. Is this problem a convex optimization problem? \\
 
 (d) Another way to deal with the randomness in the cost $c^T x$ is to formulate the problem as 
 
@@ -517,7 +518,42 @@ $var(c^T x) = E((c^T x)^2) - E(c^T x)^2.$ This is called the 'risk - sensitive c
 &A x \preceq 0 \\
 \end{align*} 
 
-Here, $\alpha$ is a fixed parameter, which corresponds roughly to the reliability we require, and might typically have a value of $0.01$. Is this problem a convex optimization problem? Be as specific as you can. Can you obtain risk-seeking by choice of $\alpha?$ Explain.
+Here, $\alpha$ is a fixed parameter, which corresponds roughly to the reliability we require, and might typically have a value of $0.01$. Is this problem a convex optimization problem? Be as specific as you can. Can you obtain risk-seeking by choice of $\alpha?$ Explain. \\
+
+Solution: \\
+
+(a) As $x$ is not a random variable, $E(c^T x) = E(c^T) x = c_0^T x$
+and the LP will transform to:
+\begin{align*}
+&\text{minimize } &&c_0^T x \\
+&\text{subject to } &&A x \preceq 0 \\
+\end{align*} 
+
+(b) $E(((c - c_0)x)^2) = E(x^T(c - c_0)(c - c_0) x) = 
+x^TE((c - c_0)(c - c_0)^T)x = x^T \Sigma x,$ and the problem will transform to:
+
+\begin{align*}
+&\text{minimize } &&c_0^T x + \gamma \, x^T \Sigma x \\
+&\text{subject to } &&A x \preceq 0 \\
+\end{align*} 
+
+(c) No, the problem is not convex because the objective function is concave.
+
+(d)
+% cvxbook p. 158
+Yes, this problem is convex optimization one,  see cvxbook p. 158. This problem is equivalent to:
+
+\begin{align*}
+&\text{minimize } && \beta \\
+&\text{subject to } && c_0^T x + Q(\alpha) \, 
+||\Sigma^{1/2} x^T||_2 x \leq \beta\\
+& &&A x \preceq b \\
+\end{align*} 
+
+Where $Q(\alpha)$ is the quantile of the standard Normal distribution with zero mean and dispersion equal to 1. 
+The problem is convex for $0 \leq \alpha \leq 1/2,$ as $Q(\alpha) \leq 0$ for $1/2 < \alpha \leq 1.$
+\\
+And no, we can't obtain risk-seeking by choice of $\alpha,$ because for  $1/2 < \alpha \leq 1$ the problem is not convex.
 
 \end{document}
 

@@ -223,6 +223,7 @@ This constraint is invalid because {\bf Three types of constraints may be specif
 
 Expression in (a) violates the first rule - both sides must be affine. As the given norm could be zero only if $(x, y) = (0, 0)$, the workaround:
 
+The cvx test script: \\
 \begin{verbatim}
 subject to
 	x == 0;
@@ -253,6 +254,28 @@ fprintf('optimal y:\n');
 disp(y)
 \end{verbatim}
 
+The cvxpy test script: \\
+\begin{verbatim}
+import cvxpy as cp
+
+# Create two scalar optimization variables.
+x = cp.Variable()
+y = cp.Variable()
+
+# Create two constraints.
+constraints = [x == 0, y == 0]
+
+# Form objective.
+obj = cp.Minimize((x - y + 2)**2)
+
+# Form and solve problem.
+prob = cp.Problem(obj, constraints)
+prob.solve()  # Returns the optimal value.
+print("status:", prob.status)
+print("optimal value", prob.value)
+print("optimal var", x.value, y.value)
+\end{verbatim}
+
 
 (b) square(square(x + y)) \textless= x - y\\
 this code violates the one of the composition ruleset:\\
@@ -263,7 +286,7 @@ If the function is neither nondecreasing or nonincreasing in an argument, that a
 
 So, use instead power(x + y, 4) \textless= x - y\\
 
-The test script: \\
+The cvx test script: \\
 \begin{verbatim}
 cvx_begin
 variable x;
@@ -286,6 +309,28 @@ fprintf('optimal y:\n');
 disp(y)
 \end{verbatim}
 
+The cvxpy test script: \\
+\begin{verbatim}
+import cvxpy as cp
+
+# Create two scalar optimization variables.
+x = cp.Variable()
+y = cp.Variable()
+
+# Create two constraints.
+constraints = [(x + y) ** 4 <= x - y]
+
+# Form objective.
+obj = cp.Minimize((x - y + 2)**2)
+
+# Form and solve problem.
+prob = cp.Problem(obj, constraints)
+prob.solve()  # Returns the optimal value.
+print("status:", prob.status)
+print("optimal value", prob.value)
+print("optimal var", x.value, y.value)
+\end{verbatim}
+
 (c) 1/x + 1/y \textless= 1; \\
 
 this expression violates the rule:
@@ -297,7 +342,7 @@ a valid call to a function in the atom library with a convex result
 Workaround: use \\
 (c) inv\_pos(x) or pow\_p(x,-1) instead $1/x$ \\
 
-The test script: \\
+The cvx test script: \\
 \begin{verbatim}
 cvx_begin
 variable x;
@@ -322,6 +367,28 @@ fprintf('optimal y:\n');
 disp(y)
 \end{verbatim}
 
+The cvxpy test script: \\
+\begin{verbatim}
+import cvxpy as cp
+
+# Create two scalar optimization variables.
+x = cp.Variable()
+y = cp.Variable()
+
+# Create two constraints.
+constraints = [cp.inv_pos(x) + cp.inv_pos(y) <= 1]
+
+# Form objective.
+obj = cp.Minimize((x - y + 2)**2)
+
+# Form and solve problem.
+prob = cp.Problem(obj, constraints)
+prob.solve()  # Returns the optimal value.
+print("status:", prob.status)
+print("optimal value", prob.value)
+print("optimal var", x.value, y.value)
+\end{verbatim}
+
 (d) norm([max(x,1), max(y,2)]) \textless= 3*x + y\\
 
 The problem is that norm() is neither nondecreasing or nonincreasing and it can accept only affine arguments.
@@ -336,7 +403,7 @@ z1 \textgreater= max(x,1);
 z2 \textgreater=  max(y,2)
 norm([z1, z2]) \textless= 3*x + y;\\
 
-The test script:
+The cvx test script:
 \begin{verbatim}
 cvx_begin
 variable x;
@@ -361,6 +428,32 @@ fprintf('optimal y:\n');
 disp(y)
 \end{verbatim}
 
+The cvxpy test script:
+\begin{verbatim}
+import cvxpy as cp
+
+# Create two scalar optimization variables.
+x = cp.Variable()
+y = cp.Variable()
+z = cp.Variable(2)
+z1 = cp.Variable()
+z2 = cp.Variable()
+
+# Create two constraints.
+constraints = [z[0] >= cp.maximum(x, 1), z[1] >= cp.maximum(y, 2), 
+cp.norm(z) <= 3 * x + y]
+
+# Form objective.
+obj = cp.Minimize((x - y + 2)**2)
+
+# Form and solve problem.
+prob = cp.Problem(obj, constraints)
+prob.solve()  # Returns the optimal value.
+print("status:", prob.status)
+print("optimal value", prob.value)
+print("optimal var", x.value, y.value)
+\end{verbatim}
+
 (e) x*y \textgreater= 1; x \textgreater= 0; 
 y \textgreater= 0\\
 
@@ -369,7 +462,7 @@ it has $\lambda_{1, 2} = \pm 1 $. But we can express this inequality as  $x \geq
 or x \textgreater= inv\_pos(y).  
 The functions $x$ and $1/y$ are both convex.
 
-The test script:
+The cvx test script:
 \begin{verbatim}
 cvx_begin
 variable x;
@@ -394,12 +487,35 @@ fprintf('optimal y:\n');
 disp(y)
 \end{verbatim}
 
+The cvx test script:
+\begin{verbatim}
+import cvxpy as cp
+
+# Create two scalar optimization variables.
+x = cp.Variable()
+y = cp.Variable()
+z = cp.Variable(2)
+
+# Create two constraints.
+constraints = [x >= cp.inv_pos(y), x >= 0, y >= 0]
+
+# Form objective.
+obj = cp.Minimize((x - y + 2)**2)
+
+# Form and solve problem.
+prob = cp.Problem(obj, constraints)
+prob.solve()  # Returns the optimal value.
+print("status:", prob.status)
+print("optimal value", prob.value)
+print("optimal var", x.value, y.value)
+\end{verbatim}
+
 (f) (x + y)\^{}2/sqrt(y) \textless= x - y + 5\\
 
 This is not a \textbf{valid call to a function in the atom library with a convex result.} To maid it a valid call we should use the 
 quad\_over\_lin((x + y), sqrt(y)) function from the atom libary. I do not know why its working in this case.\\
 
-The test script:\\
+The cvx test script:\\
 \begin{verbatim}
 cvx_begin
 variable x;
@@ -424,10 +540,34 @@ fprintf('optimal y:\n');
 disp(y)
 \end{verbatim}
 
+The cvxpy test script:\\
+\begin{verbatim}
+
+import cvxpy as cp
+
+# Create two scalar optimization variables.
+x = cp.Variable()
+y = cp.Variable()
+
+# Create two constraints.
+constraints = [cp.quad_over_lin(x + y, cp.sqrt(y)) <= x - y + 5, 
+y >= 0, x >= y - 5]
+
+# Form objective.
+obj = cp.Minimize((x - y + 2)**2)
+
+# Form and solve problem.
+prob = cp.Problem(obj, constraints)
+prob.solve()  # Returns the optimal value.
+print("status:", prob.status)
+print("optimal value", prob.value)
+print("optimal var", x.value, y.value)
+\end{verbatim}
+
 (g) x\^{}3 + y\^{}3 <= 1; x \textgreater= 0; y \textgreater= 0\\
 CVX rejects this code because the function  x\^{}3 is not convex when  x \textless 0. The functions POW\_P, POW\_POS, or POW\_ABS can be used instead.
 
-The test script:\\
+The cvx test script:\\
 \begin{verbatim}
 cvx_begin
 variable x;
@@ -450,6 +590,28 @@ disp(x)
 
 fprintf('optimal y:\n'); 
 disp(y)
+\end{verbatim}
+
+The cvx test script:\\
+\begin{verbatim}
+import cvxpy as cp
+
+# Create two scalar optimization variables.
+x = cp.Variable()
+y = cp.Variable()
+
+# Create two constraints.
+constraints = [cp.pos(x) ** 3 + cp.pos(y) ** 3 <= 1, x >= 0, y >= 0]
+
+# Form objective.
+obj = cp.Minimize((x - y + 2)**2)
+
+# Form and solve problem.
+prob = cp.Problem(obj, constraints)
+prob.solve()  # Returns the optimal value.
+print("status:", prob.status)
+print("optimal value", prob.value)
+print("optimal var", x.value, y.value)
 \end{verbatim}
 
 (h) x + z <= 1 + sqrt(x*y - z\^{}2); x \textgreater= 0; y \textgreater= 0\\
@@ -541,19 +703,101 @@ x^TE((c - c_0)(c - c_0)^T)x = x^T \Sigma x,$ and the problem will transform to:
 
 (d)
 % cvxbook p. 158
-Yes, this problem is convex optimization one,  see cvxbook p. 158. This problem is equivalent to:
+Yes, this problem is convex optimization one,  see cvxbook p. 158. Lets rewrite the constrain as:
+$$
+\boldsymbol{prob}((\frac{u - \overline u}{\Sigma}) \geq 
+\frac{\beta - \overline u}{\Sigma} ) \leq \alpha \\
+$$
+Where $u = c^T x$, $\overline u = c_0^Tx$, $\Sigma^2 = var(c)$
+Then the value of $\frac{u - \overline u}{\Sigma}$ is a normal variable with unit dispersion and zero mean. Its probability is $\Phi(\frac{\beta - \overline u}{\Sigma})$ where
+
+$$\Phi(z) = \int_{z}^{\infty} e^{- z^2} dz$$
+
+So, the probability constraint can be expressed as:
+$$
+\Phi(\frac{\beta - \overline u}{\Sigma}) \leq \alpha
+$$
+or
+$$
+\frac{\beta - \overline u}{\Sigma} \leq \Phi ^ {-1}(\alpha)
+$$
+or
+$$
+\overline u + \Sigma \Phi ^ {-1}(\alpha) \leq \beta
+$$
+
+
+This problem is equivalent to:
 
 \begin{align*}
 &\text{minimize } && \beta \\
 &\text{subject to } && c_0^T x + Q(\alpha) \, 
-||\Sigma^{1/2} x^T||_2 x \leq \beta\\
+||\Sigma^{1/2} x||_2 \leq \beta\\
 & &&A x \preceq b \\
 \end{align*} 
 
-Where $Q(\alpha)$ is the quantile of the standard Normal distribution with zero mean and dispersion equal to 1. 
-The problem is convex for $0 \leq \alpha \leq 1/2,$ as $Q(\alpha) \leq 0$ for $1/2 < \alpha \leq 1.$
+Where $Q(\alpha) = \Phi^-1(\alpha)$ is the quantile of the standard Normal distribution with zero mean and dispersion equal to 1. 
+The problem is convex for $0 \leq \alpha \leq 1/2,$ as $Q(\alpha) \leq 0$ for $1/2 \leq \alpha \leq 1.$
 \\
-And no, we can't obtain risk-seeking by choice of $\alpha,$ because for  $1/2 < \alpha \leq 1$ the problem is not convex.
+
+We can obtain risk-seeking by choice of $\alpha,$ solving the problem:
+
+\begin{align*}
+\text{minimize } &- \beta \\
+\text{subject to } &\boldsymbol{prob}(c^T x \geq \beta ) \geq \alpha \\
+&A x \preceq 0 \\
+\end{align*} 
+
+This problem is equivalent to:
+
+\begin{align*}
+&\text{minimize } && - \beta \\
+&\text{subject to } && c_0^T x - Q(\alpha) \, 
+||\Sigma^{1/2} x||_2 \leq \beta\\
+& &&A x \preceq b \\
+\end{align*} 
+and it is convex for $1/2 \leq \alpha \leq 1.$
+
+\section*{A3.32}
+
+Satisfying a minimum number of constraints. Consider the problem
+
+\begin{align*}
+&\text{minimize } && f_0(x) \\
+&\text{subject to } && f_i(x) \leq 0 \text{ holds for at least } k \text{ values of }i\\
+\end{align*} 
+with variable $x \in R^n,$ where thye objective $f_0$ and the constraint functions $f_i, \, i = \{1...m\} $ (with $m \geq k$ is convex. Here we require than only $k$ constraints holds, instead all $m$ of them. In general this is hard combinatorial problem; the brute force solution is to solve all $m \choose k$ convex problems obtained by choosing subsets of $k$ constraints to impose and selecting one with possible smallest objective value. \\ \\
+In this problem we explore a convex restriction that can be an effective heuristic for the problem.
+
+(a) Suppose $\lambda > 0.$ Show than constraint
+$$
+\sum_{i = 1}^{m} (1 + \lambda f_i(x))_+ \leq m - k
+$$
+guarantees that $f_i(x) \leq 0 $ holds for at least $k$
+values of $i.$ ($(u)_+$ means $max\{u, 0\}.$) Hint: for each $u \in R,$ $(1 + \lambda u)_+ \geq 1(u \ geq 0),$ where $1(u > 0)= 1$ for $u > 0$ and $1(u > 0) = 0$
+for $u \leq 0.$\\
+
+(b) Consider the problem:
+\begin{align*}
+&\text{minimize } && f_0(x) \\
+&\text{subject to } && \sum_{i = 1}^{m} (1 + \lambda
+ f_i(x))_+ \leq m - k\\
+& && \lambda > 0 \\ 
+\end{align*} 
+with variables $x$ and $\lambda.$ This is a restriction of the original problem: if $(x, \lambda)$ are feasible for it, then x is feasible for iriginal problem. Show how to solve this problem usiong convex optimization. (This may involve a change of variables)
+\\
+
+(c) Apply a method in part (b) to the problem instance:
+\begin{align*}
+&\text{minimize } && c^T x \\
+&\text{subject to } && a_i^T x \leq b_i \text{ holds for at least } k \text{ values of }i\\
+\end{align*} 
+
+with $m = 70,$ $k = 58$ and $n = 12.$ The vectors 
+$b, \, c$ and the matrix $A$ are given in the file satisfy\_some\_constraints\_data.*. Report the optimal value of $\lambda,$ the objective value, and an actual value of constraints that are satisfied (which should be large than or equal to $k$). To determine if a constraint is satisfied, you can use the tolerance 
+$a_i^T x - b_i \leq e^{feas},$ with $e^{feas} = 10^{-5}.$ \\
+A standard trick is to take the tentative solution, choose the $k$ constraints with the smallest values of 
+$f_i(x)$ and then minimize $f_0(x)$ subject to these $k$ constraints (i.e ignorint the other $m - k$ constraints). This improves the objective value over the one found using the restriction. Carry this out for the problem instance, and report the objective value obtained.
 
 \end{document}
 

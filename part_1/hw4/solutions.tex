@@ -797,7 +797,85 @@ with $m = 70,$ $k = 58$ and $n = 12.$ The vectors
 $b, \, c$ and the matrix $A$ are given in the file satisfy\_some\_constraints\_data.*. Report the optimal value of $\lambda,$ the objective value, and an actual value of constraints that are satisfied (which should be large than or equal to $k$). To determine if a constraint is satisfied, you can use the tolerance 
 $a_i^T x - b_i \leq e^{feas},$ with $e^{feas} = 10^{-5}.$ \\
 A standard trick is to take the tentative solution, choose the $k$ constraints with the smallest values of 
-$f_i(x)$ and then minimize $f_0(x)$ subject to these $k$ constraints (i.e ignorint the other $m - k$ constraints). This improves the objective value over the one found using the restriction. Carry this out for the problem instance, and report the objective value obtained.
+$f_i(x)$ and then minimize $f_0(x)$ subject to these $k$ constraints (i.e ignorint the other $m - k$ constraints). This improves the objective value over the one found using the restriction. Carry this out for the problem instance, and report the objective value obtained. \\
+
+Solution:
+
+(a) \\
+As
+$$
+\sum_{i = 1}^{m} (1 + \lambda f_i(x))_+ \geq 
+\sum_{i = 1}^{m} 1(f_i(x)> 0)
+$$
+then
+$$
+\sum_{i = 1}^{m} 1(f_i(x)> 0) \leq m - k
+$$
+Considering the definition of $1(u),$ the upper equation means that the number of negative values of $f_i(x)$ in the sum is equal at least to $k$ (or more). \\
+
+(b)
+
+Changing the variables $\lambda $ for $1/y$ and multiplying both part of the constraint on $y$ (remembering that $\lambda > 0$, therefore $y > 0$) we get a modified problem:
+
+\begin{align*}
+&\text{minimize } && f_0(x) \\
+&\text{subject to } &&\sum_{i = 1}^{m} (y + f_i(x))_+ \leq (m - k) y\\
+& &&y > 0\\
+\end{align*} 
+
+as the function $y + f_i(x)$ is convex and nondecreasing and the function $(u)+$ is convex then the $(y + f_i(x))+$ is convex. \\
+
+The optimal values for : $\lambda = 282.9842, $ objective = $-8.4545, $ actual value of constraints that are satisfied is 66. Final objective value is $-8.75677.$
+
+the matlab code:\\
+\begin{verbatim}
+satisfy_some_constraints_data;
+
+cvx_begin
+variable x(n);
+variable y;
+minimize (c.' * x);
+subject to
+sum(pos(y +  A * x - b)) <= (m - k) * y;
+y > 0;
+cvx_end
+
+fprintf('status = '); 
+disp(cvx_status);
+
+fprintf('optimal value = '); 
+disp(cvx_optval )
+
+fprintf('optimal x = \n'); 
+disp(x)
+
+fprintf('optimal lambda = '); 
+disp(1 / y)
+
+e_feas = 1e-5;
+fprintf('actual constraints safisfied = ')
+disp(sum(A * x - b <= e_feas))
+
+% get inedxes of k firt minimal 
+[~, idx] = (sort(A * x - b));
+min_idx = idx(1:k);
+% get the rows of A corresponding these minimal indexes
+A_min = A(min_idx, :);
+% get the elements of b corresponding these minimal indexes
+b_min = b(min_idx);
+
+cvx_begin
+variable x(n);
+minimize (c.' * x);
+subject to
+A_min * x <= b_min;
+cvx_end
+
+fprintf('final objective value = %f', cvx_optval)
+
+\end{verbatim}
+
+
 
 \end{document}
 

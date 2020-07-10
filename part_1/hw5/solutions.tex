@@ -77,6 +77,28 @@ The optimal value of this problem is less or equal to $b_i$, so we have the equi
 \end{align*} 
 
 \section*{5.40}
+E - optimal experiment design. A variation on two optimal experiment design problems of exercise 5.10
+is the E - optimal design problem:
+
+\begin{align*}
+&\text{minimize } && \lambda_{max}
+(\sum_{i = 1}^p x_i v_i v_i^T)^{-1} \\
+&\text{subject to } 
+&&x \succeq 0, \; \boldsymbol{1}^T x = 1\\
+\end{align*} 
+
+(See also \S 7.5.) Derive a dual fro this problem first by reformulating it as: 
+ 
+\begin{align*}
+&\text{minimize } && 1 / t \\
+&\text{subject to } 
+&& \sum_{i = 1}^p x_i v_i v_i^T
+\succeq t \boldsymbol{I} \\
+& &&x \succeq 0, \; \boldsymbol{1}^T x = 1
+\end{align*} 
+
+with variables $t \in R,$ $x \in R^p$ and domain 
+$R_{++} \times R^p,$ and applying Lagrange duality. Simplify the dual problem as much as you can.
 
 \end{document}
 

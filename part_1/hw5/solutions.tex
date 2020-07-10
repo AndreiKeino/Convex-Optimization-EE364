@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{Solutions to hw5 homework on Convex Optimization https://web.stanford.edu/class/ee364a/homework.html}
+\author{Andrei Keino}
+\maketitle
+
+% Really I don't have all the assignments number for 2020. Some numbers are taken from prevoius years.
+% 5.17, 5.40, 6.3, A5.1, 
+
+% 5.17 - p. 278
+% Robust linear programming cvxbook p. 157
+% duality - from p.215
+
+\section*{5.17}
+Robust linear programming with polyhedral uncertainty. Consider the robust LP:
+
+\begin{align*}
+&\text{minimize } && c^T x \\
+&\text{subject to } &&\sup_{a \in P_i} a^T x \leq b_i, \; i = 1, ... , m\\
+\end{align*} 
+
+with variable $x \in R^n, $ where
+$P_i = \{a: \; C_i a \preceq d_i \}.$ The problem data are $a \in R^n,$ $C_i \in R^{m_i \times n}, $ $d_i \in R^{m_i}, $ and $b \in R^m.$ We asume the polyhedra $P_i$ are nonempty. Show that this problem is equivalent to the LP:
+
+\begin{align*}
+&\text{minimize } && c^T x \\
+&\text{subject to } &&d_i^T z_i \leq b_i,
+\; i = 1, ... , m\\
+& && C_i z_i = x, \; i = 1, ... , m\\
+& && z_i \succeq 0, \; i = 1, ... , m\\
+\end{align*} 
+with variables $x \in R^n, $ 
+$z_i \in R^{m_i}, \; i = 1, ... , m.$ 
+Hint: find the dual of the problem of maximizing 
+$a_i^T x$ over $a_i \in P_i$ (with variable $a_i$).\\
+
+Solution: \\
+
+The problem of maximizing 
+$a_i^T x$ over $a_i \in P_i$ (with variable $a_i$) is:
+
+\begin{align*}
+&\text{maximize } && a_i^T x \\
+&\text{subject to } &&a_i \in P_i, \text{where } 
+P_i = \{a: \; C_i a \preceq d_i \}\\
+\end{align*} 
+
+or 
+
+\begin{align*}
+&\text{minimize } && - a_i^T x \\
+&\text{subject to } &&C_i a_i \preceq d_i \\
+\end{align*} 
+
+The Lagrange dual of this problem is:
+
+\begin{align*}
+&\text{minimize } && \sum_{i = 1}^{m} \lambda_i d_i \\
+&\text{subject to } 
+&& C_i \lambda_i = x \\
+& &&\lambda_i \succeq 0\\
+\end{align*} 
+
+The optimal value of this problem is less or equal to $b_i$, so we have the equivalent problem to our LP:
+
+\begin{align*}
+&\text{minimize } && c^T x \\
+&\text{subject to } &&d_i^T \lambda_i \leq b_i,
+\; i = 1, ... , m\\
+& && C_i \lambda_i = x, \; i = 1, ... , m\\
+& && \lambda_i \succeq 0, \; i = 1, ... , m\\
+\end{align*} 
+
+\section*{5.40}
+
+\end{document}
+

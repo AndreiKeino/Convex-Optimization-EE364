@@ -10,7 +10,7 @@
 \maketitle
 
 % Really I don't have all the assignments number for 2020. Some numbers are taken from prevoius years.
-% 5.17, 5.40, 6.3, A5.1, 
+% 5.17, 5.40, 6.3, A5.1 ???, 
 
 % 5.17 - p. 278
 % Robust linear programming cvxbook p. 157
@@ -77,6 +77,10 @@ The optimal value of this problem is less or equal to $b_i$, so we have the equi
 \end{align*} 
 
 \section*{5.40}
+% ex. 5.40 - p. 286
+% ex. 5.10 - p. 276
+% paragraph 7.5 - p. 384
+ 
 E - optimal experiment design. A variation on two optimal experiment design problems of exercise 5.10
 is the E - optimal design problem:
 
@@ -87,7 +91,7 @@ is the E - optimal design problem:
 &&x \succeq 0, \; \boldsymbol{1}^T x = 1\\
 \end{align*} 
 
-(See also \S 7.5.) Derive a dual fro this problem first by reformulating it as: 
+(See also \S 7.5.) Derive a dual for this problem first by reformulating it as: 
  
 \begin{align*}
 &\text{minimize } && 1 / t \\
@@ -100,5 +104,154 @@ is the E - optimal design problem:
 with variables $t \in R,$ $x \in R^p$ and domain 
 $R_{++} \times R^p,$ and applying Lagrange duality. Simplify the dual problem as much as you can.
 
+Solution:
+Let us introduce a variable $t  \in R_{++}.$ Then for a matrix $A,$ inequality 
+$\lambda_{max}(A^{-1})  \leq 1 / t$ means $A^{-1} \preceq \frac{1}{t}\boldmath{I},$ or 
+$A \preceq t \boldmath{I}.$ Setting $A$ to 
+$\sum_{i = 1}^p x_i v_i v_i^T$ we get a problem:
+
+\begin{align*}
+&\text{minimize } && 1 / t \\
+&\text{subject to } 
+&& \sum_{i = 1}^p x_i v_i v_i^T
+\succeq t \boldsymbol{I} \\
+& &&x \succeq 0, \; \boldsymbol{1}^T x = 1
+\end{align*} 
+
+% Entropy maximization - p.222 
+% Generalized inequalities - p. 264
+% Example 5.11 Lagrange dual of semidefinite program - p. 265
+
+% Lagrange function - https://math.stackexchange.com/questions/462896/is-positive-semidefinite-matrix-same-as-positive-number-in-convex-optimisation
+
+% https://en.wikipedia.org/wiki/Semidefinite_programming
+
+% Semidefinite programming - p. 168
+
+The Lagrangian is: 
+
+$$
+L(x, t, Z, z) = 1 / t - 
+tr(Z (\sum_{i = 1}^p x_i v_i v_i^T - t \boldsymbol{I})) - z^T x + 
+\nu (\boldsymbol{1}^T x - 1) \\ 
+= 1 / t + t \, tr(Z) + 
+\sum_{i = 1}^p x_i 
+(-v_i^T Z v_i - z_i + \nu) - \nu
+$$
+the infimum of x is bounded below only if 
+$-v_i^T Z v_i - z_i + \nu = 0.$ The 
+
+$$
+inf_\nu 1/t  + t \, tr(Z) = 
+\begin{cases}
+2 \sqrt{tr(Z)}, & Z \succeq 0 \\
+- \infty, & \text{otherwise}
+\end{cases}
+$$
+the dual function is 
+
+$$
+L(Z, z, \nu) = 
+\begin{cases}
+2 \sqrt{tr(Z)} - \nu, & Z \succeq 0, \,  
+-v_i^T Z v_i - z_i + \nu = 0,\\
+- \infty, & \text{otherwise}
+\end{cases}
+$$
+
+The dual problem:
+
+\begin{align*}
+&\text{maximize } && 2\sqrt{tr(Z)} - \nu \\
+&\text{subject to } 
+&& v_i^T Z v_i + z_i \leq 0, 
+\; i = 1, ..., p  \\
+& &&Z \succeq 0, \, \nu \geq 0\\
+\end{align*} 
+
+We can define $W = (1 / \nu)Z$
+\begin{align*}
+&\text{maximize } && 2\sqrt{\nu}\sqrt{tr(W)} - \nu \\
+&\text{subject to } 
+&& v_i^T W v_i \leq 1, 
+\; i = 1, ..., p  \\
+& &&W \succeq 0, \, \nu \geq 0
+\end{align*} 
+
+Maximizing over $\nu$ we get $\nu = tr(W), $
+so the problem is:
+
+\begin{align*}
+&\text{maximize } && tr(W) \\
+&\text{subject to } 
+&& v_i^T W v_i \leq 1, 
+\; i = 1, ..., p  \\
+& &&W \succeq 0\\
+\end{align*} 
+
+\section*{6.3}
+Formulate the following approximation problems as LPs, QPs, SOCPs, or SDPs. The
+problem data are $A \in R^{n \times m}$ and 
+$b \in R^m.$ The rows of $A$ are denoted $a_i^T.$
+
+(a) Deadzone-linear penalty approximation: minimize $\sum_{i = 1}^m \phi(a_i^T x - b_i),$ where 
+
+$$
+\phi(u) = 
+\begin{cases}
+0, & |u| \leq a \\
+u - [a|, & |u| > a
+\end{cases}
+$$
+where $a > 0.$
+
+(b) Log-barrier penalty approximation: 
+minimize $\sum_{i = 1}^m \phi(a_i^T x - b_i),$ where 
+
+$$
+\phi(u) = 
+\begin{cases}
+- a^2 log(1 - (u / a)^2), & |u| < a \\
+\infty, & |u| \geq a
+\end{cases}
+$$
+with $a > 0.$
+
+(c) Huber penalty approximation: minimize 
+ $\sum_{i = 1}^m \phi(a_i^T x - b_i),$ where 
+
+$$
+\phi(u) = 
+\begin{cases}
+u^2, & |u| \leq M \\
+M(2|u| - M), & |u| > M
+\end{cases}
+$$
+with $M > 0.$
+
+(d) Log-Chebyshev approximation: minimize
+$max_{i = 1, ..., m} 
+|log(a_i^T x) - log(b_i)|.$ We assume 
+$b \succ 0.$ An equivalent convex from is
+
+\begin{align*}
+&\text{minimize } && t \\
+&\text{subject to } 
+&& 1/t \leq a_i^Tx/b_i \leq t, \, i = 1 ,..., m\\
+\end{align*} 
+with variables $x \in R^n$ and $t \in R$ and domain $R^n \times R_{++}.$
+
+(e) Minimizing the sum of the largest k residuals:
+
+\begin{align*}
+&\text{minimize } && 
+\sum_{i = 1}^k |r|_{[i]} \\
+&\text{subject to } 
+&& r = Ax - b\\
+\end{align*} 
+
+where $|r|_{[1]} \geq |r|_{[2]} \geq ,..., 
+\geq |r|_{[m]}$ are the numbers 
+$|r_1|, |r_2|, ... , |r_m| $ sorted in decreasing order. (For $k = 1$ this reduces to $l_\infty$ - norm approximation; for $k = m$ this reduces to $l_1$ norm approximation.) Hint: See exercise 5.19.
 \end{document}
 

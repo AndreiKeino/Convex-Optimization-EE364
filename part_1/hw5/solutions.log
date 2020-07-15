@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.19)  14 JUL 2020 15:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.19)  15 JUL 2020 14:29
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -332,7 +332,7 @@ Overfull \hbox (91.11139pt too wide) detected at line 140
  []
 
 [3]
-Overfull \hbox (1.16377pt too wide) in paragraph at lines 232--236
+Overfull \hbox (1.16377pt too wide) in paragraph at lines 245--249
 []\OT1/cmr/m/n/10 (d) Log-Chebyshev ap-prox-i-ma-tion: min-i-mize $\OML/cmm/m/i
 t/10 max[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 log\OT1/cmr/m/n/10 (\OML/cmm/m/it/
 10 a[]x\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 log\OT1/cmr/m/n/10
@@ -340,15 +340,15 @@ t/10 max[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 log\OT1/cmr/m/n/10 (\OML/cmm/m/it/
  []
 
 [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 256.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 287.
  [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 256.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 287.
  (solutions.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 256.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 256.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 287.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 287.
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 256.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 287.
  ) 
 Here is how much of TeX's memory you used:
  5682 strings out of 492452
@@ -370,7 +370,7 @@ s/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
 /Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on solutions.pdf (5 pages, 151284 bytes).
+Output written on solutions.pdf (5 pages, 152050 bytes).
 PDF statistics:
  84 PDF objects out of 1000 (max. 8388607)
  9 named destinations out of 1000 (max. 500000)

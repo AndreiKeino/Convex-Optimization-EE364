@@ -48,7 +48,7 @@ plt.ylabel('objective')
 
 plt.show()
 
-plt.savefig('5_1_b_1.png')
+#plt.savefig('5_1_b_1.png')
 
 def objective_dual_0(lam):
     return (-lam**3 + 8 * lam ** 2 + 10 * lam + 1) / ((lam + 1) ** 2)
@@ -70,7 +70,7 @@ fig.suptitle('dual objective as a function of $\lambda$')
 
 plt.show()
 
-plt.savefig('5_1_b_2.png')
+#plt.savefig('5_1_b_2.png')
 
 def objective_u(u):
     y = np.zeros_like(u)
@@ -96,7 +96,7 @@ fig.suptitle('objective as a function of $u$')
 
 plt.show()
 
-plt.savefig('5_1_3.png')
+#plt.savefig('5_1_3.png')
 
 
 

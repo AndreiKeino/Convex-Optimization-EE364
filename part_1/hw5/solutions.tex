@@ -190,6 +190,19 @@ so the problem is:
 \end{align*} 
 
 \section*{6.3}
+% p. 344
+
+%LPs, QPs, SOCPs, or SDPs
+
+% LP - Linear optimization problems - p. 146
+% QP - Quadratic optimization problems - p.152
+
+% Geometric programming - p. 160
+% SDP - Semidefinite programming - p. 168
+% SOCP - Second-order cone programming - p. 156
+% QCQP - p. 153
+% GP geometric program - p. 161
+
 Formulate the following approximation problems as LPs, QPs, SOCPs, or SDPs. The
 problem data are $A \in R^{n \times m}$ and 
 $b \in R^m.$ The rows of $A$ are denoted $a_i^T.$
@@ -200,7 +213,7 @@ $$
 \phi(u) = 
 \begin{cases}
 0, & |u| \leq a \\
-u - [a|, & |u| > a
+|u| - a, & |u| > a
 \end{cases}
 $$
 where $a > 0.$
@@ -253,5 +266,23 @@ with variables $x \in R^n$ and $t \in R$ and domain $R^n \times R_{++}.$
 where $|r|_{[1]} \geq |r|_{[2]} \geq ,..., 
 \geq |r|_{[m]}$ are the numbers 
 $|r_1|, |r_2|, ... , |r_m| $ sorted in decreasing order. (For $k = 1$ this reduces to $l_\infty$ - norm approximation; for $k = m$ this reduces to $l_1$ norm approximation.) Hint: See exercise 5.19.
+
+Solution:
+
+(a) Introduce the variable $y_i \in R^m$ so that 
+$|a_i^T x - b_i| \leq |a + y_i|, \, y_i \geq 0$
+
+then we have equivalent problem:
+\begin{align*}
+&\text{minimize } && \boldsymbol{1}^Ty \\
+&\text{subject to } 
+&& - y - a \boldsymbol{1} \preceq A x - b 
+\preceq y + a \boldsymbol{1} \\
+& && y \ \succeq 0\\
+\end{align*}
+
+
+
+
 \end{document}
 

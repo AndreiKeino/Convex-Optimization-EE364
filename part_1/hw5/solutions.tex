@@ -269,7 +269,7 @@ $|r_1|, |r_2|, ... , |r_m| $ sorted in decreasing order. (For $k = 1$ this reduc
 
 Solution:
 
-(a) Introduce the variable $y_i \in R^m$ so that 
+(a) Introduce the variable $y \in R^m$ so that 
 $|a_i^T x - b_i| \leq |a + y_i|, \, y_i \geq 0$
 
 then we have equivalent problem:
@@ -281,8 +281,96 @@ then we have equivalent problem:
 & && y \ \succeq 0\\
 \end{align*}
 
+(b)
 
+Introduce the variable $y = Ax - b, $ 
+$t_i \leq (1 - y_i / a)(1 + y_i + a)$, and add inequality $-a \leq y_i \leq a$ this problem will transform to:
 
+\begin{align*}
+&\text{maximize } && \prod_{i = 1}^m t_i^2 \\
+&\text{subject to } && y = A x - b \\
+& && t_i \leq (1 - y_i / a)(1 + y_i / a),
+\, i = 1, ..., m\\
+& && -1 \leq y_i / a \leq 1, \, i = 1, ..., m\\
+\end{align*}
+with variables $t, y \in R^m,$ $x \in R^n.$
+Next assume that $m = 2^k.$ It can be done without loss of generality, as in other case we always can add missing components of $y_i$ as unity values ($a_i = 0$ and 
+$b_i = - 1$). Lets transform this problem for $m = 4.$
+
+\begin{align*}
+&\text{maximize } && (t_1 t_2 t_3 t_4)^2 \\
+&\text{subject to } && y = A x - b \\
+& && t_i \leq (1 - y_i / a)(1 + y_i / a),
+\, i = 1, ..., m\\
+& && -1 \leq y_i / a \leq 1, \, i = 1, ..., m\\
+\end{align*}
+
+this problem is equivalent to:
+
+\begin{align*}
+&\text{maximize } && z_1 z_2 \\
+&\text{subject to } && \\
+& && z_1^2 \leq t_1 t_2 \\
+& && z_2^2 \leq t_3 t_4 \\
+& && y = A x - b \\
+& && t_i \leq (1 - y_i / a)(1 + y_i / a),
+\, i = 1, ..., m\\
+& && -1 \leq y_i / a \leq 1, \, i = 1, ..., m\\
+\end{align*}
+
+and also as:
+
+\begin{align*}
+&\text{maximize } && z \\
+&\text{subject to } && \\
+& && z^2 \leq z_1 z_2\\
+& && z_1^2 \leq t_1 t_2 \\
+& && z_2^2 \leq t_3 t_4 \\
+& && y = A x - b \\
+& && t_i \leq (1 - y_i / a)(1 + y_i / a),
+\, i = 1, ..., m\\
+& && -1 \leq y_i / a \leq 1, \, i = 1, ..., m\\
+\end{align*}
+
+as it is easy to show that $x^T x \leq yz$ where 
+$x \in R^n, $ $y, z \in R_+$ is equivalent to:
+
+$$
+\left\lVert
+\begin{bmatrix}
+	x \\ y - z\\
+\end{bmatrix}
+\right\rVert_2 \leq y + z
+$$
+
+overriding the first three inequalities with their norm analogue we have:
+
+\begin{align*}
+&\text{minimize } && - z \\
+&\text{subject to } && \\
+& && 
+\left\lVert
+\begin{bmatrix}
+z \\ z_1 - z_2\\
+\end{bmatrix}
+\right\rVert_2 \leq z_1 + z_2\\
+& && \left\lVert
+\begin{bmatrix}
+z_1 \\ t_1 - t_2\\
+\end{bmatrix}
+\right\rVert_2 \leq t_1 + t_2\\
+& && \left\lVert
+\begin{bmatrix}
+z_2 \\ t_3 - t_4\\
+\end{bmatrix}
+\right\rVert_2 \leq t_3 + t_4\\
+& && y = A x - b \\
+& && t_i \leq (1 - y_i / a)(1 + y_i / a),
+\, i = 1, ..., m\\
+& && -1 \leq y_i / a \leq 1, \, i = 1, ..., m\\
+\end{align*}
+
+which is Secon Order Cone Program (SOCP).
 
 \end{document}
 

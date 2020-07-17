@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.19)  15 JUL 2020 14:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.19)  17 JUL 2020 16:50
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -339,25 +339,25 @@ t/10 max[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 log\OT1/cmr/m/n/10 (\OML/cmm/m/it/
  (\OML/cmm/m/it/10 b[]\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 :$
  []
 
-[4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 287.
- [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 287.
+[4] [5] [6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 375.
+ [7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 375.
  (solutions.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 287.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 287.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 375.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 375.
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 287.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 375.
  ) 
 Here is how much of TeX's memory you used:
- 5682 strings out of 492452
- 82186 string characters out of 3129804
- 184497 words of memory out of 3000000
+ 5684 strings out of 492452
+ 82198 string characters out of 3129804
+ 187497 words of memory out of 3000000
  9996 multiletter control sequences out of 15000+200000
  11165 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 31i,12n,27p,247b,324s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 31i,15n,27p,247b,324s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
@@ -370,9 +370,9 @@ s/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
 /Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on solutions.pdf (5 pages, 152050 bytes).
+Output written on solutions.pdf (7 pages, 157315 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 9 named destinations out of 1000 (max. 500000)
+ 94 PDF objects out of 1000 (max. 8388607)
+ 11 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

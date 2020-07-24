@@ -370,7 +370,38 @@ z_2 \\ t_3 - t_4\\
 & && -1 \leq y_i / a \leq 1, \, i = 1, ..., m\\
 \end{align*}
 
-which is Secon Order Cone Program (SOCP).
+which is Second Order Cone Program (SOCP). \\
+
+(c)\\
+Lets show that this problem is equivalent to QP:
+\begin{align*}
+&\text{minimize } && 
+\sum_{i = 1}^m(u_i^2 + 2 M v_i) \\
+&\text{subject to } && 
+-u - v \preceq Ax - b \preceq u + v\\
+& && 0 \preceq u \preceq M \boldsymbol{1}\\
+& && v \succeq 0
+\end{align*}
+Proof: Lets fix $x$ in our QP. For the optimum point we must have \\
+$u_i + v_i = |a_i^T x - b_i|.$
+In other case, if 
+$u_i + v_i > |a_i^T x b_i|$ and 
+$0 \leq u_i \leq M$ and $v_i \geq 0, $ then as $u_i$ and $v_i$ are not both zero, we can decrease $u_i$ and/or $v_i$ without violating the constraints and the objective will be decreased also. So, at the optimum we have:
+$$ v_i = |a_i^T x - b_i| - u_i$$ 
+Eliminating $v_i$ yields equivalent problem:
+\begin{align*}
+&\text{minimize } && 
+\sum_{i = 1}^m
+(u_i^2 - 2 M u_i + 2 M |a_i^T x - b_i|) \\
+&\text{subject to }
+&& 0 \preceq u_i \preceq 
+min(M, \, |a_i^T x - b_i|)\\
+\end{align*}
+It $M > |a_i^T x - b_i|$ the optimal choice for 
+$u_i$ is $|a_i^T x - b_i|.$ In this case the objective function reduces to 
+$|a_i^T x - b_i|^2.$ Otherwise the optimal choice for $u_i$ is $M,$ and the objective function reduces to $2 M |a_i^T x - b_i| - M^2.$ So, we conclude that with $\phi(a_i^T x - b_i)$ these problems are equivalent.
+
+
 
 \end{document}
 

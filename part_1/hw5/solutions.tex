@@ -9,8 +9,8 @@
 \author{Andrei Keino}
 \maketitle
 
-% Really I don't have all the assignments number for 2020. Some numbers are taken from prevoius years.
-% 5.17, 5.40, 6.3, A5.1 ???, 
+% https://web.stanford.edu/class/ee364a/homework.html
+% 6.3, 6.8a-b, A5.4, A12.6, A14.8, A17.9
 
 % 5.17 - p. 278
 % Robust linear programming cvxbook p. 157
@@ -399,9 +399,64 @@ min(M, \, |a_i^T x - b_i|)\\
 \end{align*}
 It $M > |a_i^T x - b_i|$ the optimal choice for 
 $u_i$ is $|a_i^T x - b_i|.$ In this case the objective function reduces to 
-$|a_i^T x - b_i|^2.$ Otherwise the optimal choice for $u_i$ is $M,$ and the objective function reduces to $2 M |a_i^T x - b_i| - M^2.$ So, we conclude that with $\phi(a_i^T x - b_i)$ these problems are equivalent.
+$|a_i^T x - b_i|^2.$ Otherwise the optimal choice for $u_i$ is $M,$ and the objective function reduces to $2 M |a_i^T x - b_i| - M^2.$ So, we conclude that with $\phi(a_i^T x - b_i)$ these problems are equivalent.\\
+(c) The constraint $ta_i^Tx \geq b_i,$ $t \geq 0,$
+$a_i^T x \geq 0$ can be formulated as an LMI 
+$$
+\begin{bmatrix}
+	t & \sqrt{b_i}\\
+	\sqrt{b_i} & a_i^Tx\\
+\end{bmatrix} \succeq 0
+$$
 
+or as follows:
 
+$$
+\left\Vert
+\begin{bmatrix}
+ 2\sqrt{b_i}\\
+t - a_i^Tx\\
+\end{bmatrix} 
+\right\Vert_2 \leq t + a_i^Tx
+$$
+
+% 5.19 - p. 278
+% this - p.345
+(e) As in exercise 5.19, we have a problem:
+
+\begin{align*}
+&\text{minimize } && 
+kt + \boldsymbol{1}z \\
+&\text{subject to }
+&& - t \boldsymbol{1} - z \preceq Ax - b \preceq 
+t \boldsymbol{1} +z \\
+& && z \succeq 0
+\end{align*}
+where $x \in R^n,$ $t \in R,$ $z \in R^m$
+
+\section*{6.8 a - b} % p. 346
+Formulate the following robust approximation problems as LPs, QPs, SOCPs, or SDPs. For each subproblem, consider the $l_1 - ,$  $l_2 - ,$ and the $l_{\infty} - $ norms.
+
+(a) Stochastic robust approximation with a finite set of parameter values, i.e., the sum of - norms problem
+
+\begin{align*}
+&\text{minimize } && 
+\sum_{i = 1}^k
+p_i\left\lVert A_ix - b\right\lVert  \\
+\end{align*}
+where $p \succeq 0$ and $\boldsymbol{1}^Tp = 1.$ 
+(See \S6.4.1.)
+
+(b) Worst-case robust approximation with coefficient bounds:
+\begin{align*}
+&\text{minimize } && 
+\sup_{A \in \mathcal{A}}
+\left\lVert Ax - b\right\lVert  \\
+\end{align*}
+where $\mathcal{A} = \{A \in R^{m\times n} | 
+l_{ij} \leq a_{ij} \leq u_{ij, i = 1, ..., m, 
+	j = 1, ... , n}\}.$ Here the uncertainty set is described by giving upper and lower bounds for the
+components of $A$. We assume $l_{ij} < u_{ij}.$
 
 \end{document}
 

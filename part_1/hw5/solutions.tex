@@ -454,9 +454,222 @@ where $p \succeq 0$ and $\boldsymbol{1}^Tp = 1.$
 \left\lVert Ax - b\right\lVert  \\
 \end{align*}
 where $\mathcal{A} = \{A \in R^{m\times n} | 
-l_{ij} \leq a_{ij} \leq u_{ij, i = 1, ..., m, 
-	j = 1, ... , n}\}.$ Here the uncertainty set is described by giving upper and lower bounds for the
-components of $A$. We assume $l_{ij} < u_{ij}.$
+l_{ij} \leq a_{ij} \leq u_{ij}, i = 1, ..., m, 
+	j = 1, ... , n\}.$ Here the uncertainty set is described by giving upper and lower bounds for the
+components of $A$. We assume $l_{ij} < u_{ij}.$ \\
+
+Solution:\\
+(a) $l_1$ norm: Introduce a slack variable $y: $ 
+$|y_i| \succeq |A_i x - b|.$ We have LP:
+
+\begin{align*}
+&\text{minimize } && 
+p^Ty \\
+&\text{subject to }
+&& -y_i \preceq A_ix - b \preceq y_i \\
+\end{align*}
+
+$l_2$ norm: Introduce a slack variable $y: $ 
+$y_i \succeq ||A_i x - b||_2.$ We have SOCP:
+
+\begin{align*}
+&\text{minimize } && 
+p^Ty \\
+&\text{subject to }
+&& ||A_ix - b|| \preceq y_i \\
+\end{align*}
+
+$l_{\infty}$ norm:  We have LP:
+
+\begin{align*}
+&\text{minimize } && 
+p^Ty \\
+&\text{subject to }
+&& -y_i \boldsymbol{1} \preceq A_ix - b 
+\preceq y_i  \boldsymbol{1}\\
+\end{align*}
+\\
+(b) 
+$$
+\sup_{l_{ij} \leq a_{ij} \leq u_{ij}} |a_i^Tx - b_i| = 
+\sup_{l_{ij} \leq a_{ij} \leq u_{ij}} 
+max(- a_i^Tx + b_i, a_i^Tx - b_i) = 
+max(\sup_{l_{ij} \leq a_{ij} \leq u_{ij}} - a_i^Tx + b_i, 
+\sup_{l_{ij} \leq a_{ij} \leq u_{ij}} a_i^Tx - b_i)
+$$
+
+$$
+\sup_{l_{ij} \leq a_{ij} \leq u_{ij}} - a_i^Tx + b_i = 
+\overline - a_i^T x + b_i + v_i^T |x|
+$$
+where 
+$\overline a_{ij} = (u_{ij} + l_{ij}) / 2, $ $v_{ij} = (u_{ij} - l_{ij}) / 2$ and 
+
+$$
+\sup_{l_{ij} \leq a_{ij} \leq u_{ij}} a_i^Tx - b_i = 
+\overline a_i^T x - b_i + v_i^T |x|
+$$
+
+Therefore 
+
+$$
+\sup_{l_{ij} \leq a_{ij} \leq u_{ij}} |a_i^Tx - b_i| = 
+\overline |a_i^T x - b_i| + v_i^T |x|
+$$
+\\
+
+(a) $l_1$ norm.
+
+\begin{align*}
+&\text{minimize } && 
+\sum_{i = 1}^m (|\overline a_i x - b_i| + v_i^T |x|) \\
+\end{align*}
+
+Introducing slack variables 
+$y:$ $|y_i| \geq |\overline a_i x - b_i|$
+and 
+$w:$ $|w_i| \geq |x_i|$
+we have LP:
+
+\begin{align*}
+&\text{minimize } && 
+\boldsymbol{1}^T(y + Vw)  \\
+&\text{subject to } 
+&& - y \preceq \overline Ax - b \preceq y\\
+& && -w \preceq x \preceq w
+\end{align*}
+\\
+$l_2$ norm.
+
+\begin{align*}
+&\text{minimize } && 
+\sum_{i = 1}^m (|\overline a_i x - b_i| + v_i^T |x|)^2 \\
+\end{align*}
+
+introduce the same slack variables and variable $y, w$ and the new variable  $t:$ 
+$t \leq ||y + Vw||_2$ we have SOCP:
+
+\begin{align*}
+&\text{minimize } && 
+t \\
+&\text{subject to } 
+&& - y \preceq \overline Ax - b \preceq y\\
+& && -w \preceq x \preceq w \\
+& && t \geq ||y + Vw||_2
+\end{align*}
+\\
+
+$l_{\infty}$ norm:
+
+\begin{align*}
+&\text{minimize } && 
+\max_{i = 1, ..., m} (|\overline a_i x - b_i| + v_i^T |x|)^2 \\
+\end{align*}
+
+this can be expressed as LP:
+
+\begin{align*}
+&\text{minimize } && 
+t \\
+&\text{subject to } 
+&& - y \preceq \overline Ax - b \preceq y\\
+& && -w \preceq x \preceq w \\
+& && - t\boldsymbol{1} \preceq y + Vw \preceq t\boldsymbol{1}
+\end{align*}
+
+\section*{A5.4} % p. 58
+Penalty function approximation. We consider the approximation problem
+\begin{align*}
+&\text{minimize } && 
+\phi(Ax + b) \\
+\end{align*}
+where $a \in R^m\times n,$ $b \ in R^m,$ the variable is 
+$x \in R^n,$ and $\phi : $ $R^m \rightarrow R$ is a convex penalty function that measures the quality of the approximation
+$Ax \approx b.$ We will consider the following
+choices of penalty function: \\
+
+(a) Euclidean norm.
+$$
+\phi(y) = ||y||_2 = (\sum_{k=1}^m y_k^2)^{1/2}
+$$
+\\
+
+(b) $l_1$ -  norm:
+$$
+\phi(y) = ||y||_1 = \sum_{k=1}^m |y_k|
+$$
+\\
+
+(c) Sum of the largest $m/2$ absolute values:
+$$
+\phi(y) = \sum_{k=1}^{m/2} |y_{[k]}|
+$$
+where $y_{[1]}, y_{[2]},...$ denote the the absolute values of the components of $y$ sorted in the decreasing order.
+\\
+
+(d) A piecewise-linear penalty.
+$$
+\phi(y) = \sum_{k = 1}^m h(y_k), \quad 
+h(u) = \begin{cases}
+0, &|u| \leq 0.2\\
+|u| - 0.2, &0.2 \leq |u| \leq 0.3 \\
+2 |u| - 0.5, &|u| \geq 0.3 \\
+\end{cases}
+$$
+\\
+
+(e) Huber penalty. 
+
+$$
+\phi(y) = \sum_{k = 1}^m h(y_k), \quad 
+h(u) = \begin{cases}
+u^2, &|u| \leq M\\
+M(2|u| - M), &|u| \geq M\\
+\end{cases}
+$$
+with $M = 0.2$
+\\
+
+(f) Log-barrier penalty. 
+$$
+\phi(y) = \sum_{k = 1}^m h(y_k), \quad 
+h(u) = - log(1 - u^2), \quad
+\boldsymbol{dom} \;h = \{u\,| \; |u| < 1.\}
+$$
+with $M = 0.2$
+\\
+
+Here is the problem. Generate data A and b as follows:
+
+\begin{verbatim}
+m = 200;
+n = 100;
+A = randn(m,n);
+b = randn(m,1);
+b = b/(1.01*max(abs(b)));
+\end{verbatim}
+
+(The normalization of b ensures that the domain of $\phi(Ax - b)$
+is nonempty if we use the log-barrier penalty.) To compare the results, plot a histogram of the vector of residuals
+$y = Ax - b$ for each
+of the solutions $x$, using the Matlab command
+\begin{verbatim}
+hist(A*x-b,m/2);
+\end{verbatim}
+
+Some additional hints and remarks for the individual problems:\\
+(a) This problem can be solved using least-squares \verb|(x=A\b).| \\
+(b) Use the CVX function \verb|norm(y,1).|\\
+(c) Use the CVX function \verb|norm_largest().| \\
+(d) Use CVX, with the overloaded \verb|max(),| \verb|abs(),| and \verb|sum()|  functions.\\
+(e) Use the CVX function \verb|huber().|\\
+(f) The current version of CVX handles the logarithm using an iterative procedure, which is slow
+and not entirely reliable. However, you can reformulate this problem as
+\begin{align*}
+&\text{maximize } && 
+\prod_{k = 1}^m ((1 - (Ax - b)_k)(1 + (Ax - b)_k)))^{1 / 2m},  \\
+\end{align*}
+and use the CVX function \verb|geo_mean().|
 
 \end{document}
 

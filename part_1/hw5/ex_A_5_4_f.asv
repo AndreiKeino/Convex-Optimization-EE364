@@ -1,0 +1,15 @@
+m = 200;
+n = 100;
+A = randn(m,n);
+b = randn(m,1);
+b = b/(1.01*max(abs(b)));
+
+cvx_begin
+    variable x(n);
+    %minimize (- geo_mean((ones(m) - A * x + b) * (ones(m) + A * x - b)))
+    %minimize (- geo_mean((A * x + b) * (A * x - b)))
+    minimize (- geo_mean((A * x + b) * (A * x - b)))
+cvx_end
+
+figure
+hist(A*x-b,m/2);

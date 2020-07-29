@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.19)  29 JUL 2020 13:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.19)  29 JUL 2020 16:19
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -520,30 +520,39 @@ Package pdftex.def Info: A_5_4_f.png  used on input line 818.
                                                   \fi \fi 
 l.821 
        <./A_5_4_e.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 822.
- [18pdfTeX warning (ext4): destination with the same identifier (name{figure.6}
-) has been already used, duplicate ignored
+Overfull \hbox (15.80525pt too wide) detected at line 838
+[]
+ []
+
+[18pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.822 \end{document}
-                     <./A_5_4_f.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 822.
+l.847 
+       <./A_5_4_f.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 861--862
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 879.
+[19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 879.
  (solutions.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 822.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 822.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 879.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 879.
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 822.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 879.
  ) 
 Here is how much of TeX's memory you used:
- 5807 strings out of 492452
- 83726 string characters out of 3129804
+ 5809 strings out of 492452
+ 83743 string characters out of 3129804
  188837 words of memory out of 3000000
  10088 multiletter control sequences out of 15000+200000
  11333 words of font info for 41 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 31i,15n,27p,247b,437s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 31i,15n,27p,387b,437s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
@@ -557,9 +566,9 @@ s/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
 iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (18 pages, 261794 bytes).
+Output written on solutions.pdf (19 pages, 272488 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
- 30 named destinations out of 1000 (max. 500000)
+ 167 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

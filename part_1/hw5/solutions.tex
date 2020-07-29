@@ -819,6 +819,61 @@ saveas(gcf,'C:/! Convex_Optimization/homework_solutions/part_1/hw5/A_5_4_f.png')
 	\caption{Log-barrier penalty.}
 \end{figure}
 
+\section*{A12.6} 
+Antenna array weight design. We consider an array of $n$ omnidirectional antennas in a plane, at positions
+$(x_k, y_k,)$ $k = 1, ..., n.$ 
+A unit plane wave with frequency $\omega$ is incident from an angle $\theta$. This incident wave induces in
+the kth antenna element a (complex) signal
+$exp(i(x_k cos(\theta) + y_k sin(\theta) - \omega t))$ (For
+simplicity we assume that the spatial units are normalized so that the wave number is one, i.e., the
+wavelength is $\lambda = 2 \pi.$) The baseband signals of the n antennas are combined linearly to form the output of the antenna array 
+\begin{align*}
+G(\theta) & = \sum_{k = 1}^n \omega_k 
+e^{x_k cos(\theta) + y_k sin(\theta)}  \\ 
+& = 
+\sum_{k = 1}^n (\omega_{re, k} cos(\gamma_k(\theta)) 
+- \omega_{im, k} sin(\gamma_k(\theta)) + 
+(\omega_{re, k} sin(\gamma_k(\theta)) 
++ \omega_{im, k} cos(\gamma_k(\theta))
+\end{align*}
+if we define 
+$\gamma_k(\theta) = x_k cos(\theta) + y_k sin(\theta)$
+The complex weights in the linear combination,
+$\omega_k = \omega_{re, k} + i \omega_{im, k}$ are called the antenna array coefficients or shading coefficients, and will be the design variables in the problem. For a given set of weights, the combined output $G(\theta).$ is a function of the angle
+of arrival $\theta.$ of the plane wave. The design problem is to select weights $\omega_i$ that achieve a desired
+directional pattern $G(\theta).$ We now describe a basic weight design problem. We require unit gain in a target direction
+$\theta^{tar}, $ i.e., $G(\theta^{tar}) = 1.$ We want 
+$G(\theta)$ small for $|\theta - \theta^{tar}| \geq \Delta.$ This number is called the sidelobe level for the array; our goal is to minimize the sidelobe level. If we achieve a small sidelobe level, then the array is relatively insensitive to signals arriving from directions more than $\Delta$ away from the target direction. This results in the optimization problem:
+
+\begin{align*}
+&\text{minimize } && 
+\max_{|\theta - \theta^{tar}| \geq \Delta} |G(\theta)|\\
+&\text{subject to } 
+&& G(\theta^{tar}) = 1
+\end{align*}
+with $\omega \in C^n$ as variables. \\
+The objective function can be approximated by discretizing the angle of arrival with (say) $N$ values (say, uniformly spaced)
+$\theta_1, ..., \theta_n$ over an interval $[-\pi, \pi],$ and replacing the objective with 
+$$
+max\{G(\theta_k) \, | \, |\theta_k - \theta^{tar}| \geq \Delta\}
+$$
+
+(a) Formulate the antenna array weight design problem as an SOCP.\\
+
+(b) Solve an instance using CVX, with $n = 40,$ $
+\theta^{tar} = 15^{\circ},$ $\Delta = 15^{\circ},$ $N = 400,$ 
+and antenna positions generated using:
+
+\begin{verbatim}
+rand('state',0);
+n = 40;
+x = 30 * rand(n,1);
+y = 30 * rand(n,1);
+\end{verbatim}
+
+Compute the optimal weights and make a plot of $|G(\theta)|$ (on a logarithmic scale) versus $\theta.$ Hint. CVX can directly handle complex variables, and recognizes the modulus \verb|abs(x)| of a
+complex number as a convex function of its real and imaginary parts, so you do not need to
+explicitly form the SOCP from part (a). Even more compactly, you can use \verb|norm(x,Inf)| with complex argument.
 
 
 \end{document}

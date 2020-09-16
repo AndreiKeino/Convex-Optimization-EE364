@@ -40,7 +40,7 @@ Let $p, q \in R $ represent two probability
 distributions on $\{1, ..., n\}$ 
 (so $p, q \succeq 0, \, \boldsymbol{1}^T p = 1, \, \boldsymbol{1}^T q = 1$). We define the maximum
 probability distance $d_{mp}(p, q)$ between $p$ and $q$ as the maximum difference in probability assigned by $p$ and $q$, over all events: \\
-$$d_{mp}(p, q) = max\{prob(p, C) - prob(q, C) \, | 
+$$d_{mp}(p, q) = max\{|prob(p, C) - prob(q, C)| \, | 
 \, C \subseteq \{1, ... n\} \} $$ \\
 Here $prob(p, C)$ is the probability of $C$ under the distribution of $p$: \\
 $prob(p, C) = \sum_{i \in C} p_i.$\\
@@ -57,12 +57,14 @@ I can't find such dependency. The Python code:
 # -*- coding: utf-8 -*-
 import numpy as np
 
-N = 7
+
+N = 3
+
 p = np.random.rand(N)
 q = np.random.rand(N)
 
-p = np.array(np.abs(p))
-q = np.array(np.abs(q))
+p = np.abs(p)
+q = np.abs(q)
 
 p = p / p.sum()
 q = q / q.sum()
@@ -70,25 +72,32 @@ q = q / q.sum()
 print('p = ', p)
 print('q = ', q)
 
-print('p.sum() = ', p.sum())
-print('q.sum() = ', q.sum())
-print('np.abs(p - q) = ', np.abs(p - q))
-print('np.sum(np.abs(p - q)) = ', np.sum(np.abs(p - q)))
-print('np.max(np.abs(p - q)) = ', np.max(np.abs(p - q))) 
+P_diff = np.zeros((N, N), dtype=np.double)
 
-ret = np.sum(np.abs(p - q)) / np.max(np.abs(p - q))
+for i in range(N):
+for k in range(N):
+P_diff[i, k] = np.abs(p[i] - q[k])
 
-print('np.sum(np.abs(p - q)) / np.max(np.abs(p - q)) = ', ret)     
+print('P_diff = ', P_diff)
+d_mp = np.max(P_diff)
+
+print('d_mp = ', d_mp)
+
+diff_norm = np.sum(np.abs(p - q))
+
+print('diff_norm = %f'% diff_norm)
+
+print('diff_norm / d_mp = ', diff_norm / d_mp)
 \end{verbatim}
 for $N \leq 3$ 
 \begin{verbatim}
-np.sum(np.abs(p - q)) / np.max(np.abs(p - q))
+diff_norm / d_mp
 \end{verbatim} 
-is 2, but for $N \geq 4$ 
+is 2, but for $N > 3$ 
 \begin{verbatim}
-np.sum(np.abs(p - q)) / np.max(np.abs(p - q))
+diff_norm / d_mp
 \end{verbatim} 
-is a real number greater than 2.
+is a real number greater than 0.
 
 \section*{3.55} % - cvxbook p. 124
 % log - concave - cvxbook p. 104

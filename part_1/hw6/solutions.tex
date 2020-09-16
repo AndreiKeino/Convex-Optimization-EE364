@@ -1,0 +1,296 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{xcolor}
+
+\begin{document}
+
+\title{Solutions to hw6 homework on Convex Optimization https://web.stanford.edu/class/ee364a/homework.html}
+\author{Andrei Keino}
+\maketitle
+
+% Homework 6, due Friday 8/7/20:
+% 7.7, 8.15, A13.2, A16.3, A18.2, A18.9.
+
+% 7.7 p. 395
+\section*{7.7}
+ML estimation of Poisson distributions. Suppose $x_i,$ $i = 1, \dots , n$ are independent random variables with Poisson distributions 
+$$
+\boldsymbol{prob}(x_i = k) = \frac{e^{-\mu_i} \mu_i^k}{k!}
+$$
+with unknown means $\mu_i.$ The variables $x_i$ represent number of times that one of $n$ possible independent events occurs during a certain period. In emission tomography, for
+example, they might represent the number of photons emitted by $n$ sources. We consider an experiment designed to determine the means $\mu_i.$ The experiment involves $m$ detectors. If event i occurs, it is detected by detector $j$ with probability $p_{ij}.$ We assume
+the probabilities $p_{ij}$ are given (with $p{ij} \geq 0,$ 
+$\sum_{j =1}^{m}p_{ij} \leq 1$). The total number of events
+recorded by detector $j$ is denoted $y_j$,
+$$
+y_j = \sum_{i = 1}^{m} y_{ij}, \quad i = 1, \dots , m
+$$
+
+Formulate the ML estimation problem of estimating the means 
+$\mu_i$ based on observed values of $y_j,$ $j = 1, \dots ,m,$ as
+ a convex optimization problem.
+ 
+ Hint: the variables $y_{ij}$ have the Poisson distribution with means $p_{ij} \mu_i, $ i.e 
+$$
+\boldsymbol{prob}(y_{ij} = k) = 
+\frac{e^{-p_{ij}\mu_i} (p_{ij} \mu_i)^k}{k!}
+$$
+The sum of $n$ independent random variables with means 
+$\lambda_1, \dots \lambda_n$ has a Poisson distribution with mean $\lambda_1 +  \dots + \lambda_n.$\\
+
+Solution:
+
+It follows from the hint, that 
+$$
+\boldsymbol{prob}(y_j = k) = 
+\frac{e^{-p_j^T \mu} (p_j^T\mu)^k}{k!}
+$$
+Then likelihood of the set of $y_j = k_j,$ $j = 1, \dots , m$ is 
+
+$$
+L\{k_j\} = 
+\prod_{j = 1}^{m}\frac{e^{-p_j^T \mu} (p_j^T\mu)^{k_j}}{k_j!}
+$$
+and the log likelihood is
+
+$$
+LL\{k_j\} = 
+\sum_{j = 1}^{m}(-p_j^T \mu + k_j log(p_j^T\mu) - log(k_j!))
+$$
+$LL\{k_j\}$ is a concave function of $\mu_j.$ So, 
+ the solution is:
+
+\begin{align*}
+\text{maximize } &
+\sum_{j = 1}^{m}(-p_j^T \mu + k_j log(p_j^T\mu)) \\
+\text{subject to } & \mu \succeq 0 \\
+\end{align*} 
+
+% 8.15 - p. 449
+\section*{8.15}
+Minimum volume ellipsoid covering union of ellipsoids.\\ Formulate the following problem
+as a convex optimization problem. Find the minimum volume ellipsoid $\mathcal{E} = \{x \;| \; 
+(x - x_0)^T A^{-1} (x - x_0) \leq 1\}$ that contains $K$ given ellipsoids 
+$$
+\mathcal{E}_i = \{x \;| \; (x)^T A_i x + 2b_i^Tx + c_i \leq 1\}
+$$
+Hint. See appendix \emph{{\color{red}B}}.\\
+% appendix B - p. 653
+
+Solution:\\ \\
+$\mathcal{E}$ contains $\mathcal{E}_i$ if \\
+$\forall x: \, x^T A^{-1} x - 2 x_0^T A^{-1} x + x_0^T A^{-1}x_0 - 1 \leq 0$ \\
+$(x)^T A_i (x) + 2b_i^Tx + c_i - 1 \leq 0$\\
+From the S - procedure in the appendix \emph{{\color{red}B}} we have it's true if there exists no such $\lambda \geq 0$ that:\\
+
+$$
+\lambda_i
+\begin{bmatrix}
+A_i& b_i\\
+b_i^T & c_i
+\end{bmatrix} -
+\begin{bmatrix}
+A^{-1} & -A^{-1}x_0\\
+-(A^{-1}x_0)^T & x_0A^{-1}x_0 - 1\\
+\end{bmatrix}
+  \succeq 0
+$$
+this is the same as:
+
+$$
+\begin{bmatrix}
+	\lambda_i A_i& \lambda_i b_i\\
+	\lambda_i b_i^T & \lambda_i c_i + 1
+\end{bmatrix} - 
+\begin{bmatrix}
+I\\
+-x_0^T
+\end{bmatrix} A^{-1} 
+\begin{bmatrix}
+I &
+-x_0^T
+\end{bmatrix}
+\succeq 0
+$$
+
+So, we have SDP:
+
+\begin{align*}
+	\text{minimize } &log(det(A^{-1})) \\
+	\text{subject to } &
+	\begin{bmatrix}
+		\lambda_i A_i&& \lambda_i b_i\\
+		\lambda_i b_i^T && \lambda_i c_i + 1
+	\end{bmatrix} - 
+	\begin{bmatrix}
+		I\\
+		-x_0^T
+	\end{bmatrix} A^{-1} 
+	\begin{bmatrix}
+		I &&
+		-x_0^T
+	\end{bmatrix}
+	\succeq 0, \; i = 1, \dots, K\\
+	& \lambda_i \geq 0, \; i = 1, \dots, K	
+\end{align*} 
+
+\section*{A13.2} % p. 148
+
+Optimal spacecraft landing. We consider the problem of optimizing the thrust problem for a spacecraft
+to carry out a landing at a target position. The spacecraft dynamics are
+$$
+m\ddot{p} = f - mge_3
+$$
+where $m > 0$ is the spacecraft mass, $p(t) \in R^3$ is the spacecraft position with 0 the target landing position and $p_3(t)$ representing height, 
+$f(t) \in R^3$ is the thrust force and $g$ is the gravitational acceleration. (For simplicity we assume that the spacecraft mass is constant. This is not always
+a good assumption, since the mass decreases with fuel use. We will also ignore any atmospheric
+friction.) We must have $p(T^{td}) = 0$ and 
+$\dot{p}(T^{td}) = 0$ where $T^{dt}$ is the touchdown time. The spacecraft must remain in a region given by
+$$
+p_3(t) \geq \alpha ||p_1(t), p_2(t)||_2
+$$
+
+where $\alpha > 0$ is a minimal given glide slope. The initial position $p(0)$ and velocity $\dot{p}(0)$ are given. The thrust force $f(t)$ is obtained from a single rocket engine on the spacecraft, with a given
+maximum thrust; an attitude control system rotates the spacecraft to achieve any desired direction
+of thrust. The thrust force is therefore characterized by the constraint $||f(t)||_2 \leq F^{max}.$ fuel
+use rate is proportional to the thrust force magnitude, so the total fuel use is
+$$
+\int_{0}^{T^{td}} \gamma ||f(t)||_2 dt,
+$$
+where $\gamma > 0$ is the fuel consumption coefficient. The thrust force is discretized in time, i.e., it is
+constant over consecutive time periods of length $h > 0$
+with $f(t) = f_k$ for $t \in [(k - 1)h, kh]$ for 
+$k = 1, \dots, K,$ where $T^{td} = Kh.$ Therefore we have:
+\begin{align*}
+v_{k + 1} &= v_{k} + (h / m) f_k- hge_3, \\
+p_{k + 1} &= p_k + h / 2 (v_{k + 1} + v_k)
+\end{align*} 
+For simplicity, we will impose the glide slope constraint only at the times $t = 0, h, 2h, \dots, Kh.$\\
+
+(a) Minimum fuel descent. Explain how to find the thrust profile $f_1, \dots, f_k$ that minimizes fuel
+consumption, given the touchdown time $T^{td} = Kh$ and discretization time $h.$ \\
+
+(b) Minimum time descent. Explain how to find the thrust profile that minimizes the touchdown time, i.e., $K,$ with $h$ fixed and given. Your method can involve solving several convex optimization problems. \\
+
+(c) Carry out the methods described in parts (a) and (b) above on the problem instance with
+data given in \verb!spacecraft_landing_data.*.!
+Report the optimal total fuel consumption for
+part (a), and the minimum touchdown time for part (b). The data files also contain plotting
+code (commented out) to help you visualize your solution. Use the code to plot the spacecraft
+trajectory and thrust profiles you obtained for parts (a) and (b).\\
+
+Solution:
+
+(a) To find the minimum fuel consumption profile 
+we should minimize the expression 
+$\sum_{k = 1}^K ||f_k||_2$. Then the problem is:
+
+\begin{align*}
+&\text{minimize} && \sum_{k = 1}^K ||f_k||_2\\ 
+&\text{subject to} 
+&&v_{k + 1} = v_{k} + (h / m) f_k- hge_3, \\
+& &&p_{k + 1} = p_k + h / 2 (v_{k + 1} + v_k)\\
+& && p_1 = p(0) \\
+& && v_1 = \dot{p}(0)\\
+& &&p_{K + 1} = 0 \\
+& && v_{K + 1} = 0 \\
+& && ||f_k||_2 \leq F^{max}, \; 
+p_3(t) \geq \alpha ||p_1(t), p_2(t)||_2, 
+\; k = 1, \dots, K\\
+\end{align*} 
+where $p_i, v_i, f_i, \; i = 1, \dots, K$ are variables.\\
+
+(b) We can solve a sequence of convex feasibility problems tofind the minimum touchdown time. For each $K$ we solve the problem 
+
+\begin{align*}
+	&\text{minimize} && 0\\
+	&\text{subject to} 
+	&&v_{k + 1} = v_{k} + (h / m) f_k- hge_3, \\
+	& &&p_{k + 1} = p_k + h / 2 (v_{k + 1} + v_k)\\
+	& && p_1 = p(0) \\
+	& && v_1 = \dot{p}(0)\\
+	& &&p_{K + 1} = 0 \\
+	& && v_{K + 1} = 0 \\
+	& && ||f_k||_2 \leq F^{max}, \; 
+	p_3(t) \geq \alpha ||p_1(t), p_2(t)||_2, 
+	\; k = 1, \dots, K\\
+\end{align*} 
+where $p_i, v_i, f_i, \; i = 1, \dots, K$ are variables.\\
+If the problem is feasible, we reduce $K$, otherwise we increase $K$. We iterate until we nd the smallest $K$ for which a feasible trajectory can be found.
+
+(c) The matlab code:
+
+\begin{verbatim}
+spacecraft_landing_data;
+% solve part (a) (find minimum fuel trajectory)
+cvx_solver sdpt3;
+cvx_begin
+variables p(3,K+1) v(3,K+1) f(3,K)
+v(:,2:K+1) == v(:,1:K)+(h/m)*f-h*g*repmat([0;0;1],1,K);
+p(:,2:K+1) == p(:,1:K)+(h/2)*(v(:,1:K)+v(:,2:K+1));
+p(:,1) == p0; v(:,1) == v0;
+p(:,K+1) == 0; v(:,K+1) == 0;
+p(3,:) >= alpha*norms(p(1:2,:));
+norms(f) <= Fmax;
+minimize(sum(norms(f)))
+cvx_end
+min_fuel = cvx_optval*gamma*h;
+p_minf = p; v_minf = v; f_minf = f;
+% solve part (b) (find minimum K)
+% we will use a linear search, but bisection is faster
+Ki = K;
+while(1)
+cvx_begin
+variables p(3,Ki+1) v(3,Ki+1) f(3,Ki)
+v(:,2:Ki+1) == v(:,1:Ki)+(h/m)*f-h*g*repmat([0;0;1],1,Ki);
+
+p(:,2:Ki+1) == p(:,1:Ki)+(h/2)*(v(:,1:Ki)+v(:,2:Ki+1));
+p(:,1) == p0; v(:,1) == v0;
+p(:,Ki+1) == 0; v(:,Ki+1) == 0;
+p(3,:) >= alpha*norms(p(1:2,:));
+norms(f) <= Fmax;
+minimize(sum(norms(f)))
+cvx_end
+if(strcmp(cvx_status,'Infeasible') == 1)
+Kmin = Ki+1;
+break;
+end
+Ki = Ki-1;
+p_mink = p; v_mink = v; f_mink = f;
+end
+% plot the glide cone
+x = linspace(-40,55,30); y = linspace(0,55,30);
+[X,Y] = meshgrid(x,y);
+Z = alpha*sqrt(X.^2+Y.^2);
+figure; colormap autumn; surf(X,Y,Z);
+axis([-40,55,0,55,0,105]);
+grid on; hold on;
+% plot minimum fuel trajectory for part (a)
+plot3(p_minf(1,:),p_minf(2,:),p_minf(3,:),'b','linewidth',1.5);
+quiver3(p_minf(1,1:K),p_minf(2,1:K),p_minf(3,1:K),...
+f_minf(1,:),f_minf(2,:),f_minf(3,:),0.3,'k','linewidth',1.5);
+print('-depsc','spacecraft_landing_a.eps');
+% plot minimum time trajectory for part (b)
+figure; colormap autumn; surf(X,Y,Z);
+axis([-40,55,0,55,0,105]); grid on; hold on;
+plot3(p_mink(1,:),p_mink(2,:),p_mink(3,:),'b','linewidth',1.5);
+quiver3(p_mink(1,1:Kmin),p_mink(2,1:Kmin),p_mink(3,1:Kmin),...
+f_mink(1,:),f_mink(2,:),f_mink(3,:),0.3,'k','linewidth',1.5);
+print('-depsc','spacecraft_landing_b.eps');	
+\end{verbatim}	
+
+The optimal total fuel consumption is 193:0. The minimum touchdown
+time is K = 25.
+
+
+\section*{A16.3}
+
+
+% forms of linear matrix inequality
+% LMI tutorial:
+% https://link.springer.com/content/pdf/bbm%3A978-1-84628-493-9%2F1.pdf
+\end{document}
+

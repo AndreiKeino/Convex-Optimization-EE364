@@ -875,6 +875,113 @@ Compute the optimal weights and make a plot of $|G(\theta)|$ (on a logarithmic s
 complex number as a convex function of its real and imaginary parts, so you do not need to
 explicitly form the SOCP from part (a). Even more compactly, you can use \verb|norm(x,Inf)| with complex argument.
 
+Solution:
+
+The problem can be expressed as the SOCP:
+
+\begin{align*}
+&\text{minimize } && 
+t \\
+&\text{subject to } 
+&& ||A_k x ||_2 \leq t, \, k \in \mathcal{I}\\
+& && Bx = d \\
+\end{align*}
+with variables $x,$ $t,$ 
+$\mathcal{I} = \{k | \; |\theta - \theta^{tar}| \geq \Delta\}$
+and
+
+$$
+x = 
+\begin{bmatrix}
+\omega_{re}\\
+\omega_{im}\\
+\end{bmatrix}
+\in R^{2n}
+$$
+
+$$
+A_k = 
+\begin{bmatrix}
+cos(\gamma_1(\theta_k)) & \dots & cos(\gamma_n(\theta_k)) 
+& - sin(\gamma_1(\theta_k)) & \dots & - sin(\gamma_n(\theta_k))  \\
+cos(\gamma_1(\theta^{tar})) & \dots & cos(\gamma_n(\theta^{tar})) 
+& - sin(\gamma_1(\theta^{tar})) & \dots & - sin(\gamma_n(\theta^{tar}))  \\
+\end{bmatrix}
+$$
+
+
+$$
+B_k = 
+\begin{bmatrix}
+cos(\gamma_1(\theta^{tar})) & \dots & cos(\gamma_n(\theta^{tar})) 
+& - sin(\gamma_1(\theta^{tar})) & \dots & - sin(\gamma_n(\theta^{tar}))  \\
+\\
+sin(\gamma_1(\theta^{tar})) & \dots & sin(\gamma_n(\theta^{tar})) 
+& cos(\gamma_1(\theta^{tar})) & \dots &  cos(\gamma_n(\theta^{tar}))  \\
+\end{bmatrix}
+$$
+
+$$
+d = 
+\begin{bmatrix}
+1\\0
+\end{bmatrix}
+$$
+
+the matlab code:
+
+\begin{verbatim}
+clear all
+rand('state',0);
+%N= 10; %400;
+%n = 2;%40;
+N = 400;
+n = 40;
+x = 30 * rand(n,1);
+y = 30 * rand(n,1);
+X = [x'; y'];
+
+beamwidth = 15*pi/180;
+theta_tar=15*pi/180;
+theta = linspace(theta_tar+beamwidth, 2*pi+theta_tar-beamwidth, N)';
+A = exp(i * [cos(theta), sin(theta)] * X);
+Atar = exp(i * [cos(theta_tar), sin(theta_tar)] * X);
+
+cvx_begin
+variable w(n) complex
+minimize(max(abs(A*w)))
+subject to
+Atar*w == 1;
+cvx_end
+
+gamma = zeros(n, N);
+for i = 1:n
+for j = 1:N
+gamma(i, j) = x(i) * cos(theta(j)) + y(i) * sin(theta(j));
+end
+end
+size(gamma)
+
+G = zeros(N, 1);
+
+for i = 1:N
+for j = 1:n
+omega = w(j);
+rw = real(omega);
+iw = imag(omega);
+g = gamma(j, i);
+G(i) = G(i) + complex(rw * cos(g) - iw * sin(g), ...
+(rw * sin(g) + iw * cos(g)));
+end
+end
+
+abs_G = abs(G)
+
+
+plot(theta, abs(G))
+\end{verbatim}
+
+Something wrong with this task here
 
 \end{document}
 

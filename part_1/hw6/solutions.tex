@@ -288,9 +288,156 @@ time is K = 25.
 
 \section*{A16.3}
 
+Utility versus latency trade-off in a network. We consider a network with $m$ edges, labeled $1, \dots m,$ and $n$ flows labeled $1, \dots, n.$ Each flow has an associated nonnegative flow rate $f_j;$ each edge or link has an associated positive capacity $c_i.$ Each flow passes over a fixed set of links (its route); the total traffic
+$t_i$ on link $i$ is the sum of flow rates over all flows that pass though the link $i.$ The flow routes are described by a routing matrix 
+$R \in \boldsymbol{R}^{m\times n},$ defined as:
+$$
+R_{ij} = 
+\begin{cases}
+	1 & \text{flow } j \text{ passes through link } i\\
+	0 & \text{otherwise}\\
+\end{cases}
+$$
 
-% forms of linear matrix inequality
-% LMI tutorial:
-% https://link.springer.com/content/pdf/bbm%3A978-1-84628-493-9%2F1.pdf
+Thus, the vector fo link traffic, $t \in \boldsymbol{R}^m$ is given by $t = Rf.$ 
+The link capacity constraint can be expressed as $Rf \preceq c.$ The logarithmic network utility is defined as $U(f) = \sum_{j = 1}^{n} log(f_j).$ The average queuing delay on link $i$ is given by 
+$$
+d_i = \frac{1}{c_i - t_i}
+$$
+multiplied by a constant that doesn't matter to us. We take $d_i = \infty$ for 
+$t_i = c_i.$ The delay or latency for flow $j$ denoted $l_j$ is the sum of link delays
+over all links that flow $j$ passes through. We define the maximum flow latency as
+$$
+L = max\{l_1, \dots l_n\}
+$$
+We are given $R$ and $c$, we are to choose $f.$\\
+
+(a) How would you find the flow rates that maximize the utility $U$, ignoring 
+flow latency? (In particular we allow $L = \infty.$) We'll refer to this maximum achievable utility as $U^{max}.$\\
+
+(b) How would you find the flow rates that the maximum flow latency $L,$ ignoring utility? (In particular we allow $U = -\infty.$) We'll refer to this minimum achievable latency as $L^{min}.$ \\
+
+(c) Explain how to find the optimal trade-off between utility $U$ (which we want to maximize) and latency $L$ (which we want to minimize). \\
+
+(d) Find $U^{max}$, $L^{min}$ and plot the optimal trade-off utility versus latency 
+for the network with the data given in  \verb!net_util_data.m!, showing $L^{min}$ 
+and $U^{max}$ on the same plot. Your plot should cover the range from 
+$L = 1.1 L^{min}$ to $L = 11 L^{min}.$ Plot $U$ vertically using linear scale and 
+L horizontally using log scale. \\ 
+
+Note. For parts (a), (b), and (c), your answer can involve solving one or more convex optimization problems. But if there is a simpler solution, you should say so.
+\\
+
+Solution: \\
+
+(a) To maximize utility we solve the convex problem:
+
+\begin{align*}
+	&\text{maximize } &&  \sum_{j = 1}^{n} log(f_j) \\
+	&\text{subject to } && Rf \preceq c\\
+\end{align*} 
+with variable $f$ and the implicit constraint $f \succeq 0.$ \\
+
+(b) Link delay is monotonically increased with traffic and minimizes with zero traffic. Since flow latency is the sum of link delays, we can minimize the latency by setting the $f = 0.$ With $f = 0$ we have $d_i = 1 / c_i.$ To sum these delays over the routes, we multiply $d_i$ by $R^T.$ Then $l = R^T (1/c_1, \dots, 1/c_n),$
+where $l$ is a vector of flow latencies. So, we have:
+$$
+L^{min} = max\{R^T (1/c_1, \dots, 1/c_n)\}
+$$
+where the $ max\{R^T (1/c_1, \dots, 1/c_n)\}$ is the maximum over the entries of the vector $R^T (1/c_1, \dots, 1/c_n).$\\
+
+
+{c} Let $b_1, \dots b_m$ denotes the rows of R. To find the optimal trade - off between U and L we solve the problem 
+
+\begin{align*}
+	&\text{maximize } &&  \sum_{j = 1}^{n} log(f_j) \\
+	&\text{subject to } && Rf \preceq c\\
+	& && \sum_{i = 1}^m \frac{R_{ij}}{c_i - b_i^T f} \leq L, \; j = 1,\dots, n,
+\end{align*} 
+for a range of values $L.$ The variable here is $f$ and there is an implicit constraint $f \succeq 0.$ As $Rf \preceq c,$ we should have 
+$c_i - b_i^T f \geq 0,$
+so the constraints 
+$$\sum_{i = 1}^m \frac{R_{ij}}{c_i - b_i^T f} \leq L$$
+are convex (it can be easy verified considering the Hessian of \\
+$\frac{R_{ij}}{c_i - b_i^T f}$ with variable $f.$ This is therefore a convex optimization problem.
+
+% https://www.latex-tutorial.com/tutorials/figures/
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{A16_3_plot.png}
+	\caption{Optimal trade-off utility versus latency for the network.}
+	\label{fig:A16_3_plot}
+\end{figure}
+
+The Matlab code:
+\begin{verbatim}
+% solution for network utility problem
+clear all;
+net_util_data;
+% let's find max utility with no delay constraint
+cvx_begin
+variable f(n)
+maximize geo_mean(f)
+subject to
+R*f <= c
+f >= 0 % not needed; enforced by geomean domain
+cvx_end
+Umax=sum(log(f));
+
+% let's find min latency with no utility constraint
+% can be done analytically: just take f=0
+Lmin = max(R'*(1./c));
+% now let's do pareto curve
+N = 20;
+ds = 1.10*Lmin*logspace(0,1,N); % go from 10% above L
+Uopt = [];
+for d = ds
+cvx_begin
+variable f(n)
+maximize geo_mean(f);
+subject to
+R'*inv_pos(c-R*f) <= d*ones(n,1)
+f >= 0; % not needed; enforced by geomean domain
+R*f <= c; % not needed; enforced by inv_pos domain
+cvx_end
+Uopt = [Uopt n*log(cvx_optval)];
+end
+semilogx(ds,Uopt,'k-',[Lmin,ds],[Umax,ones(1,N)*Umax],...
+'k--',[1,1]*Lmin,[Uopt(1),Umax],'k--')
+% axis([ds(1), ds(N), -480, -340]);
+xlabel('L'); ylabel('U');	
+\end{verbatim}	
+
+\section*{A18.2}
+
+Radiation treatment planning. In radiation treatment, radiation is delivered to a patient, with the
+goal of killing or damaging the cells in a tumor, while carrying out minimal damage to other tissue.
+The radiation is delivered in beams, each of which has a known pattern; the level of each beam can
+be adjusted. (In most cases multiple beams are delivered at the same time, in one `shot', with the
+treatment organized as a sequence of `shots'.) We let $b_j$ denote the level of beam $j,$ for $j = 1,\dots,n.$
+These must satisfy $0 \leq b_j \leq B^{max},$ where $B^{max}$ is the maximum possible beam level. The exposure
+area is divided into m voxels, labeled $i = 1,\dots,m.$ The dose $d_i$ delivered to voxel $i$ is linear in the beam levels, i. e., $d_j = \sum_{j=1}^n A_{ij}b_j.$
+Here $A \in R_{+}^{m \times n}.$ is a (known) matrix
+that characterizes the beam patterns. We now describe a simple radiation treatment planning problem. A (known) subset of the voxels, $\mathcal{T} \subset {1,\dots ,m}$
+corresponds to the tumor or target region. We
+require that a minimum radiation dose $D^{target}$ be administered to each tumor voxel, i.e., 
+$d_i \geq D^{target}$ for $i \in \mathcal{T}.$ For all other voxels, we would like to have $d_i \leq D^{other},$ 
+where $D^{other}$ is a desired maximum dose for non-target voxels. This is generally not feasible, so instead we settle for minimizing the penalty
+$$
+E = \sum_{i \notin \mathcal{T}}((d_i - D^{other})_{+})^2
+$$
+
+where $(\cdot)_+$ denotes the nonnegatie part. We can interpret $E$ as the sum of the squares of the
+nontarget excess doses. \\
+
+(a) Show that the treatment planning problem is convex. The optimization variable is $b \in R^n;$ the problem data are $A,$ $D^{other},$ $D^{target},$ $\mathcal{T},$
+$B^{max}.$ \\
+
+(b) Solve the problem instance with data given in the file \verb!treatment_planning_data.m!. Here we
+have split the matrix $A$ into $Atarget$, which contains the rows corresponding to the target
+voxels, and $Aother$, which contains the rows corresponding to other voxels. Give the optimal
+value. Plot the dose histogram for the target voxels, and also for the other voxels. Make a
+brief comment on what you see. Remark. The beam pattern matrix in this problem instance
+is randomly generated, but similar results would be obtained with realistic data.
+
+
 \end{document}
 

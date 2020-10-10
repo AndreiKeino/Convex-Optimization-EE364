@@ -436,7 +436,114 @@ have split the matrix $A$ into $Atarget$, which contains the rows corresponding 
 voxels, and $Aother$, which contains the rows corresponding to other voxels. Give the optimal
 value. Plot the dose histogram for the target voxels, and also for the other voxels. Make a
 brief comment on what you see. Remark. The beam pattern matrix in this problem instance
-is randomly generated, but similar results would be obtained with realistic data.
+is randomly generated, but similar results would be obtained with realistic data.\\
+
+Solution:
+
+(a) We have a problem:
+
+\begin{align*}
+	&\text{minimize } && \sum_{i \notin \mathcal{T}}(
+	\sum_{j = 1}^{n} A_{ij}b_j - D^{other})_+^2\\
+	&\text{subject to } && b_j \geq 0\\
+	& && b_j \leq B^{max} \\
+	& && \sum_{j = 1}^{n} A_{ij}b_j \geq D^{target}, 
+	\; i \in  \mathcal{T} \\
+\end{align*} 
+
+function $(\cdot)_+$ is convex, its 
+square is also convex, its argument is linear, so the whole minimized function is convex. The constraints are linear, so the problem is convex.\\
+
+(b) \\
+The matlab code:
+\begin{verbatim}
+% radiation treatment planning
+treatment_planning_data;
+cvx_begin
+variable b(n); % beam intensities
+minimize (sum(square_pos(Aother*b-Dother))) % minimize square excess dose delivered to others
+subject to 
+0 <= b;
+b <= Bmax;
+Atarget*b >= Dtarget % deliver minimum does to tumor voxels
+cvx_end
+
+subplot(2,1,1);
+hist(Atarget*b);
+axis([0 2 0 60]);
+hold on; plot([Dtarget Dtarget],[0 60],'r')
+title('Tumor voxel dose histogram')
+subplot(2,1,2);
+hist(Aother*b);
+axis([0 2 0 150]);
+hold on; plot([Dother Dother],[0 150],'r')
+title('Other voxel dose histogram')
+xlabel('Dosage')
+print -depsc dose_histos	
+\end{verbatim}	
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{A_18_2_plot.png}
+	\caption{The dose histogram, the vertical red lines corresponds to $D^{target}$ (top subplot) and $D^{other}$ (bottom subplot)}
+	\label{fig:A_18_2_plot}
+\end{figure}
+
+\section*{A18.9}
+
+Resource allocation in stream processing. A large data center is used to handle a stream of $J$ types of jobs. The traffic (number of instances per second) of each job type is denoted $t \in R_+^J.$ Each
+instance of each job type (serially) invokes or calls a set of processes. There are $P$ types of processes, and we describe the job-process relation by the $P \times J$ matrix
+
+$$
+R_{pj} = 
+\begin{cases}
+	1, & \text{job} $j$ \text{invokes process} p \\
+	0, & \text{otherwise}
+\end{cases}
+$$
+The process loads (number of instances per second) are given by $\lambda = Rt \in R^P,$ i.e the $\lambda_p $ is the sum of the traffic from the jobs that invoke process $p.$
+The latency of a process or job type is the average time that it takes one instance to complete. These are denoted 
+$l^{proc} \in R^P$ and $l^{lob} \ in R^J$ respectfully
+and are related by $l^{job} = R^T l^{proc},$ i.e $l_j^{job}$ is the sum of the latencies of the processes called by $j$. Job latency is important to users, since $L_j^{job}$ is the average time the data center takes to handle an instance of job type $j$. We are given a maximum allowed job latency:
+$l^{job} \preceq l^{max}.$ The process latencies depend on the process load and also how much of n different resources are made available to them. These resources might include, for example, number of cores, disk storage,
+and network bandwidth. Here, we represent amounts of these resources as (nonnegative) real
+numbers, so $x_p \in R^n_+$ represents the resources allocated to process $p$. The process latencies are
+given by
+$$
+l_p^{proc} = \psi_p(x_p, \lambda_p), \; p = 1, \dots, P,
+$$
+where $\psi_p: R^n\times R \leftarrow R \cup \{\infty\}$ is a known (extended-valued) convex function. These functions are
+nonincreasing in their first (vector) arguments, and nondecreasing in their second arguments (i.e., more resources or less load cannot increase latency). We interpret
+$\psi_p(x_p, \lambda_p) = \infty$ to mean that
+the resources given by 
+$x_p$ are not sufficient to handle
+the load $\lambda_p.$ \\
+We wish to allocate a total resource amount $x^{tot} \in R^n_{++}$ ampng the $p$ processes, so we have 
+$\sum_{p = 1}^P x_p \preceq x^{tot}.$ The goal is to minimize the objective function
+$$
+\sum_{j = 1}^J w_j (t^{tar}_j - t_j)_+,
+$$
+where $(t^{tar}_j$ is the target traffic level for job type 
+$j,$  $w_j > 0$ give the priorities, and $(u)_+$ is a
+nonegative part of the vector, i.e 
+${(u_i)}_+ = max\{u_i, 0\}.$ (Thus the objective is a weighted penalty for missing the target job traffic.) The variables are $t \in R_+^J$ and $x_p \in R_+^n,$ 
+$p = 1, \dots, P.$ The problem data are matrix $R,$ the vectors $l^{max},$ $x^{tot},$ $t^{tar},$ and $w,$ and the functions $\psi_p, $ $p = 1, \dots, P.$ \\
+
+(a) Explain why this is a convex optimization problem.\\
+
+
+(b) Solve the problem instance with data given in \verb|res_alloc_stream_data.m|, with latency functions 
+$$
+\psi_p(x_p, \lambda_p) = 
+\begin{cases}
+	1 / (a_p^T x_p - \lambda_p), & a_p^T x_p > \lambda_p,  
+	x_p \succeq x_p^{min} \\
+	\\
+	\infty, & \text{otherwise}
+\end{cases}
+$$
+where $a_p \text{ and }x_p^{min}\in R^n{++}$ are given data.
+The vectors $a_p$ and $x_p^{min}$ are stored as the columns of the matrices \verb|A| and \verb|x_min| respectfully.
+Give the optimal objective value and job traffic. Compare the optimal job traffic with the target job traffic.
 
 
 \end{document}

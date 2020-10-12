@@ -543,8 +543,82 @@ $$
 $$
 where $a_p \text{ and }x_p^{min}\in R^n{++}$ are given data.
 The vectors $a_p$ and $x_p^{min}$ are stored as the columns of the matrices \verb|A| and \verb|x_min| respectfully.
-Give the optimal objective value and job traffic. Compare the optimal job traffic with the target job traffic.
+Give the optimal objective value and job traffic. Compare the optimal job traffic with the target job traffic.\\
 
+
+Solution:\\
+
+(a) We have a task
+
+\begin{align*}
+	&\text{minimize } && 
+	\sum_{j = 1}^J w_j (t^{tar}_j - t_j)_+\\
+	&\text{subject to } 
+	&& \sum_p x_p \leq x^{tot}, \; p = 1, \dots, P\\
+	& && t \succeq 0\\
+	& && \lambda = Rt\\
+	& && l^{job} = R^T l^{proc}\\
+	& && l^{job} \preceq l^{max}
+\end{align*} 
+
+with variables $x_p$ and $t,$ where 
+$l^{proc} = \psi_p(x_p, \lambda_p).$
+The  $\psi_p(x_p, \lambda_p)$ is convex, so the objective function is convex as a sum of convex functions. All the constraints are convex also.
+
+(b) The Matlab code:
+
+\begin{verbatim}	
+res_alloc_stream_data;
+% solution
+cvx_begin
+variable x(n,P) % resource allocation
+variable t(J) % job traffic
+
+minimize (w'*pos(t_tar-t))
+subject to 
+t >= 0
+sum(x') <= x_tot'; % resource limits
+lambda = R*t; % process loads
+x >= x_min % minimum allowable resources for the processes
+lproc = inv_pos(sum(A.*x)-lambda')'; % process latencies
+ljob = R'*lproc; % job latencies
+ljob <= l_max; % job latency limit
+cvx_end
+cvx_optval
+[t t_tar]
+[ljob l_max]	
+\end{verbatim}	
+
+The optimal objective value 7.7420.
+
+The optimal objective value vs job traffic.
+\begin{verbatim}	
+9.0300    9.0300
+8.5631    8.5631
+6.8426    6.8426
+1.6032    8.6306
+6.3854    6.3854
+9.9212    9.9212
+9.3040    9.3040
+5.9270    5.9270
+2.0905    2.0905
+2.8096    2.8096	
+\end{verbatim}	
+
+
+The latency of job vs its maximum latency allowed.
+\begin{verbatim}	
+1.1632    1.1632
+1.5336    2.5734
+1.4340    1.4340
+1.8774    1.8774
+1.8713    2.6975
+0.8847    1.7482
+1.6542    2.3063
+1.7115    1.7115
+2.0881    2.4848
+2.3424    2.3424
+\end{verbatim}	
 
 \end{document}
 

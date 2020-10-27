@@ -7,7 +7,7 @@ f = h.f
 
 np.random.seed(1)
 
-m, n = 4, 2
+m, n = 8, 2
 
 a = np.random.random([m, n]).T
         
@@ -63,8 +63,6 @@ while True:
     step = t
 
     print('step =', step)
-    
-    print('grad = ', grad)
     
     x = x + step * dx
     

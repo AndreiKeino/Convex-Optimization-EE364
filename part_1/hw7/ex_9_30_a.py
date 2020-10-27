@@ -5,6 +5,8 @@
 # Convex optimization. gradient method.
 
 import numpy as np
+import matplotlib.pyplot as plt
+plt.close('all')
 
 #  definition of some functions ->
 def gradient_numerical(f, x0, delta = 1e-8):
@@ -86,7 +88,7 @@ def backtrack(x, grad, alpha, beta):
 
 np.random.seed(1)
 
-m, n = 4, 2
+m, n = 3, 2
 
 a = np.random.random([m, n]).T
         
@@ -156,7 +158,81 @@ while True:
         print('gradient descent: max_iters number exeeded')
         break
         
+def gradient_descent(alpha, beta):
     
+    obj_func_arr = []
+    step_arr = []
+    iter_num = 0
+    x = x_start
     
+    while True:
+        
+        print('iteration number ', iter_num)
+        obj_func_arr.append(f(x, a))
+        grad = gradf(x, a)
+        nu = L2norm(grad)
+        print('nu = %e' % nu)
+        if nu <= nu_min:
+            print('gradient descent: tolerance acieved, exiting...')
+            print('iteration number ', iter_num)
+            print('optimal value = %e' % f(x, a))
+            return np.abs(np.array(obj_func_arr) - f(x, a)), step_arr
+            print('optimal x = ', x)
+            break
+        #  Backtracking line search
     
+        t = backtrack(x, grad, alpha, beta)
+        step = t
+    
+        print('step =', step)
+        
+        print('grad = ', grad)
+        
+        x = x - step * grad
+        step_arr.append(step)
+        
+        print('new x = ', x)    
+        iter_num += 1
+        if iter_num >= max_iters:
+            print('gradient descent: max_iters number exeeded')
+            return None, None
+            break
+        
+alpha_arr = [0.2, 0.4]
 
+beta_arr = [0.2, 0.45]
+
+plt.figure()
+
+for alpha in  alpha_arr:
+    for beta in beta_arr:
+        print('alpha = ', alpha)
+        print('beta = ', beta)
+        obj_func, step =  gradient_descent(alpha, beta)
+        x_plt = range(len(obj_func))
+        plt.plot(x_plt, np.log10(obj_func), 
+                 label='alpha = ' + str(alpha) + ' beta = ' + str(beta))
+
+plt.title('logarithm of the objective function error vs iteration number')
+plt.xlabel('logarithm of the objective function error')
+plt.ylabel('iteration number')
+plt.legend()
+plt.show()
+
+
+plt.figure()
+
+for alpha in  alpha_arr:
+    for beta in beta_arr:
+        print('alpha = ', alpha)
+        print('beta = ', beta)
+        obj_func, step =  gradient_descent(alpha, beta)
+        x_plt = range(len(step))
+        plt.plot(x_plt, step, 
+                 label='alpha = ' + str(alpha) + ' beta = ' + str(beta))
+
+plt.title('step vs iteration number')
+plt.xlabel('step')
+plt.ylabel('iteration number')
+plt.legend()
+plt.show()

@@ -54,6 +54,7 @@ while True:
     if lam_sq / 2 <= nu_min:
         print("Newton's method: tolerance acieved, exiting...")
         print('iteration number ', iter_num)
+        print('a = ', a)
         print('optimal value = %e' % f(x, a))
         print('optimal x = ', x)
         break

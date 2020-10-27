@@ -23,6 +23,41 @@ def backtrack(x, a, grad, alpha, beta):
             return t
         
 
+def backtrack_2(x, a, grad, ihess, alpha, beta):
+    """
+    Backtracking line search
+    https://stackoverflow.com/questions/52204231/implementing-backtracking-line-search-algorithm-for-unconstrained-optimization-p
+    """
+    """    
+    print('grad.shape = ', grad.shape)
+    print('grad = ', grad)
+    print('ihess.shape = ', ihess.shape)
+    print('ihess = ', ihess)
+    """
+    gh = grad.T @ ihess
+    #  print('grad.T @ ihess = ', gh)
+
+    
+    t = 1
+    while True: 
+        #  print('x = ', x)
+        #  print('gh = ', gh)
+        
+        fx = f(x - t * gh , a)
+        
+        fxx = f(x, a) + alpha * t * np.sum(gh ** 2)
+        #  fxx = f(x, a) + alpha * t * np.dot(gh, gh.T) #  the same as f(x, a) + alpha * t * np.sum(gh ** 2)
+        
+        if np.isnan(fx) or np.isnan(fxx):
+            #  print('backtrack: nan detected; multilying t: t = ', t)
+            t *= beta
+        elif fx > fxx:
+            t *= beta
+            #  print('backtrack: multilying t: t = ', t)
+        else: 
+            #  print('backtrack: t found, returning: t = ', t)
+            return t
+
 def L2norm(x):
     return np.sqrt(np.sum(x ** 2))
 
@@ -260,3 +295,14 @@ if __name__ == "__main__":
     print('hc = ', hc)
     
     assert hc < 1e-4, 'hessian seems to be incorrect'
+    
+    grad = np.array([[3.26697727], [4.08950456]])    
+    ihess = np.array([[ 0.31264018, -0.13959122],  [-0.13959122,  0.28763308]])
+    print('grad.shape = ', grad.shape)
+    print('ihess.shape = ', ihess.shape)
+    y = grad.T @ ihess
+    print('y = ', y)
+    print('y.shape = ', y.shape)
+    
+    
+    print(np.sum(y**2))

@@ -158,6 +158,7 @@ while True:
         print('gradient descent: max_iters number exeeded')
         break
         
+
 def gradient_descent(alpha, beta):
     
     obj_func_arr = []
@@ -176,7 +177,8 @@ def gradient_descent(alpha, beta):
             print('gradient descent: tolerance acieved, exiting...')
             print('iteration number ', iter_num)
             print('optimal value = %e' % f(x, a))
-            return np.abs(np.array(obj_func_arr) - f(x, a)), step_arr
+            opt_val = f(x, a)
+            return np.array(obj_func_arr) - opt_val, step_arr
             print('optimal x = ', x)
             break
         #  Backtracking line search
@@ -214,8 +216,8 @@ for alpha in  alpha_arr:
                  label='alpha = ' + str(alpha) + ' beta = ' + str(beta))
 
 plt.title('logarithm of the objective function error vs iteration number')
-plt.xlabel('logarithm of the objective function error')
-plt.ylabel('iteration number')
+plt.ylabel('logarithm of the objective function error')
+plt.xlabel('iteration number')
 plt.legend()
 plt.show()
 
@@ -232,7 +234,7 @@ for alpha in  alpha_arr:
                  label='alpha = ' + str(alpha) + ' beta = ' + str(beta))
 
 plt.title('step vs iteration number')
-plt.xlabel('step')
-plt.ylabel('iteration number')
+plt.ylabel('step')
+plt.xlabel('iteration number')
 plt.legend()
 plt.show()

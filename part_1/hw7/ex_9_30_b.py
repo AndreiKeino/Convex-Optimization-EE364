@@ -5,9 +5,9 @@ import ex_9_30_test_hessian as h
 
 f = h.f
 
-np.random.seed(1)
+np.random.seed(3)
 
-m, n = 8, 2
+m, n = 800, 2
 
 a = np.random.random([m, n]).T
         
@@ -54,14 +54,15 @@ while True:
     if lam_sq / 2 <= nu_min:
         print("Newton's method: tolerance acieved, exiting...")
         print('iteration number ', iter_num)
-        print('a = ', a)
+        #  print('a = ', a)
         print('optimal value = %e' % f(x, a))
         print('optimal x = ', x)
         break
     #  Backtracking line search
 
-    t = h.backtrack(x, a, grad, alpha, beta)
+    t = h.backtrack_2(x, a, grad, ihess, alpha, beta)
     step = t
+    # step = 1
 
     print('step =', step)
     

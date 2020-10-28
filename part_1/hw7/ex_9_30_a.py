@@ -136,7 +136,7 @@ while True:
     nu = L2norm(grad)
     print('nu = %e' % nu)
     if nu <= nu_min:
-        print('gradient descent: tolerance acieved, exiting...')
+        print('gradient descent: tolerance achieved, exiting...')
         print('iteration number ', iter_num)
         print('optimal value = %e' % f(x, a))
         print('optimal x = ', x)
@@ -174,7 +174,7 @@ def gradient_descent(alpha, beta):
         nu = L2norm(grad)
         print('nu = %e' % nu)
         if nu <= nu_min:
-            print('gradient descent: tolerance acieved, exiting...')
+            print('gradient descent: tolerance achieved, exiting...')
             print('iteration number ', iter_num)
             print('optimal value = %e' % f(x, a))
             opt_val = f(x, a)
@@ -199,7 +199,8 @@ def gradient_descent(alpha, beta):
             print('gradient descent: max_iters number exeeded')
             return None, None
             break
-        
+
+# plot the graphs        
 alpha_arr = [0.2, 0.4]
 
 beta_arr = [0.2, 0.45]
@@ -221,6 +222,8 @@ plt.xlabel('iteration number')
 plt.legend()
 plt.show()
 
+plt.savefig('9_30_a_obj_func.png', bbox_inches='tight')
+
 
 plt.figure()
 
@@ -238,3 +241,5 @@ plt.ylabel('step')
 plt.xlabel('iteration number')
 plt.legend()
 plt.show()
+
+plt.savefig('9_30_a_step.png', bbox_inches='tight')

@@ -25,9 +25,6 @@ x_start = np.zeros([n, 1])
 
 x = x_start
 
-
-iter_num = 0
-
 max_iters = 1000
 
 max_line_search_iters = 1000
@@ -39,17 +36,26 @@ beta = 0.4
 print('x_start = ', x_start)
 print('x_start.shape = ', x_start.shape)
 
+N = 3
 
-# t = h.backtrack(x, a, h.gradf(x, a), alpha, beta)
-# print('t after backtrack = ', t)
+iter_num = 0
 
 # the Newton's method implementation
+
 while True:
     
     print('iteration number ', iter_num)
+    
     grad = h.gradf(x, a) #  gradient of f
-    hess = h.hessf(x, a) #  hessian of f
-    ihess = np.linalg. inv(hess) #  inverse hessian of f
+    
+    """
+    We need to evaluate and factor the Hessian once every N steps; for the
+    other steps, we compute the search direction using back and forward substitution
+    """        
+    if iter_num // N == 0:
+        hess = h.hessf(x, a) #  hessian of f
+        ihess = np.linalg. inv(hess) #  inverse hessian of f
+
     dx = - ihess @ grad #  Newton step
     lam_sq = grad.T @ (ihess @ grad) # Newton decrement
 
@@ -76,7 +82,6 @@ while True:
     if iter_num >= max_iters:
         print("Newton's method: max_iters number exeeded")
         break
-        
     
 def newton_method(alpha, beta):
     
@@ -89,22 +94,28 @@ def newton_method(alpha, beta):
         
         print('iteration number ', iter_num)
         obj_func_arr.append(f(x, a))
+        
         grad = h.gradf(x, a) #  gradient of f
-        hess = h.hessf(x, a) #  hessian of f
-        ihess = np.linalg. inv(hess) #  inverse hessian of f
+        
+        """
+        We need to evaluate and factor the Hessian once every N steps; for the
+        other steps, we compute the search direction using back and forward substitution
+        """        
+        if iter_num // N == 0:
+            hess = h.hessf(x, a) #  hessian of f
+            ihess = np.linalg. inv(hess) #  inverse hessian of f
+    
         dx = - ihess @ grad #  Newton step
         lam_sq = grad.T @ (ihess @ grad) # Newton decrement
     
         print('lam_sq = %e' % lam_sq)
-        #  if lam_sq / 2 <= nu_min:
         if np.sqrt(lam_sq / 2) <= nu_min:
             print("Newton's method: tolerance achieved, exiting...")
             print('iteration number ', iter_num)
             #  print('a = ', a)
-            opt_val = f(x, a)
-            print('optimal value = %e' % opt_val)
+            print('optimal value = %e' % f(x, a))
             print('optimal x = ', x)
-            return np.array(obj_func_arr) - opt_val, step_arr            
+            return np.array(obj_func_arr) - f(x, a), step_arr
             break
         #  Backtracking line search
     
@@ -120,7 +131,6 @@ def newton_method(alpha, beta):
         iter_num += 1
         if iter_num >= max_iters:
             print("Newton's method: max_iters number exeeded")
-            return None, None
             break
         
 # plot the graphs        
@@ -145,7 +155,7 @@ plt.xlabel('iteration number')
 plt.legend()
 plt.show()
 
-plt.savefig('9_30_b_obj_func.png', bbox_inches='tight')
+plt.savefig('9_31_a_obj_func.png', bbox_inches='tight')
 
 
 plt.figure()
@@ -165,4 +175,7 @@ plt.xlabel('iteration number')
 plt.legend()
 plt.show()
 
-plt.savefig('9_30_b_step.png', bbox_inches='tight')
+plt.savefig('9_31_a_step.png', bbox_inches='tight')
+    
+        
+    

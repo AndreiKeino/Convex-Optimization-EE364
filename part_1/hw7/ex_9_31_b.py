@@ -5,7 +5,6 @@ import ex_9_30_test_hessian as h
 import matplotlib.pyplot as plt
 plt.close('all')
 
-
 f = h.f
 
 np.random.seed(3)
@@ -40,16 +39,15 @@ print('x_start = ', x_start)
 print('x_start.shape = ', x_start.shape)
 
 
-# t = h.backtrack(x, a, h.gradf(x, a), alpha, beta)
-# print('t after backtrack = ', t)
-
 # the Newton's method implementation
 while True:
     
     print('iteration number ', iter_num)
     grad = h.gradf(x, a) #  gradient of f
     hess = h.hessf(x, a) #  hessian of f
-    ihess = np.linalg. inv(hess) #  inverse hessian of f
+    # Diagonal approximation. We replace the Hessian by its diagonal
+    ihess = np.diag(1 / np.diagonal(hess))
+    # ihess = np.linalg. inv(hess) #  inverse hessian of f
     dx = - ihess @ grad #  Newton step
     lam_sq = grad.T @ (ihess @ grad) # Newton decrement
 
@@ -76,7 +74,6 @@ while True:
     if iter_num >= max_iters:
         print("Newton's method: max_iters number exeeded")
         break
-        
     
 def newton_method(alpha, beta):
     
@@ -84,6 +81,7 @@ def newton_method(alpha, beta):
     step_arr = []
     iter_num = 0
     x = x_start
+
     
     while True:
         
@@ -91,20 +89,20 @@ def newton_method(alpha, beta):
         obj_func_arr.append(f(x, a))
         grad = h.gradf(x, a) #  gradient of f
         hess = h.hessf(x, a) #  hessian of f
-        ihess = np.linalg. inv(hess) #  inverse hessian of f
+        # Diagonal approximation. We replace the Hessian by its diagonal
+        ihess = np.diag(1 / np.diagonal(hess))
+
         dx = - ihess @ grad #  Newton step
         lam_sq = grad.T @ (ihess @ grad) # Newton decrement
     
         print('lam_sq = %e' % lam_sq)
-        #  if lam_sq / 2 <= nu_min:
         if np.sqrt(lam_sq / 2) <= nu_min:
             print("Newton's method: tolerance achieved, exiting...")
             print('iteration number ', iter_num)
             #  print('a = ', a)
-            opt_val = f(x, a)
-            print('optimal value = %e' % opt_val)
+            print('optimal value = %e' % f(x, a))
             print('optimal x = ', x)
-            return np.array(obj_func_arr) - opt_val, step_arr            
+            return np.array(obj_func_arr) - f(x, a), step_arr
             break
         #  Backtracking line search
     
@@ -120,9 +118,8 @@ def newton_method(alpha, beta):
         iter_num += 1
         if iter_num >= max_iters:
             print("Newton's method: max_iters number exeeded")
-            return None, None
             break
-        
+
 # plot the graphs        
 alpha_arr = [0.2, 0.4]
 
@@ -145,7 +142,7 @@ plt.xlabel('iteration number')
 plt.legend()
 plt.show()
 
-plt.savefig('9_30_b_obj_func.png', bbox_inches='tight')
+plt.savefig('9_31_b_obj_func.png', bbox_inches='tight')
 
 
 plt.figure()
@@ -165,4 +162,11 @@ plt.xlabel('iteration number')
 plt.legend()
 plt.show()
 
-plt.savefig('9_30_b_step.png', bbox_inches='tight')
+plt.savefig('9_31_b_step.png', bbox_inches='tight')
+    
+        
+    
+
+
+              
+              

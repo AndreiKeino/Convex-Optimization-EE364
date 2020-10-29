@@ -13,11 +13,11 @@ def backtrack(x, a, grad, alpha, beta):
         fx = f(x - t * grad, a)
         fxx = f(x, a) + alpha * t * np.dot(grad.T, grad)
         if np.isnan(fx) or np.isnan(fxx):
-            #  print('backtrack: nan detected; multilying t: t = ', t)
+            #  print('backtrack: nan detected; multiplying t: t = ', t)
             t *= beta
         elif fx > fxx:
             t *= beta
-            #  print('backtrack: multilying t: t = ', t)
+            #  print('backtrack: multiplying t: t = ', t)
         else: 
             #  print('backtrack: t found, returning: t = ', t)
             return t
@@ -49,11 +49,11 @@ def backtrack_2(x, a, grad, ihess, alpha, beta):
         #  fxx = f(x, a) + alpha * t * np.dot(gh, gh.T) #  the same as f(x, a) + alpha * t * np.sum(gh ** 2)
         
         if np.isnan(fx) or np.isnan(fxx):
-            #  print('backtrack: nan detected; multilying t: t = ', t)
+            #  print('backtrack: nan detected; multiplying t: t = ', t)
             t *= beta
         elif fx > fxx:
             t *= beta
-            #  print('backtrack: multilying t: t = ', t)
+            #  print('backtrack: multiplying t: t = ', t)
         else: 
             #  print('backtrack: t found, returning: t = ', t)
             return t

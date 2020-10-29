@@ -15,6 +15,50 @@
 
 \section*{8.16}
 
+Maximum volume rectangle inside a polyhedron. Formulate the following problem as a
+convex optimization problem. Find the rectangle 
+$$
+\mathcal{R} = \{x \in R^n \; | \; l \preceq x \preceq u \}
+$$
+
+of maximum volume, enclosed in a polyhedron 
+$\mathcal{P} = \{x \; | \; Ax \preceq b\}.$ The variables 
+are $l, u \in R^n.$ Your formulation should not involve an exponential number of constraints. \\
+
+Solution. A straightforward, but very inefficient, way to express the constraint $\mathcal{R} \subseteq \mathcal{P}$
+is to use the set of $m 2^n$ inequalities $A v_i \leq b,$ where $v_i$ are $(2^n)$ corners of $\mathcal{R}.$ (If the
+corners of a box lie inside a polyhedron, then the box does.) Fortunately it is possible
+to express the constraint in a far more efficient way. Define 
+$$
+a_{ij}^+ = max\{a_{ij}, 0\}, \quad 
+a_{ij}^- = max\{-a_{ij}, 0\}
+$$
+Then we have $\mathcal{R} \subseteq \mathcal{P}$ if and 
+only if 
+$$
+\sum_{i = 1}^n (a_{ij}^+ u_j - a_{ij}^- l_j) \leq b_i, \quad i = 1, \dots, m 
+$$
+
+The maximum volume rectangle is the solution of
+\begin{align*}
+	&\text{maximize } && 
+	(\prod_{i = 1}^n (u_i - l_i))^{1/n}
+	\\
+	&\text{subject to } 
+	&& \sum_{i = 1}^n (a_{ij}^+ u_j - a_{ij}^- l_j) \leq b_i, \quad i = 1, \dots, m
+\end{align*}
+
+with implicit constraint $l \preceq u.$ 
+Or after taking logarithm
+
+\begin{align*}
+	&\text{maximize } && 
+	\sum_{i = 1}^n log(u_i - l_i)
+	\\
+	&\text{subject to } 
+	&& \sum_{i = 1}^n (a_{ij}^+ u_j - a_{ij}^- l_j) \leq b_i, \quad i = 1, \dots, m
+\end{align*}
+
 \section*{9.30}
 Gradient and Newton methods. Consider the unconstrained problem: \\
 \begin{align*}
@@ -1210,7 +1254,7 @@ plt.savefig('9_31_b_step.png', bbox_inches='tight')
 \end{figure}
 
 
-As it can be seen from the pictures, method (a) is not very good, but method (b) shows results somewhat 
+As it can be seen from the pictures, method (a) is not very good, but method (b) results somewhat 
 comparable with the pure Newton's method ones.
 
 

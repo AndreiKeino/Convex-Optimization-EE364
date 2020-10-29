@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.19)  28 OCT 2020 13:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.19)  29 OCT 2020 13:02
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -307,92 +307,96 @@ Overfull \hbox (36.05975pt too wide) in paragraph at lines 13--13
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--20
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--36
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 37--44
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 46--49
+Underfull \hbox (badness 10000) in paragraph at lines 24--27
 
  []
 
 [1
 
 {C:/Users/Andrei/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 50--51
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
+Underfull \hbox (badness 10000) in paragraph at lines 78--80
 
  []
 
 
-Overfull \hbox (101.24611pt too wide) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 81--88
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+[2]
+Overfull \hbox (101.24611pt too wide) in paragraph at lines 347--347
 []\OT1/cmtt/m/n/10 # https://docs.scipy.org/doc/scipy/reference/generated/scipy
 .optimize.check_grad.html[] 
  []
 
-[2]
-Overfull \hbox (311.24428pt too wide) in paragraph at lines 303--303
+[3]
+Overfull \hbox (311.24428pt too wide) in paragraph at lines 347--347
 []\OT1/cmtt/m/n/10 https://stackoverflow.com/questions/52204231/implementing-ba
 cktracking-line-search-algorithm-for-unconstrained-optimization-p[] 
  []
 
-[3]
-Overfull \hbox (32.9967pt too wide) in paragraph at lines 303--303
+[4]
+Overfull \hbox (32.9967pt too wide) in paragraph at lines 347--347
 []\OT1/cmtt/m/n/10 grad_err = check_grad(lambda x: f(x, a), lambda x: gradf(x, 
 a), x_check)[] 
  []
 
-[4] [5]
-Overfull \hbox (43.49661pt too wide) in paragraph at lines 303--303
+[5] [6]
+Overfull \hbox (43.49661pt too wide) in paragraph at lines 347--347
 []\OT1/cmtt/m/n/10 plt.title('logarithm of the objective function error vs iter
 ation number')[] 
  []
 
-[6]
-<9_30_a_obj_func.png, id=42, 418.4433pt x 327.3831pt>
+[7]
+<9_30_a_obj_func.png, id=47, 418.4433pt x 327.3831pt>
 File: 9_30_a_obj_func.png Graphic file (type png)
 <use 9_30_a_obj_func.png>
-Package pdftex.def Info: 9_30_a_obj_func.png  used on input line 306.
+Package pdftex.def Info: 9_30_a_obj_func.png  used on input line 350.
 (pdftex.def)             Requested size: 345.0pt x 269.92453pt.
- [7]
 <9_30_a_step.png, id=49, 409.7709pt x 327.3831pt>
 File: 9_30_a_step.png Graphic file (type png)
 <use 9_30_a_step.png>
-Package pdftex.def Info: 9_30_a_step.png  used on input line 311.
+Package pdftex.def Info: 9_30_a_step.png  used on input line 355.
 (pdftex.def)             Requested size: 345.0pt x 275.64433pt.
  [8pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.314 
+l.358 
        <./9_30_a_obj_func.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 315--316
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
 
  []
 
 
-Overfull \hbox (101.24611pt too wide) in paragraph at lines 628--628
+Overfull \hbox (101.24611pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 # https://docs.scipy.org/doc/scipy/reference/generated/scipy
 .optimize.check_grad.html[] 
  []
 
 
-Overfull \hbox (311.24428pt too wide) in paragraph at lines 628--628
+Overfull \hbox (311.24428pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 https://stackoverflow.com/questions/52204231/implementing-ba
 cktracking-line-search-algorithm-for-unconstrained-optimization-p[] 
  []
@@ -402,69 +406,69 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.628 \end{verbatim}
+l.672 \end{verbatim}
                     	 <./9_30_a_step.png>]
-Overfull \hbox (311.24428pt too wide) in paragraph at lines 628--628
+Overfull \hbox (311.24428pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 https://stackoverflow.com/questions/52204231/implementing-ba
 cktracking-line-search-algorithm-for-unconstrained-optimization-p[] 
  []
 
 
-Overfull \hbox (179.99542pt too wide) in paragraph at lines 628--628
+Overfull \hbox (179.99542pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 #  fxx = f(x, a) + alpha * t * np.dot(gh, gh.T) #  the same 
 as f(x, a) + alpha * t * np.sum(gh ** 2)[] 
  []
 
 [10] [11]
-Overfull \hbox (80.24629pt too wide) in paragraph at lines 628--628
+Overfull \hbox (80.24629pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 assert x.shape[1] == 1, 'hessian_numerical: input array shou
 ld have shape [N, 1]'[] 
  []
 
 
-Overfull \hbox (32.9967pt too wide) in paragraph at lines 628--628
+Overfull \hbox (32.9967pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 def check_hessian(f, hess_analytical, x0, delta = 1e-5, verb
 ose = True):[] 
  []
 
 [12]
-Overfull \hbox (32.9967pt too wide) in paragraph at lines 628--628
+Overfull \hbox (32.9967pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 #  a = np.array([[-1, 0], [0.5, - 0.5], [0.5, 0]], dtype = n
 p.float64).T[] 
  []
 
 [13]
-Overfull \hbox (43.49661pt too wide) in paragraph at lines 628--628
+Overfull \hbox (43.49661pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 assert z.shape[0] == 2 and z.shape[1] == 1, 'fh(x): incorrec
 t input shape'[] 
  []
 
 [14]
-Overfull \hbox (59.24648pt too wide) in paragraph at lines 628--628
+Overfull \hbox (59.24648pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 return x**2 + 0.5 * y**2 + 2 * x * y + 3 * x + 4 * x**2 * y*
 *2 + 5 * y * x**2[] 
  []
 
 
-Overfull \hbox (85.49625pt too wide) in paragraph at lines 628--628
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 assert z.shape[0] == 2 and z.shape[1] == 1, 'fh_hessian(x): 
 incorrect input shape'[] 
  []
 
 
-Overfull \hbox (38.24666pt too wide) in paragraph at lines 628--628
+Overfull \hbox (38.24666pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 hd = check_hessian(fh, hess_analytical, x0, delta = 1e-5, ve
 rbose = True)[] 
  []
 
 [15]
-Overfull \hbox (48.74657pt too wide) in paragraph at lines 628--628
+Overfull \hbox (48.74657pt too wide) in paragraph at lines 672--672
 []\OT1/cmtt/m/n/10 ihess = np.array([[ 0.31264018, -0.13959122],  [-0.13959122,
   0.28763308]])[] 
  []
 
 [16] [17] [18]
-Overfull \hbox (43.49661pt too wide) in paragraph at lines 802--802
+Overfull \hbox (43.49661pt too wide) in paragraph at lines 846--846
 []\OT1/cmtt/m/n/10 plt.title('logarithm of the objective function error vs iter
 ation number')[] 
  []
@@ -473,21 +477,21 @@ ation number')[]
 <9_30_b_obj_func.png, id=104, 418.4433pt x 327.3831pt>
 File: 9_30_b_obj_func.png Graphic file (type png)
 <use 9_30_b_obj_func.png>
-Package pdftex.def Info: 9_30_b_obj_func.png  used on input line 805.
+Package pdftex.def Info: 9_30_b_obj_func.png  used on input line 849.
 (pdftex.def)             Requested size: 345.0pt x 269.92453pt.
 <9_30_b_step.png, id=105, 416.2752pt x 327.3831pt>
 File: 9_30_b_step.png Graphic file (type png)
 <use 9_30_b_step.png>
-Package pdftex.def Info: 9_30_b_step.png  used on input line 810.
+Package pdftex.def Info: 9_30_b_step.png  used on input line 854.
 (pdftex.def)             Requested size: 345.0pt x 271.34325pt.
  [20pdfTeX warning (ext4): destination with the same identifier (name{figure.3}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.813 
+l.857 
        <./9_30_b_obj_func.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 831--834
+Underfull \hbox (badness 10000) in paragraph at lines 875--878
 
  []
 
@@ -496,33 +500,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 831--834
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.834 
+l.878 
        <./9_30_b_step.png>] [22]
-Overfull \hbox (22.4968pt too wide) in paragraph at lines 1019--1019
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 1063--1063
 []\OT1/cmtt/m/n/10 We need to evaluate and factor the Hessian once every N step
 s; for the[] 
  []
 
 
-Overfull \hbox (74.99634pt too wide) in paragraph at lines 1019--1019
+Overfull \hbox (74.99634pt too wide) in paragraph at lines 1063--1063
 []\OT1/cmtt/m/n/10 other steps, we compute the search direction using back and 
 forward substitution[] 
  []
 
 [23]
-Overfull \hbox (22.4968pt too wide) in paragraph at lines 1019--1019
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 1063--1063
 []\OT1/cmtt/m/n/10 We need to evaluate and factor the Hessian once every N step
 s; for the[] 
  []
 
 
-Overfull \hbox (74.99634pt too wide) in paragraph at lines 1019--1019
+Overfull \hbox (74.99634pt too wide) in paragraph at lines 1063--1063
 []\OT1/cmtt/m/n/10 other steps, we compute the search direction using back and 
 forward substitution[] 
  []
 
 [24]
-Overfull \hbox (43.49661pt too wide) in paragraph at lines 1019--1019
+Overfull \hbox (43.49661pt too wide) in paragraph at lines 1063--1063
 []\OT1/cmtt/m/n/10 plt.title('logarithm of the objective function error vs iter
 ation number')[] 
  []
@@ -530,28 +534,28 @@ ation number')[]
 <9_31_a_obj_func.png, id=132, 418.4433pt x 327.3831pt>
 File: 9_31_a_obj_func.png Graphic file (type png)
 <use 9_31_a_obj_func.png>
-Package pdftex.def Info: 9_31_a_obj_func.png  used on input line 1023.
+Package pdftex.def Info: 9_31_a_obj_func.png  used on input line 1067.
 (pdftex.def)             Requested size: 345.0pt x 269.92453pt.
 [25]
 <9_31_a_step.png, id=138, 416.2752pt x 327.3831pt>
 File: 9_31_a_step.png Graphic file (type png)
 <use 9_31_a_step.png>
-Package pdftex.def Info: 9_31_a_step.png  used on input line 1028.
+Package pdftex.def Info: 9_31_a_step.png  used on input line 1072.
 (pdftex.def)             Requested size: 345.0pt x 271.34325pt.
  [26pdfTeX warning (ext4): destination with the same identifier (name{figure.5}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1031 
+l.1075 
         <./9_31_a_obj_func.png>] [27pdfTeX warning (ext4): destination with the
  same identifier (name{figure.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1200 \end{verbatim}
+l.1244 \end{verbatim}
                      	 <./9_31_a_step.png>] [28] [29]
-Overfull \hbox (43.49661pt too wide) in paragraph at lines 1200--1200
+Overfull \hbox (43.49661pt too wide) in paragraph at lines 1244--1244
 []\OT1/cmtt/m/n/10 plt.title('logarithm of the objective function error vs iter
 ation number')[] 
  []
@@ -560,41 +564,41 @@ ation number')[]
 <9_31_b_obj_func.png, id=163, 418.4433pt x 327.3831pt>
 File: 9_31_b_obj_func.png Graphic file (type png)
 <use 9_31_b_obj_func.png>
-Package pdftex.def Info: 9_31_b_obj_func.png  used on input line 1203.
+Package pdftex.def Info: 9_31_b_obj_func.png  used on input line 1247.
 (pdftex.def)             Requested size: 345.0pt x 269.92453pt.
 <9_31_b_step.png, id=164, 409.7709pt x 327.3831pt>
 File: 9_31_b_step.png Graphic file (type png)
 <use 9_31_b_step.png>
-Package pdftex.def Info: 9_31_b_step.png  used on input line 1208.
+Package pdftex.def Info: 9_31_b_step.png  used on input line 1252.
 (pdftex.def)             Requested size: 345.0pt x 275.64433pt.
  [31pdfTeX warning (ext4): destination with the same identifier (name{figure.7}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1211 
+l.1255 
         <./9_31_b_obj_func.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1217.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1261.
  [32pdfTeX warning (ext4): destination with the same identifier (name{figure.8}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1217 \end{document}
+l.1261 \end{document}
                       <./9_31_b_step.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1217.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1261.
  (solutions.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1217.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1217.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1261.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1261.
 
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1217.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1261.
  ) 
 Here is how much of TeX's memory you used:
  6245 strings out of 492452
  88998 string characters out of 3129804
- 191094 words of memory out of 3000000
+ 192094 words of memory out of 3000000
  10513 multiletter control sequences out of 15000+200000
  9503 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -611,7 +615,7 @@ fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (32 pages, 527187 bytes).
+Output written on solutions.pdf (32 pages, 531614 bytes).
 PDF statistics:
  231 PDF objects out of 1000 (max. 8388607)
  44 named destinations out of 1000 (max. 500000)

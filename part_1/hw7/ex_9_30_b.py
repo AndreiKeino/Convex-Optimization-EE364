@@ -74,7 +74,7 @@ while True:
     print('new x = ', x)    
     iter_num += 1
     if iter_num >= max_iters:
-        print("Newton's method: max_iters number exeeded")
+        print("Newton's method: max_iters number exceeded")
         break
         
     
@@ -119,7 +119,7 @@ def newton_method(alpha, beta):
         print('new x = ', x)    
         iter_num += 1
         if iter_num >= max_iters:
-            print("Newton's method: max_iters number exeeded")
+            print("Newton's method: max_iters number exceeded")
             return None, None
             break
         

@@ -1418,6 +1418,138 @@ saveas(gcf, fname)
 
 \subsection*{2. Efficient numerical method for a regularized least-squares problem.}
 
+We consider a regularized least squares problem with smoothing,
 
+$$
+\text{minimize} \quad \sum_{i = 1}^{k} (a_i^T x - b_i)^2 
++ \delta \sum_{i=1}^{n-1}(x_i - x_{i-1})^2 + 
+\eta \sum_{i=1}^n x_i^2
+$$
+where $x \in R^n$ is variable and $\eta, \delta > 0$ are parameters. \\
+
+(a) Express the optimality conditions for this problem as a set of linear equations involving $x.$ (These are called the normal equations.)\\
+
+(b) Now assume that $k \ll n.$ Describe an efficient method to solve the normal
+equations found in (2a). Give an approximate flop count for a general method
+that does not exploit structure, and also for your efficient method.\\
+
+(c) A numerical instance. In this part you will try out your efficient method. We’ll
+choose $k = 100$ and $n = 2000,$ and $\nu = \delta = 1.$ First, randomly generate $A$ and
+$b$ with these dimensions. Form the normal equations as in (2a), and solve them
+using a generic method. Next, write (short) code implementing your efficient
+method, and run it on your problem instance. Verify that the solutions found by
+the two methods are nearly the same, and also that your efficient method is much
+faster than the generic one.\\
+
+Note: You’ll need to know some things about Matlab to be sure you get the speedup
+from the efficient method. Your method should involve solving linear equations with
+tridiagonal coefficient matrix. In this case, both the factorization and the back sub-
+stitution can be carried out very efficiently. The Matlab documentation says that
+banded matrices are recognized and exploited, when solving equations, but we found
+this wasn’t always the case. To be sure Matlab knows your matrix is tridiagonal, you
+can declare the matrix as sparse, using \verb|spdiags|, which can be used to create a tridiagonal matrix. You could also create the tridiagonal matrix conventionally, and then convert the resulting matrix to a sparse one using \verb|sparse|.
+
+One other thing you need to know. Suppose you need to solve a group of linear equations with the same coefficient matrix, \textit{i.e.}, you need to compute 
+$F^{-1}a_1, \dots, F^{-1}a_m,$ where $F$ is invertible and $a_i$ are column vectors. concatenating columns, this can be expressed as a single matrix
+$$
+[F^{-1}a_1 \dots F^{-1} a_m] = F^{-1} [a_1 \dots a_m]
+$$
+
+To compute this matrix using Matlab, you should collect the righthand sides into one
+matrix (as above) and use Matlab’s backslash operator: \verb|F\A|. This will do the right
+thing: factor the matrix $F$ once, and carry out multiple back substitutions for the
+righthand sides. \\
+
+\textbf{Solution:}\\
+
+(a)
+
+The objective function is
+$$
+x^T ( A^TA + \delta \Delta + \eta I)x - 2b^T A x - b^Tb
+$$
+where $A \in R^{n \times k}$ is the matrix with rows $a_i,$ and $\Delta \in R{n \times n}$ is the tridiagonal matrix
+$$
+\Delta = \begin{bmatrix} 
+	1 & -1 & 0  & \dots & 0 & 0 & 0 \\
+	-1 & 2 & -1 & \dots & 0 & 0 & 0 \\
+	0 & -1 & 2 & \dots & 0 & 0 & 0 \\	
+	0 & 0  & 0 & \dots & 2 & -1 & 0 \\
+	0 & 0 & 0 & \dots & -1 & 2 & -1 \\
+	0 & 0 & 0 & \dots & 0  & -1 & 1 \\	
+\end{bmatrix}
+$$
+
+Since the problem is unconstrained, the optimality conditions are
+
+$$
+(A^TA + \delta \Delta + \eta I)x^* - 2b^T A = 0
+$$
+or
+$$
+x^* = (A^TA + \delta \Delta + \eta I)^{-1} 2b^T A 
+$$
+
+(b)
+
+If no structure is exploited, the nt cost of the solution is $1/3 n^3$ flops. If $k \ll n,$ we need to solve a system $Fx = g$ where $F$ is the sum of a tridiagonal
+and a (relatively) low-rank matrix. We can use the Sherman-Morrison-Woodbury formula
+
+$$
+x^* = (\delta \Delta + \eta I)^{-1} g - 
+(\delta \Delta + \eta I)^{-1} A^T 
+(I + A(\delta \Delta + \eta I )^{-1} A^T)^{-1} A 
+ (\delta \Delta + \eta I)^{-1} g
+$$
+
+to efficiently solve (1) as follows:
+
+\begin{itemize}
+	\item i. Solve $(\delta \Delta + \eta I) z_1 = g$ and 
+	$(\delta \Delta + \eta I) Z_2 = A^T$ for $z_1$ and $Z_2.$ Since $(\delta \Delta + \eta I)$ is tridiagonal, the total cost is approximately 
+	$4 nk + 5n$ flops ($n$ for factorization and $4n(k + 1)$ for the solves).	
+	\item ii. Form $Az_1$ and $Az_2$ ($2 nk + nk^2$ flops).
+	\item iii. Solve $(I + Az_2) z_3 = Az_1$ for $z_3$ 
+	($1/3 k^3$ flops).
+	\item iv. Form $x^* = z_1 - Z_2 z_3$ ($2nk$ flops).
+	
+\end{itemize}
+
+The matlab code:
+\begin{verbatim}
+clear all; close all;
+n = 2000;
+k = 100;
+delta = 1;
+eta = 1;
+A = rand(k,n);
+b = rand(k,1);
+e = ones(n,1);
+D = spdiags([-e 2*e -e],[-1 0 1], n,n);
+
+D(1,1) = 1; D(n,n) = 1;
+I = speye(n);
+F = A'*A + eta*I + delta*D;
+P = eta*I + delta*D; %P is cheap to invert since it’s tridiagonal
+g = A'*b;
+%Directly computing optimal solution
+fprintf('\nComputing solution directly\n');
+s1 = cputime;
+x_gen = F\g;
+s2 = cputime;
+fprintf('Done (in %g sec)\n',s2-s1);
+fprintf('\nComputing solution using efficient method\n');
+%x_eff = P^{-1}g - P^{-1}A’(I +AP^{-1}A’)^{-1}AP^{-1}g.
+t1= cputime;
+Z_0 = P\[g A'];
+z_1 = Z_0(:,1);
+%z_2 = A*z_1;
+Z_2 = Z_0(:,2:k+1);
+z_3 = (sparse(1:k,1:k,1) +A*Z_2)\(A*z_1);
+x_eff = z_1 - Z_2*z_3;
+t2 = cputime;
+fprintf('Done (in %g sec)\n',t2-t1);
+fprintf('\nrelative error = %e\n',norm(x_eff-x_gen)/norm(x_gen) );
+	
+\end{verbatim}
 \end{document}
-

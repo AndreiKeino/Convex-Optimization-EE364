@@ -1549,7 +1549,7 @@ z_3 = (sparse(1:k,1:k,1) +A*Z_2)\(A*z_1);
 x_eff = z_1 - Z_2*z_3;
 t2 = cputime;
 fprintf('Done (in %g sec)\n',t2-t1);
-fprintf('\nrelative error = %e\n',norm(x_eff-x_gen)/norm(x_gen) );
-	
+fprintf('\nrelative error = %e\n',norm(x_eff-x_gen)/norm(x_gen) );	
 \end{verbatim}
+
 \end{document}

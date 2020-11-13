@@ -19,13 +19,27 @@ t = T_0;
 x = x_0;
 history = [];
 
+plotted = false;
 while(1)
-    [x_star, nu_star, lambda_hist] = lp_acent(A,b,t*c,x);
+    [x_star, nu_star, lambda_hist] = lp_acent_plot(A,b,t*c,x);
     x = x_star;
     gap = n/t;
     history = [history [length(lambda_hist); gap]];
-    fprintf('lp_barrier: history:')
+    fprintf('lp_barrier_plot: history:')
     history
+    
+    fprintf('lp_barrier_plot: lambda_hist:')
+    lambda_hist
+    
+    if plotted == false
+        figure()
+        plot([1:length(lambda_hist)], log(lambda_hist))
+        title('Dependency of \lambda ^2 / 2 vs newton step')
+        xlabel('step count') 
+        ylabel('\lambda ^2 / 2') 
+        plotted = true;
+    end
+    
     if gap < EPSILON break; end
     t = MU*t;
 end

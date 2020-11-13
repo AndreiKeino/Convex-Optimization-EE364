@@ -20,6 +20,8 @@ b1 = b-A*ones(n,1);
 
 z0 = x0+t0*ones(n,1)-ones(n,1);
 c1 = [zeros(n,1);1];
+fprintf('lp_solve: c1 =');
+c1
 [z_star, history, gap] = lp_barrier(A1,b1,c1,[z0;t0]);
 if (z_star(n+1) >= 1)
 fprintf('\nProblem is infeasible\n');
@@ -32,5 +34,10 @@ nsteps(1) = sum(history(1,:));
 x_0 = z_star(1:n)-z_star(n+1)*ones(n,1)+ones(n,1);
 % phase II
 [x_star, history, gap] = lp_barrier(A,b,c,x_0);
+fprintf('lp_solve: history size:')
+size(history)
+fprintf('lp_solve: history:')
+history
 status = 'Solved'; p_star = c'*x_star;
 nsteps(2) = sum(history(1,:));
+

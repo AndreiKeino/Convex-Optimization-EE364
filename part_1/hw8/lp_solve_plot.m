@@ -20,6 +20,8 @@ b1 = b-A*ones(n,1);
 
 z0 = x0+t0*ones(n,1)-ones(n,1);
 c1 = [zeros(n,1);1];
+fprintf('lp_solve: c1 =');
+c1
 [z_star, history, gap] = lp_barrier(A1,b1,c1,[z0;t0]);
 if (z_star(n+1) >= 1)
 fprintf('\nProblem is infeasible\n');
@@ -31,50 +33,11 @@ fprintf('\nFeasible point found\n');
 nsteps(1) = sum(history(1,:));
 x_0 = z_star(1:n)-z_star(n+1)*ones(n,1)+ones(n,1);
 % phase II
-[x_star, history, gap] = lp_barrier(A,b,c,x_0);
+[x_star, history, gap] = lp_barrier_plot(A,b,c,x_0);
+fprintf('lp_solve: history size:')
+size(history)
+fprintf('lp_solve: history:')
+history
 status = 'Solved'; p_star = c'*x_star;
 nsteps(2) = sum(history(1,:));
-We test our LP solver on two problem instances, one infeasible, and one feasible. We
-check our results against the output of cvx.
-% solves standard form LP for two problem instances
-clear all;
-m = 100;
-n = 500;
-
-% infeasible problem instance
-rand('seed',0);
-randn('seed',0);
-A = [rand(m-1,n); ones(1,n)];
-b = randn(m,1);
-c = randn(n,1);
-[x_star,p_star,gap,status,nsteps] = lp_solve(A,b,c);
-% solve LP using cvx for comparison
-cvx_begin
-variable x(n)
-minimize(c'*x)
-subject to
-A*x == b
-x >= 0
-cvx_end
-
-% feasible problem instance
-A = [randn(m-1,n); ones(1,n)];
-v = rand(n,1) + 0.1;
-b = A*v;
-c = randn(n,1);
-[x_star,p_star,gap,status,nsteps] = lp_solve(A,b,c);
-% solve LP using cvx for comparison
-cvx_begin
-variable x(n)
-minimize(c'*x)
-subject to
-A*x == b
-x >= 0
-cvx_end
-fprintf('\n\nOptimal value found by barrier method:\n');
-p_star
-fprintf('Optimal value found by CVX:\n');
-cvx_optval
-fprintf(’Duality gap from barrier method:\n’);
-gap
 

@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\begin{document}
+
+\title{Solutions to hw1 homework on Convex Optimization https://web.stanford.edu/class/ee364b/homework.html}
+\author{Andrei Keino}
+\maketitle
+
+\section*{1.1 (3 points)} 
+
+For each of the following convex functions, determine the subdifferential set at the specified point.\\
+
+(a) $f(x_1, x_2, x_3) = max(|x_1|, |x_2|, |x_3|)$ at 
+$(x_1, x_2, x_3) = (0, 0, 0).$ \\
+
+(b) $f(x) = e^{|x|}$ ($x$ is scalar)\\
+
+(c) $f(x_1, x_2) = max(x_1 + x_2 - 1, x_1 - x_2 + 1)$
+at $(x_1, x_2) = (1, 1).$
+
+Solution:
+
+(a) There will be a gap in differential at the points 
+$\{x_1 = \pm x_2, x_2 = \pm x_3, x_1 = \pm x_3\}.$
+Subdifferential set $g(0, 0, 0) = \{[-1, 1], [-1, 1], [-1, 1]\}.$ \\
+
+(b) There will be a gap in differential at the point $x = 0.$ Subdifferential set $g(0) = [-e^0, e^0] = [-1, 1].$ \\
+
+(c) There will be a gap in differential at the points 
+$\{x_1 + x_2 - 1 = x_1 - x_2 + 1\}.$
+Subdifferential set $g(1, 1) = \{1, [-1, 1]\}.$
+
+\section*{1.2 (7 points)}
+ For each of the following convex functions, explain how to calculate a subgradient at a given x.\\
+ 
+ (a) $f(x) = max_{i = 1, \dots, m}(a_i^T x + b_i).$\\
+ 
+ (b) $f(x) = max_{i = 1, \dots, m}(|a_i^T x + b_i|).$\\
+ 
+ (c) $f(x) = max_{i = 1, \dots, m}(- 
+ log(a_i^T x + b_i).$ . You may assume x is in the domain of $f.$\\
+ 
+ (d) $f(x) = max_{0 \leq t \leq 1}(p(t))$ where 
+ $p(t) = x_1 + x_2 t + \dots + x_n t^{n - 1}.$\\
+ 
+ (e) $f(x) = x_{[1]} + \dots + x_{[k]}$ where $x_{[i]}$ 
+ denotes the $i-$ th largest element of $x.$ \\
+ 
+ (f) $f(x) = min_{Ay \preceq b}(||x^2 - y^2||),$ 
+ , i.e., the square of the distance of $x$ to the polyhedron defined by $Ay \preceq b.$ You may assume that the inequalities $Ay \preceq b.$ are strictly feasible. (Hint: You may use duality, and then use subgradient the rule for pointwise maximumum.  \\
+ 
+ (g) $f(x) = max_{Ay \preceq b}(y^t x),$  x, i.e., the optimal value of an LP as a function of the cost
+ vector. (You can assume that the polyhedron defined 
+ $Ay \preceq b$ is bounded.)
+ (Hint: You may use the subgradient rule for pointwise maximum.
+ 
+ 
+ 
+ 
+
+\end{document}

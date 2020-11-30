@@ -36,6 +36,28 @@ Subdifferential set $g(0, 0, 0) = \{[-1, 1], [-1, 1], [-1, 1]\}.$ \\
 $\{x_1 + x_2 - 1 = x_1 - x_2 + 1\}.$
 Subdifferential set $g(1, 1) = \{1, [-1, 1]\}.$
 
+\section*{1.3 (2 points)}
+Convex functions that are not subdifferentiable. Verify that the following
+functions, defined on the interval $[0;1),$ are convex, but not subdifferentiable at $x = 0.$
+(Hint: You can prove by contradiction.)\\ 
+
+(a) $f(0) = 1$ and $f(x) = 0$ for $x > 0.$ \\
+
+(b) $f(x) = -x^p$ for some $p \in (0, 1)$\\
+
+Solution. \\
+
+(a) Proof by contradiction. 
+Suppose what function 
+$f(0) = 1$ and $f(x) = 0$ for $x > 0.$ has a supporting hyperplane at point $x = 0,$ and g is the subgradient of $f(x)$ in this point. Then at $x \geq 0$ the equation
+$f(x) \geq f(0) + g x$ must hold. For $x > 0$ this equation become $0 \geq 1 + g x $ or $gx \leq - 1$ for $x \geq 0.$ This is impossible, because at $x = 0$ we must have $0 \leq -1 $ then. \\
+
+(b) Proof by contradiction.
+Suppose what function $f(x) = -x^p$ for some $p \in (0, 1)$ has a supporting hyperplane at point $x = 0,$ and g is the subgradient of $f(x)$ in this point. Then $\forall$ $x \geq 0$ the equation $f(x) \geq f(0) + g x$ must hold.
+This is impossible, as f(0) is $\infty$ (i.e.  unlimited) and $f(x)$ has a limited value, i.e $g$ should be unlimited in this case.\\
+
+
+
 \section*{1.2 (7 points)}
  For each of the following convex functions, explain how to calculate a subgradient at a given x.\\
  

@@ -53,10 +53,7 @@ $f(0) = 1$ and $f(x) = 0$ for $x > 0.$ has a supporting hyperplane at point $x =
 $f(x) \geq f(0) + g x$ must hold. For $x > 0$ this equation become $0 \geq 1 + g x $ or $gx \leq - 1$ for $x \geq 0.$ This is impossible, because at $x = 0$ we must have $0 \leq -1 $ then. \\
 
 (b) Proof by contradiction.
-Suppose what function $f(x) = -x^p$ for some $p \in (0, 1)$ has a supporting hyperplane at point $x = 0,$ and g is the subgradient of $f(x)$ in this point. Then $\forall$ $x \geq 0$ the equation $f(x) \geq f(0) + g x$ must hold.
-This is impossible, as f(0) is $\infty$ (i.e.  unlimited) and $f(x)$ has a limited value, i.e $g$ should be unlimited in this case.\\
-
-
+Suppose what function $f(x) = -x^p$ for some $p \in (0, 1)$ has a supporting hyperplane at point $x = 0,$ and g is the subgradient of $f(x)$ in this point. Then $\forall$ $x \geq 0$ the equation $f(x) \geq f(0) + g x$ must hold. But this is impossible, as f(0) is $\infty$ (i.e.  unlimited) and $f(x)$ has a limited value, i.e $g$ should be unlimited in this case.\\
 
 \section*{1.2 (7 points)}
  For each of the following convex functions, explain how to calculate a subgradient at a given x.\\
@@ -80,8 +77,81 @@ This is impossible, as f(0) is $\infty$ (i.e.  unlimited) and $f(x)$ has a limit
  (g) $f(x) = max_{Ay \preceq b}(y^t x),$  x, i.e., the optimal value of an LP as a function of the cost
  vector. (You can assume that the polyhedron defined 
  $Ay \preceq b$ is bounded.)
- (Hint: You may use the subgradient rule for pointwise maximum.
+ (Hint: You may use the subgradient rule for pointwise maximum.\\
  
+ Solution. \\
+ 
+ (a) Find $k \in {1, \dots, m}$ such that 
+ $f(x) = a_k^T x + b_k.$ Then subgradient at this point is $a_k.$
+ 
+ (b) Find $k \in {1, \dots, m}$ such that 
+ $f(x) = |a_k^T x + b_k|.$ If $a_k^T x + b_k > 0$ then subgradient 
+ is $a_k,$ if $a_k^T x + b_k < 0$ then subgradient 
+ is $- a_k,$ if $a_k^T x + b_k = 0$ then subgradient 
+ is $[-|a_k|, |a_k|].$ \\
+ 
+ (c) Find $k \in {1, \dots, m}$ such that 
+ $f(x) = -log(a_k^T x + b_k).$ Then subgradient is 
+ $- 1 / (a_k^T x + b_k).$\\
+ 
+
+ (d) Find $t$ such that 
+$f(x) = x_1 + x_2 t + \dots + x_n t^{n - 1}.$ Then subgradient is $(1, t, \dots , t^{n-1}).$ \\
+
+ (e) Find $\{i_1, \dots, i_k\}$ such that 
+ $f(x) = x_{i_1} + \dots + x_{i_k}.$ Then subgradient is
+ $(a_1, \dots, a_n)$ where $a_j = 1$ if 
+ $j \in \{i_1, \dots, i_k\},$ $a_j = 0$ otherwise. \\
+ 
+  (f) $f(x)$ defined as optimal value of the problem
+  
+\begin{align*}
+	&\text{minimize } && ||x - y||^2 \\
+	&\text{subject to } && Ay \preceq b\\
+\end{align*}
+With variable y.
+We have dual problem because Slater’s condition holds. 
+\begin{align*}
+	&\text{minimize } && 
+	-1/4 z^TAA^Tz + 1/2 z^T A x - b^Tz \\
+	&\text{subject to }  && z \succeq 0\\
+\end{align*}
+
+From the global perturbation inequalities 
+$$
+f(x, b) \geq f(x^*, b) - z^{*T}(x - x^*)
+$$
+By Slater’s condition, we have strong duality and the dual optimum is attained.
+
+Let $z*$ be the optimal dual solution for for the value of $x$ at which we want a subgradient, i.e., $z \succeq 0$ and 
+$$
+f(x) = -1/4 z^{*T}AA^Tz + 1/2 z^{*T} A x - b^Tz^*
+$$
+By weak duality we have for any $\hat{x},$
+
+$$
+f(\hat x) \geq -1/4 z^{*T}AA^Tz + 1/2 z^{*T} A \hat x - b^Tz^* = f(x) + A^T z^* (\hat x - x)
+$$
+
+The KKT conditions for $y*$ to be the optimal point of the primal problem gives:
+$$
+A^T z* = 2(x - y*)
+$$
+Therefore $(x - y^*)$ is a subgradient at $x.$\\
+
+(g) The set $\{y \;| \; Ay \preceq b \} $ is closed and bounded, i.e. compact.This means that
+the supremum in the definition of $f(x)$ is attained.
+Let $\hat y \in \{y\; A y \succeq b\}$ be the value of $y$ for which $f(x) = \hat y^t x.$ Then $\hat y$ is a subgradient of $f$ at x.
+
+
+
+
+
+  
+ 
+ 
+
+
  
  
  

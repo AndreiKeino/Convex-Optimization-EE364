@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  4 JAN 2021 14:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  4 JAN 2021 14:40
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -383,7 +383,7 @@ Here is how much of TeX's memory you used:
  23446 multiletter control sequences out of 15000+200000
  540783 words of font info for 49 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,6n,72p,240b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 66i,6n,72p,279b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
@@ -393,7 +393,7 @@ nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 msfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on solutions.pdf (3 pages, 121034 bytes).
+Output written on solutions.pdf (3 pages, 122226 bytes).
 PDF statistics:
  60 PDF objects out of 1000 (max. 8388607)
  5 named destinations out of 1000 (max. 500000)

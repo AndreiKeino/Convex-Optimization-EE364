@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\begin{document}
+
+\title{Solutions to hw2 homework on Convex Optimization https://web.stanford.edu/class/ee364b/homework.html}
+\author{Andrei Keino}
+\maketitle
+
+\section*{2.1 (8 points, 1 point per question)} 
+Let $f$ be a convex function with domain in $R^n.$ 
+We fix $x \in \bf{int \; dom}\; f  $ and $d \in R^n.$
+Recall the definition of the directional derivative of $f$
+at $x$ along the direction $d$
+$$
+f'(x, d) = \lim_{t \rightarrow 0} \frac{f(x + td) - f(x)}{t}
+$$
+In this question we aim to show that $f'(x, d)$ exists and is finite, and that we have the following relationship 
+between $\partial f(x)$  and $f'(x, d),$
+$$
+f'(x, d) = \sup_{g \in \partial f(x)} g^T d
+$$
+\\
+
+(a) Show that the ratio $\frac{f(x + td) - f(x)}{t}$ is a nondecrasing function of $t > 0.$ Deduce that $f'(x, d)$
+exists and is either finite or equal to $- \infty.$ \\
+We know from the lectures that, since $x \in \bf{int \; dom \;} f,$ the subdifferential set $\partial f$ is non - empty, convex and compact.
+\\
+
+Solution:\\
+
+\textbf{Proof of non - decreasing.}
+Definition of subgradient is
+$$
+f(z) \geq f(x) + g^T(z - x)
+$$
+let $z = x + td;$ then
+$$
+f(x + td) \geq f(x) + g^T(x + td - x)
+$$
+or 
+$$
+f(x + td) - f(x) \geq t g^T d
+$$
+dividing both part of the inequality by $t$ (as $t > 0,$
+we can do it) gives
+
+$$
+\frac{f(x + td) - f(x)}{t} \geq g^T d
+$$
+
+\textbf{The right-hand side of the upper equation can't be decreasing function of $t,$} because the function $f$ is convex, and it means that it's second differential is more or equal to zero.\\
+
+\textbf{Proof of possible equality to $- \infty.$}\\
+The definition of convexity: \\
+
+$$
+f(\theta x + (1 - \theta) y)) \leq 
+\theta f(x) + (1 - \theta) f(y)
+$$
+where $0 < \theta < 1.$ \\
+let $t = 1 - \theta,$ $0 < t < 1.$
+then
+$$
+f((1 - t) x + t y)) \leq 
+(1 - t)f(x) + tf(y)
+$$
+or
+$$
+f(x + t (y - x))) \leq 
+f(x) + t(f(y) - f(x))
+$$
+as we can choose $y$ any of the point in domain $f,$ we can set $d = y - x.$ Then
+$$
+f(x + t d) \leq 
+f(x) + t(f(y) - f(x))
+$$
+or
+$$
+f(x + t d) - f(x)\leq 
+t(f(y) - f(x))
+$$
+or
+$$
+\frac{f(x + t d) - f(x)}{t}\leq 
+f(y) - f(x)
+$$
+\textbf{As $f(y)$ can be equal to $- \infty$ on the domain of $f$, so
+$f'(x, d) = \frac{f(x + t d) - f(x)}{t}$ can be equal to $- \infty$ on the domain of $f.$}\\
+
+(b) Let $g \in \partial f(x).$ Show that 
+$f'(x, d) \geq g^T d.$ Deduce that $f'(x, d)$ is finite and $f'(x, d) \geq \sup_{g \in \partial f(x)} g^T d.$ \\
+
+Solution:\\
+We already shown that 
+$$f'(x, d) \geq g^T d$$
+in part (a).
+We also shown in part (a) that 
+$$
+\frac{f(x + t d) - f(x)}{t}\leq 
+f(y) - f(x)
+$$
+Second upper inequality means that  $f'(x, d)$ is bounded from upper side (i.e it can't be equal to $\infty$), it means  its value is finite. \\
+As the first of upper inequalities is correct $\forall$ subgradients in domain of $f,$ it means, that it is correct for  the supremum of these subgradients in domain $f.$ It means that 
+$$f'(x, d) \geq \sup_{g \in \partial f(x)} g^T d.$$
+
+
+
+
+
+
+\end{document}

@@ -59,7 +59,7 @@ $$
 $$
 
 
-\textbf{As the $\partial \frac{f'(x, d)}{\partial t} \geq 0,$ it means the function $f'(x, d)$ is nondecreasing by variable $t.$ }
+\textbf{As the $\frac{\partial f'(x, d}{\partial t} \geq 0,$ it means the function $f'(x, d)$ is nondecreasing by variable $t.$ }
 
 \textbf{Proof of possible equality to $- \infty.$}\\
 The definition of convexity: \\
@@ -113,6 +113,125 @@ $$
 Second upper inequality means that  $f'(x, d)$ is bounded from upper side (i.e it can't be equal to $\infty$), it means  its value is finite. \\
 As the first of upper inequalities is correct $\forall$ subgradients in domain of $f,$ it means, that it is correct for  the supremum of these subgradients in domain $f.$ It means that 
 $$f'(x, d) \geq \sup_{g \in \partial f(x)} g^T d.$$
+\\
+
+In the remaining part of this question, we will establish the converse inequality $f'(x, d) \leq \sup_{g \in \partial f(x)} g^T d,$ by showing the existence of a subgradient $g^* \in \partial f(x), $ such that 
+$f'(x, d) \leq g^{*T} d.$ We introduce two following sets
+\begin{align*}
+	C_1 &= \{(z,t) \; |\; z \in \mathbf{dom} f, \; f(z) < t \} \\
+	C_2 &= \{(y, v) \; | \; y = x + \alpha d, \;
+	v = f(x) + \alpha f'(x, d), \; \alpha \geq 0 \}
+\end{align*}
+
+(c) Prove that $C_2$ and $C_2$ are nonempty, convex and disjoint.\\
+
+Solution: \\
+
+$C_1$ epigraph of the convex function, therefore 
+it is nonempty and convex.
+
+$C_2$ is the nonempty set, because it have at least one point, which corresponds to $\alpha = 0,$ $y = x,$ $v = f(x).$ It is also a convex set, because 
+$C^1_2 = \{y\;| \;y = x + \alpha d\}$ is a convex set as it is translated domain of $f$ which is a convex set
+and $C^2_2 = \{v\;| \; 
+v = f(x) + \alpha f'(x, d), \; \alpha \geq 0 \}$ is either 
+a straight line or a beam or a segment. \\
+
+Proof of disjointedness: \\
+We should show that there is exists a nonzero vector 
+$(a, \beta) \in R^n \times R$ such as
+$$
+a^T(x + \alpha d) + \beta (f(x) + \alpha f'(x, d)) \leq
+a^T z + \beta w
+$$
+for all $\alpha \ geq 0, $ $z \in \mathbf{dom} f,$ 
+and $f(z) < w.$
+\\
+Solution:
+As we shown earlier, 
+$$
+f'(x, d) \leq f(y) - f(x)
+$$
+where $x, y \in \mathbf{dom} f.$ As $x, y$ can be any points in domain $f,$ it follows that\\
+$$
+f'(x, d) \leq \min_{z \in \mathbf{dom} f }(f(z)) - 
+\max_{z \in \mathbf{dom} f}(f(z))
+$$
+Lets just derive equation for $\beta.$
+
+$$
+\beta (f(x) + \alpha f'(x, d) - w) \leq 
+a^T(z - x - \alpha d)
+$$
+or
+$$
+\beta \leq \frac{a^T (z - x - \alpha d)}
+{f(x) + \alpha f'(x, d) - w}
+$$
+
+(e) Prove that $\beta$ must be strictly positive. 
+Define $\tilde{a} = \frac{a}{\beta}.$ Show that 
+$$
+\tilde{a}^T (x + \alpha d) + f(x) + \alpha f'(x, d) \leq
+\tilde{a}^T z + w
+$$
+for all $\alpha \geq 0,$ $z \in \mathbf{dom} f$ and 
+$f(z) < w.$
+
+Proof:\\
+Let's choose $\tilde{a} = g.$ Then we have:
+$$
+g^T (x + \alpha d) + f(x) + \alpha f'(x, d) \leq
+g^T z + w
+$$
+or
+$$
+g^T (x - z) + f(x) - w + \alpha(g^T d + f'(x, d)) \leq 0
+$$
+as $f(z) < w$ we can replace $w$ with $f(z)$ without 
+a violation of inequality. We get then:
+$$
+g^T (x - z) + f(x) - f(z) + \alpha(g^T d + f'(x, d)) \leq 0
+$$
+the first three terms in equation are
+$$
+g^T (x - z) + f(x) - f(z)
+$$
+and they are less or equal to zero, because of the subgradient definition.
+the last term of the equation is
+$$
+\alpha(g^T d + f'(x, d))
+$$
+or, as $\alpha \geq 0,$
+the rest is to prove that
+$$
+g^T d + f'(x, d) \leq 0
+$$
+This term also is less or equal to zero, because 
+of the earlier derived inequalities:
+$$
+f'(x, d) \leq \min_{z \in \mathbf{dom} f }(f(z)) - 
+\max_{z \in \mathbf{dom} f}(f(z))
+$$
+and 
+$$
+f'(x, d) \geq g^t d
+$$
+so $g^T d \leq f'(x, d) \leq 0, $
+and assertion (e) is proved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -128,7 +128,7 @@ $f'(x, d) \leq g^{*T} d.$ We introduce two following sets
 
 Solution: \\
 
-$C_1$ epigraph of the convex function, therefore 
+$C_1$ is the epigraph of the convex function, therefore 
 it is nonempty and convex.
 
 $C_2$ is the nonempty set, because it have at least one point, which corresponds to $\alpha = 0,$ $y = x,$ $v = f(x).$ It is also a convex set, because 
@@ -204,4 +204,85 @@ f'(0, d) = d^T ((Ax - b)^T A + \lambda [-1, 1]_n)
 $$
 where $ [-1, 1]_n$ is a vector in $R^n$ with component values in range \\
 $-1 \leq x_i \leq 1, \; i \in {1, \dots , n}.$
+
+\section*{2.2 (4 Points)} 
+In this question, we will show that a subgradient of the function \\ 
+$h(x) = \min_{z \in C} ||x - z||_2$ is 
+$$
+g = \frac{x - z^*}{||x - z^*||_2}
+$$
+where $C$ is a compact set in $R^n,$ $x$ is a given point in $R^n,$ which does not belong to $C,$ and \\ 
+$z^* = P_C(x) := \operatorname*{arg\,min}_{z \in C}||x - z||_2$ denotes the Euclidean projection of $x$ onto
+$C$ (which exists and is unique). \\
+
+(a) (0.5 point) Use the fact that 
+$||x - z||_2 = \max_{u:||u||_2 \leq 1} u^T(x - z)$ to transform the minimization problem ]
+$h(x) = \min_{z \in C} ||x - z||_2$ into the following saddle point problem
+$$
+\min_{z \in C} \max_{u:||u||_2 \leq 1} u^T(x - z)
+$$
+\\ Solution: \\
+
+We get it by substituting expression $\max_{u:||u||_2 \leq 1} u^T(x - z)$ instead the expression $||x - z||_2.$\\
+
+(b) (2 points) Now, we will use (a simple version of) the Sion's minimax theorem, which can be stated as follows. \\
+Let $X \subseteq R^n, $ $Y \subseteq R^n, $ be compact and convex sets. Let $f$ be a real valued function on 
+$X\times Y$ such that \\
+- $f(x, \cdot) $ is continuous and concave on $Y, $ 
+$\forall x \in X.$ \\
+- $f(\cdot, y) $ is continuous and convex on $X, $ 
+$\forall y \in Y.$ \\
+
+Then, we have \\
+$\min_{x \in X} \max_{y \in Y} f(x, y) = \max_{y \in Y} \min_{x \in X}  f(x, y)$ \\ \\
+Further, there exists a (saddle) point 
+$(x^*, y^*) \in X \times Y $ such that 
+$$
+f(x*, y*) = \min_{x \in X} f(x, y^*) = 
+\max_{y \in Y} f(x*, y) = \min_{x \in X} \max_{y \in Y} f(x, y) = \max_{y \in Y} \min_{x \in X}  f(x, y)
+$$
+Apply Sion's minimax theorem to conclude that
+$$
+\min_{z \in C} \max_{u:||u||_2 \leq 1} u^T(x - z) = 
+ \max_{u:||u||_2 \leq 1} \min_{z \in C} u^T(x - z)
+$$
+Define $u^* = \frac{x - z^*}{||x - z^*||_2}.$ Show that 
+$(z^*, u^*)$ is a saddle point of the above minimax problem.
+\\
+
+Solution: \\
+$C$ is compact and convex. $u$ defined on the closed sphere $S$ of unity radius, therefore its domain is compact and convex also. The function $f(u, z) = u^T(x - z)$ is linear 
+in sense of both $f(z, \cdot)$ on $C$ and $f(\cdot, u)$ 
+on $S.$ It means that it is concave and convex in both cases. So, applying Sion's minimax theorem  we have:\\
+$$
+\min_{z \in C} \max_{u:||u||_2 \leq 1} u^T(x - z) = 
+\max_{u:||u||_2 \leq 1} \min_{z \in C} u^T(x - z)
+$$
+where ${f(z, u) = u^T(x - z)}$
+and there exist a saddle point $(z^*, u^*)$ in $C \times S$
+such that 
+$$
+f(z^*, u^*) = \min_{z \in C} f(z, u^*) = 
+\max_{u \in S} f(z^*, y) = \min_{z \in C} \max_{u \in S} f(z, u) = \max_{z \in C} \min_{u \in S}  f(z, u)
+$$
+
+define $u^* = \frac{x - z^*}{||x - z^*||_2}.$ It is evident, that $u^*$ is the solution of the problem 
+$\max_{u:||u||_2 \leq 1} u^T(x - z).$ Also, this is evident, that the point $z^*$ is the solution of the problem 
+${z^* = P_C(x) := \operatorname*{arg\,min}_{z \in C}
+	u^T(x - z)_2}.$ 
+Then, by Sion's theorem the point 
+${(z^*, u^*): \, f(z^*, u^*)} = \min_{z \ in C} f(z, u^*),$
+where ${f(z, u*) = u^{*T}(x - z)}$
+is a saddle point of the problem 
+$$
+\min_{z \in C} \max_{u \in S} u^T(x - z)_2.
+$$
+\\
+
+
+
+
+
+
+
 \end{document}

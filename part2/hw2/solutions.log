@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  6 JAN 2021 11:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  6 JAN 2021 13:44
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -397,12 +397,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 172--173
 
  []
 
-
+[3]
 Underfull \hbox (badness 10000) in paragraph at lines 174--181
 
  []
 
-[3]
+
 Underfull \hbox (badness 10000) in paragraph at lines 182--186
 
  []
@@ -433,14 +433,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 195--202
 
  []
 
-[4] (solutions.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--225
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 228--235
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--240
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 248--252
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--257
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--281
+
+ []
+
+[5] (solutions.aux)
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 6545 strings out of 479765
- 98835 string characters out of 2876174
- 408785 words of memory out of 3000000
+ 6547 strings out of 479765
+ 98851 string characters out of 2876174
+ 409785 words of memory out of 3000000
  23448 multiletter control sequences out of 15000+200000
  540951 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -452,14 +492,15 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (4 pages, 163177 bytes).
+m/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on solutions.pdf (5 pages, 182514 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 6 named destinations out of 1000 (max. 500000)
+ 89 PDF objects out of 1000 (max. 8388607)
+ 8 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

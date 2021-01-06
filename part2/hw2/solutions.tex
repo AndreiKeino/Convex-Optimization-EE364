@@ -278,19 +278,6 @@ $$
 \min_{z \in C} \max_{u \in S} u^T(x - z)_2.
 $$
 \\
-(c) (1.5 points) Using the 'max-min' representation of $h(x)$, compute a subgradient of $h$ at $x$. \\
-
-Solution: \\
-
-We have:\\
-$$
-f(x) \leq f(z^*) + g^T (x - z^*)
-$$
-So, 
-$$
-g^T (x - z^*) \geq (f(x) - f(z^*))
-$$
-\\
 
 (c) (1.5 points) Using the 'max-min' representation of $h(x)$, compute a subgradient of $h$ at $x$.
 \\
@@ -299,5 +286,18 @@ Solution:
 $$
 g = u \nabla (x - z^*) = u = \frac{x - z^*}{||x - z^*||_2}
 $$
+
+\section*{2.3 (4 points)} 
+
+For this question, you need to submit your code in addition to any description
+of your algorithm. Let $\Sigma$ be an $n \times n$ diagonal matrix with entries 
+$\sigma_1 \geq \dots \geq \sigma_n$ and $y$ a given vector 
+in $R^n.$ Consider the compact convex sets 
+$\mathcal{E} = \{z \in R^n|\; 
+||\Sigma ^{\frac{1}{2} } z||_2 \leq 1\}$
+and $B=\{z \in R^n|\; ||z-y||_{\infty \leq 1} \}.$ \\
+
+(a) (2 points) Formulate an optimization problem and propose an algorithm in order to find a point
+$x \in \mathcal{E} \cap B.$ You can assume that $\mathcal{E} \cap B$ is not empty. Your algorithm must be provably converging (although you do not need to prove it and you can simply refer to the lectures' slides).
 
 \end{document}

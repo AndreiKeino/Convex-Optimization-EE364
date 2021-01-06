@@ -168,74 +168,34 @@ $$
 {f(x) + \alpha f'(x, d) - w}
 $$
 
-(e) Prove that $\beta$ must be strictly positive. 
-Define $\tilde{a} = \frac{a}{\beta}.$ Show that 
+I don't know how to solve items (e) - (g) \\\
+
+(h) Let $A \in R^{m\times n},$ $b \in R^m,$ $\lambda > 0,$ 
+and fix a direction $d \in R^n.$ Consider the function 
+$\frac{1}{2} ||Ax - b||^2_2 + \lambda ||x||_1.$ Compute 
+$f'(0, d).$ Remark: you can either compute it
+directly by using the definition of the directional derivative, or, use the variational
+formula $f'(0, d) = \sup_{g \in \partial f(0)} g^T d.$
+\\
+
+Solution: \\ \\
+$
+\nabla ||x||_1 = sign(x)
+$\\
+$\nabla ||Ax - b||^2_2 = (\nabla (Ax - b)^T) (Ax - b) + 
+(Ax - b)^T \nabla (Ax - b) = 2(A^TAx - 2 A^T b)
+$\\ \\
+So, \\
+$
+\nabla (\frac{1}{2} ||Ax - b||^2_2 + \lambda ||x||_1) = 
+A^TAx - A^T b + \lambda sign(x)
+$
+\\ \\
+Then \\
 $$
-\tilde{a}^T (x + \alpha d) + f(x) + \alpha f'(x, d) \leq
-\tilde{a}^T z + w
+f'(0, d) = (- A^T b + \lambda [-1, 1]_n) d^T
 $$
-for all $\alpha \geq 0,$ $z \in \mathbf{dom} f$ and 
-$f(z) < w.$
 
-Proof:\\
-Let's choose $\tilde{a} = g.$ Then we have:
-$$
-g^T (x + \alpha d) + f(x) + \alpha f'(x, d) \leq
-g^T z + w
-$$
-or
-$$
-g^T (x - z) + f(x) - w + \alpha(g^T d + f'(x, d)) \leq 0
-$$
-as $f(z) < w$ we can replace $w$ with $f(z)$ without 
-a violation of inequality. We get then:
-$$
-g^T (x - z) + f(x) - f(z) + \alpha(g^T d + f'(x, d)) \leq 0
-$$
-the first three terms in equation are
-$$
-g^T (x - z) + f(x) - f(z)
-$$
-and they are less or equal to zero, because of the subgradient definition.
-the last term of the equation is
-$$
-\alpha(g^T d + f'(x, d))
-$$
-or, as $\alpha \geq 0,$
-the rest is to prove that
-$$
-g^T d + f'(x, d) \leq 0
-$$
-This term also is less or equal to zero, because 
-of the earlier derived inequalities:
-$$
-f'(x, d) \leq \min_{z \in \mathbf{dom} f }(f(z)) - 
-\max_{z \in \mathbf{dom} f}(f(z))
-$$
-and 
-$$
-f'(x, d) \geq g^t d
-$$
-so $g^T d \leq f'(x, d) \leq 0, $
-and assertion (e) is proved.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+where $ [-1, 1]_n$ is a vector in $R^n$ with component values in range \\
+$-1 \leq x_i \leq 1, \; i \in {1, \dots , n}.$
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  6 JAN 2021 10:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  6 JAN 2021 11:07
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -273,22 +273,22 @@ File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 ) (solutions.aux)
 \openout1 = `solutions.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
 
 (C:\Users\Andrei\AppData\Roaming\MiKTeX\2.9\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -310,7 +310,7 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
-Package hyperref Info: Link coloring OFF on input line 9.
+Package hyperref Info: Link coloring OFF on input line 10.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -323,102 +323,113 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count281
 )
-LaTeX Info: Redefining \ref on input line 9.
-LaTeX Info: Redefining \pageref on input line 9.
-LaTeX Info: Redefining \nameref on input line 9.
+LaTeX Info: Redefining \ref on input line 10.
+LaTeX Info: Redefining \pageref on input line 10.
+LaTeX Info: Redefining \nameref on input line 10.
  (solutions.out) (solutions.out)
 \@outlinefile=\write3
 \openout3 = `solutions.out'.
 
 
-Overfull \hbox (36.96254pt too wide) in paragraph at lines 14--14
+Overfull \hbox (36.96254pt too wide) in paragraph at lines 15--15
  \OT1/cmr/m/n/17.28 https://web.stanford.edu/class/ee364b/homework.html 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--29
+Underfull \hbox (badness 10000) in paragraph at lines 28--30
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 30--34
+Underfull \hbox (badness 10000) in paragraph at lines 31--35
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--36
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
  []
 
 [1
 
 {C:/Users/Andrei/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 64--66
+Underfull \hbox (badness 10000) in paragraph at lines 65--67
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--100
+Underfull \hbox (badness 10000) in paragraph at lines 98--101
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--103
+Underfull \hbox (badness 10000) in paragraph at lines 102--104
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 115--117
+Underfull \hbox (badness 10000) in paragraph at lines 116--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--138
+Underfull \hbox (badness 10000) in paragraph at lines 134--139
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--155
+Underfull \hbox (badness 10000) in paragraph at lines 154--156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--180
+Underfull \hbox (badness 10000) in paragraph at lines 174--181
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 181--195
+Underfull \hbox (badness 10000) in paragraph at lines 182--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--195
+Underfull \hbox (badness 10000) in paragraph at lines 182--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--195
+Underfull \hbox (badness 10000) in paragraph at lines 187--194
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--195
+Overfull \hbox (63.5799pt too wide) in paragraph at lines 187--194
+\OT1/cmr/m/n/10 see[]$\OT1/cmtt/m/n/10 https : / / math . stackexchange . com /
+ questions / 606646 / matrix-[]derivative-[]ax-[]btax-[]b$[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--202
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--202
 
  []
 
@@ -427,11 +438,11 @@ Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 6542 strings out of 479765
- 98805 string characters out of 2876174
- 408785 words of memory out of 3000000
- 23446 multiletter control sequences out of 15000+200000
- 540783 words of font info for 49 fonts, out of 3000000 for 9000
+ 6545 strings out of 479765
+ 98835 string characters out of 2876174
+ 408567 words of memory out of 3000000
+ 23448 multiletter control sequences out of 15000+200000
+ 540951 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,8n,72p,279b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
@@ -444,10 +455,11 @@ msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on solutions.pdf (4 pages, 148521 bytes).
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on solutions.pdf (4 pages, 163162 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
+ 78 PDF objects out of 1000 (max. 8388607)
  6 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

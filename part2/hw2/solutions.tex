@@ -295,9 +295,15 @@ $\sigma_1 \geq \dots \geq \sigma_n$ and $y$ a given vector
 in $R^n.$ Consider the compact convex sets 
 $\mathcal{E} = \{z \in R^n|\; 
 ||\Sigma ^{\frac{1}{2} } z||_2 \leq 1\}$
-and $B=\{z \in R^n|\; ||z-y||_{\infty \leq 1} \}.$ \\
+and $B=\{z \in R^n|\; ||z-y||_{\infty} \leq 1 \}.$ \\
 
 (a) (2 points) Formulate an optimization problem and propose an algorithm in order to find a point
-$x \in \mathcal{E} \cap B.$ You can assume that $\mathcal{E} \cap B$ is not empty. Your algorithm must be provably converging (although you do not need to prove it and you can simply refer to the lectures' slides).
+$x \in \mathcal{E} \cap B.$ You can assume that $\mathcal{E} \cap B$ is not empty. Your algorithm must be provably converging (although you do not need to prove it and you can simply refer to the lectures' slides).\\
+
+Solution:\\
+As $\Sigma$ is a diagonal matrix, 
+$||\Sigma ^{\frac{1}{2} } z||_2 = 
+||\lambda^T z||_2,$ where $\lambda \in R^n, $ and 
+$\lambda = (\sqrt{\sigma_1}, \dots, \sqrt{\sigma_n}).$ It means that $\mathcal{E}$ is an ellipse in $R^n$ with the center in the point $(0)^n$. The set $B $ is a cube in $R^n$ with edge length 2 and with the center at the point $y.$
 
 \end{document}

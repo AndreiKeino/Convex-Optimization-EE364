@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  12 JAN 2021 11:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  19 JAN 2021 12:00
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -488,6 +488,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 300--302
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 303--308
+
+ []
+
+
+Overfull \hbox (196.08444pt too wide) in paragraph at lines 320--322
+[]\OT1/cmr/m/n/10 ecludian pro-jec-tion of point to el-lipse https://www.geomet
+rictools.com/Documentation/DistancePointEllipseEllipsoid.pdf 
+ []
+
 [6] (solutions.aux)
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -513,7 +524,7 @@ ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (6 pages, 187028 bytes).
+Output written on solutions.pdf (6 pages, 187771 bytes).
 PDF statistics:
  94 PDF objects out of 1000 (max. 8388607)
  10 named destinations out of 1000 (max. 500000)

@@ -319,6 +319,8 @@ Reference to lecture slides - Finding a point in the intersection of convex sets
 
 ecludian projection of point to ellipse
 https://www.geometrictools.com/Documentation/DistancePointEllipseEllipsoid.pdf
+
+https://math.stackexchange.com/questions/1775174/distance-function-of-the-ellipse-in-mathbbrn
 \\
 
 ecludian projection of point to cube
@@ -326,5 +328,10 @@ ecludian projection of point to cube
 https://math.stackexchange.com/questions/3390029/projecting-a-point-onto-a-hypercube
 
 a version of the alternating projections algorithm
+
+An algorithm himself can be the following: \\
+
+1. Begins from the point $x^{(0)} = 0^n,$ $x^{(0)} \in \mathcal{E}, $ and then applying the alternate projection method to this point and sets $\mathcal{E}$ and $B,$ i.e.  we are calculating the $x^{(1)} = P_B(x^{(0)}),$ $x^{(2)} = P_{\mathcal{E}}(x^{(1)}),$ $x^{(3)} = P_B(x^{(2)}),$ and so on. We are checking also if the point $x^{(k)} $ is in the both sets on each step. As the both sets are closed and
+have intersection by the task, we have a guarantee we eventually will get a solution of the task.
 
 \end{document}

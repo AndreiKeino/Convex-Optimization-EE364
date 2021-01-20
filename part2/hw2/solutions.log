@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  19 JAN 2021 12:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  20 JAN 2021 11:20
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -494,9 +494,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 303--308
  []
 
 
-Overfull \hbox (196.08444pt too wide) in paragraph at lines 320--322
+Overfull \hbox (196.08444pt too wide) in paragraph at lines 320--323
 []\OT1/cmr/m/n/10 ecludian pro-jec-tion of point to el-lipse https://www.geomet
 rictools.com/Documentation/DistancePointEllipseEllipsoid.pdf 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--323
+
+ []
+
+
+Overfull \hbox (7.75075pt too wide) in paragraph at lines 326--327
+[]\OT1/cmr/m/n/10 https://math.stackexchange.com/questions/3390029/projecting-a
+-point-onto-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--331
+
  []
 
 [6] (solutions.aux)
@@ -510,7 +526,7 @@ Here is how much of TeX's memory you used:
  23448 multiletter control sequences out of 15000+200000
  540951 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,8n,72p,279b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 66i,8n,72p,430b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTe
@@ -524,7 +540,7 @@ ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (6 pages, 187771 bytes).
+Output written on solutions.pdf (6 pages, 189599 bytes).
 PDF statistics:
  94 PDF objects out of 1000 (max. 8388607)
  10 named destinations out of 1000 (max. 500000)

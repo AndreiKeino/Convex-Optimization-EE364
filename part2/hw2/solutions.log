@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  20 JAN 2021 11:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  22 JAN 2021 18:15
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -494,34 +494,56 @@ Underfull \hbox (badness 10000) in paragraph at lines 303--308
  []
 
 
-Overfull \hbox (196.08444pt too wide) in paragraph at lines 320--323
+Overfull \hbox (196.08444pt too wide) in paragraph at lines 320--322
 []\OT1/cmr/m/n/10 ecludian pro-jec-tion of point to el-lipse https://www.geomet
 rictools.com/Documentation/DistancePointEllipseEllipsoid.pdf 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 320--323
+Overfull \hbox (10.00075pt too wide) in paragraph at lines 323--325
+[]\OT1/cmr/m/n/10 https://math.stackexchange.com/questions/1775174/distance-fun
+ction-of-the-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 323--325
 
  []
 
 
-Overfull \hbox (7.75075pt too wide) in paragraph at lines 326--327
+Overfull \hbox (7.75075pt too wide) in paragraph at lines 328--329
 []\OT1/cmr/m/n/10 https://math.stackexchange.com/questions/3390029/projecting-a
 -point-onto-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 330--331
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
  []
 
-[6] (solutions.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--336
+
+ []
+
+[6]
+Overfull \hbox (36.00082pt too wide) in paragraph at lines 340--341
+[]\OT1/cmr/m/n/10 https://www.geometrictools.com/Documentation/DistancePointEll
+ipseEllipsoid.pdf 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
+
+ []
+
+[7] (solutions.aux)
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 6549 strings out of 479765
- 98867 string characters out of 2876174
+ 6550 strings out of 479765
+ 98873 string characters out of 2876174
  410785 words of memory out of 3000000
  23448 multiletter control sequences out of 15000+200000
  540951 words of font info for 50 fonts, out of 3000000 for 9000
@@ -540,9 +562,9 @@ ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (6 pages, 189599 bytes).
+Output written on solutions.pdf (7 pages, 191355 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 10 named destinations out of 1000 (max. 500000)
+ 100 PDF objects out of 1000 (max. 8388607)
+ 11 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

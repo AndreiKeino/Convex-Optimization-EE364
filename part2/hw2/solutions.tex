@@ -332,6 +332,13 @@ a version of the alternating projections algorithm
 An algorithm himself can be the following: \\
 
 1. Begins from the point $x^{(0)} = 0^n,$ $x^{(0)} \in \mathcal{E}, $ and then applying the alternate projection method to this point and sets $\mathcal{E}$ and $B,$ i.e.  we are calculating the $x^{(1)} = P_B(x^{(0)}),$ $x^{(2)} = P_{\mathcal{E}}(x^{(1)}),$ $x^{(3)} = P_B(x^{(2)}),$ and so on. We are checking also if the point $x^{(k)} $ is in the both sets on each step. As the both sets are closed and
-have intersection by the task, we have a guarantee we eventually will get a solution of the task.
+have intersection by the task, we have a guarantee we eventually will get a solution of the task. \\ 
+
+(b) (2 points) Implement your algorithm with the following data: $n = 2,$ $y = (7/4, 0),$
+$\sigma_1 = 1,$ $\sigma_1 = 0.5$ and $x = (0, 4).$ Plot the objective value of your optimization problem versus the number of iterations.
+
+https://www.geometrictools.com/Documentation/DistancePointEllipseEllipsoid.pdf \\
+
+The rectangle vertices are $\{(-1/4, 2), (1/4, -2), (15/4, 2), (15/4, -2])\}, $ the ellipse equation is $x^2 + y^2 / 2 \leq 1.$
 
 \end{document}

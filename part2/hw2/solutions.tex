@@ -6,6 +6,7 @@
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage{hyperref}
+\usepackage{mathtools}
 
 \begin{document}
 
@@ -332,13 +333,43 @@ a version of the alternating projections algorithm
 An algorithm himself can be the following: \\
 
 1. Begins from the point $x^{(0)} = 0^n,$ $x^{(0)} \in \mathcal{E}, $ and then applying the alternate projection method to this point and sets $\mathcal{E}$ and $B,$ i.e.  we are calculating the $x^{(1)} = P_B(x^{(0)}),$ $x^{(2)} = P_{\mathcal{E}}(x^{(1)}),$ $x^{(3)} = P_B(x^{(2)}),$ and so on. We are checking also if the point $x^{(k)} $ is in the both sets on each step. As the both sets are closed and
-have intersection by the task, we have a guarantee we eventually will get a solution of the task. \\ 
+have intersection by the task, we have a guarantee, that we eventually will get a solution of the task. \\ 
 
 (b) (2 points) Implement your algorithm with the following data: $n = 2,$ $y = (7/4, 0),$
 $\sigma_1 = 1,$ $\sigma_1 = 0.5$ and $x = (0, 4).$ Plot the objective value of your optimization problem versus the number of iterations.
 
 https://www.geometrictools.com/Documentation/DistancePointEllipseEllipsoid.pdf \\
 
-The rectangle vertices are $\{(-1/4, 2), (1/4, -2), (15/4, 2), (15/4, -2])\}, $ the ellipse equation is $x^2 + y^2 / 2 \leq 1.$
+The rectangle vertices are $\{(-1/4, 2), (1/4, -2), (15/4, 2), (15/4, -2])\}, $ the ellipse equation is $x^2 + y^2 / 2 \leq 1.$\\
+
+Coordinates of the point found by the algorithm are 
+$(0,  1.4142)$, the code is in the file \verb!2_3_b_solution.py!.
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{2_3_b_fig.jpeg}
+	\caption{Euclidean distance between the current point and the distant set.}
+	\label{fig:2_3_b_fig}
+\end{figure}
+
+\section*{2.4 (4 points)} 
+Consider the optimization problem
+
+\begin{align*}
+	minimize & && 
+	\bigg \{ f(x_1, \dots, x_j) \coloneqq
+	\frac{1}{2} \lVert b - \sum_{j = 1}^{J} 
+	A_j x_j \rVert_2^2 
+	+ \lambda \cdot  \lVert \sum_{j = 1}^{J} 
+	x_j^2 \rVert_2
+	\bigg \},
+	\\
+\end{align*}
+with variable $x_1, \dots, x_J \in R^n, $ and 
+problem data $A_1, \dots, A_J \in R^{m \times n}, $ 
+$b \in R^m,$ and $\lambda > 0.$ We will apply the subgradient method. \\
+
+(a) (2 points) Show that the subgradient method with Polyak's step length updates the current point to a point at which the first order (linear) approximation has
+value $f^*$ (optimal value).
+
 
 \end{document}

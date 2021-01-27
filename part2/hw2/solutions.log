@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  22 JAN 2021 18:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  27 JAN 2021 11:28
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -265,43 +265,78 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@count@id=\count272
 \enitdp@description=\count273
 )
+(C:\Users\Andrei\AppData\Roaming\MiKTeX\2.9\tex/latex/mathtools\mathtools.sty
+Package: mathtools 2020/03/24 v1.24 mathematical typesetting tools
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/tools\calc.sty"
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count274
+\calc@Bcount=\count275
+\calc@Adimen=\dimen155
+\calc@Bdimen=\dimen156
+\calc@Askip=\skip54
+\calc@Bskip=\skip55
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count276
+\calc@Cskip=\skip56
+)
+(C:\Users\Andrei\AppData\Roaming\MiKTeX\2.9\tex/latex/mathtools\mhsetup.sty
+Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 130.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 130.
+\g_MT_multlinerow_int=\count277
+\l_MT_multwidth_dim=\dimen157
+\origjot=\skip57
+\l_MT_shortvdotswithinadjustabove_dim=\dimen158
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen159
+\l_MT_above_intertext_sep=\dimen160
+\l_MT_below_intertext_sep=\dimen161
+\l_MT_above_shortintertext_sep=\dimen162
+\l_MT_below_shortintertext_sep=\dimen163
+\xmathstrut@box=\box52
+\xmathstrut@dim=\dimen164
+)
 (C:\Users\Andrei\AppData\Roaming\MiKTeX\2.9\tex/latex/l3backend\l3backend-pdfte
 x.def
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count274
-\l__pdf_internal_box=\box52
+\l__kernel_color_stack_int=\count278
+\l__pdf_internal_box=\box53
 ) (solutions.aux)
 \openout1 = `solutions.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
 
 (C:\Users\Andrei\AppData\Roaming\MiKTeX\2.9\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count275
-\scratchdimen=\dimen155
-\scratchbox=\box53
-\nofMPsegments=\count276
-\nofMParguments=\count277
+\scratchcounter=\count279
+\scratchdimen=\dimen165
+\scratchbox=\box54
+\nofMPsegments=\count280
+\nofMParguments=\count281
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count278
-\MPscratchDim=\dimen156
-\MPnumerator=\count279
-\makeMPintoPDFobject=\count280
+\MPscratchCnt=\count282
+\MPscratchDim=\dimen166
+\MPnumerator=\count283
+\makeMPintoPDFobject=\count284
 \everyMPtoPDFconversion=\toks25
 )
 (C:\Users\Andrei\AppData\Roaming\MiKTeX\2.9\tex/latex/epstopdf-pkg\epstopdf-bas
@@ -310,7 +345,7 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
-Package hyperref Info: Link coloring OFF on input line 10.
+Package hyperref Info: Link coloring OFF on input line 11.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -321,250 +356,271 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 string.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count281
+\c@section@level=\count285
 )
-LaTeX Info: Redefining \ref on input line 10.
-LaTeX Info: Redefining \pageref on input line 10.
-LaTeX Info: Redefining \nameref on input line 10.
+LaTeX Info: Redefining \ref on input line 11.
+LaTeX Info: Redefining \pageref on input line 11.
+LaTeX Info: Redefining \nameref on input line 11.
  (solutions.out) (solutions.out)
 \@outlinefile=\write3
 \openout3 = `solutions.out'.
 
 
-Overfull \hbox (36.96254pt too wide) in paragraph at lines 15--15
+Overfull \hbox (36.96254pt too wide) in paragraph at lines 16--16
  \OT1/cmr/m/n/17.28 https://web.stanford.edu/class/ee364b/homework.html 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 28--30
+Underfull \hbox (badness 10000) in paragraph at lines 29--31
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--35
+Underfull \hbox (badness 10000) in paragraph at lines 32--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--37
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
 
 [1
 
 {C:/Users/Andrei/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 65--67
+Underfull \hbox (badness 10000) in paragraph at lines 66--68
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--101
+Underfull \hbox (badness 10000) in paragraph at lines 99--102
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--104
+Underfull \hbox (badness 10000) in paragraph at lines 103--105
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 116--118
+Underfull \hbox (badness 10000) in paragraph at lines 117--119
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--130
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--139
+Underfull \hbox (badness 10000) in paragraph at lines 135--140
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--156
+Underfull \hbox (badness 10000) in paragraph at lines 155--157
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 174--181
+Underfull \hbox (badness 10000) in paragraph at lines 175--182
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--186
+Underfull \hbox (badness 10000) in paragraph at lines 183--187
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--186
+Underfull \hbox (badness 10000) in paragraph at lines 183--187
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--194
+Underfull \hbox (badness 10000) in paragraph at lines 188--195
 
  []
 
 
-Overfull \hbox (63.5799pt too wide) in paragraph at lines 187--194
+Overfull \hbox (63.5799pt too wide) in paragraph at lines 188--195
 \OT1/cmr/m/n/10 see[]$\OT1/cmtt/m/n/10 https : / / math . stackexchange . com /
  questions / 606646 / matrix-[]derivative-[]ax-[]btax-[]b$[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--202
+Underfull \hbox (badness 10000) in paragraph at lines 196--203
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--202
+Underfull \hbox (badness 10000) in paragraph at lines 196--203
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--217
+Underfull \hbox (badness 10000) in paragraph at lines 214--218
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--225
+Underfull \hbox (badness 10000) in paragraph at lines 224--226
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--227
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 228--235
+Underfull \hbox (badness 10000) in paragraph at lines 229--236
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--240
+Underfull \hbox (badness 10000) in paragraph at lines 237--241
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--252
+Underfull \hbox (badness 10000) in paragraph at lines 249--253
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--257
+Underfull \hbox (badness 10000) in paragraph at lines 254--258
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--281
+Underfull \hbox (badness 10000) in paragraph at lines 280--282
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--284
+Underfull \hbox (badness 10000) in paragraph at lines 283--285
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 292--299
+Underfull \hbox (badness 10000) in paragraph at lines 293--300
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 300--302
+Underfull \hbox (badness 10000) in paragraph at lines 301--303
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--308
+Underfull \hbox (badness 10000) in paragraph at lines 304--309
 
  []
 
 
-Overfull \hbox (196.08444pt too wide) in paragraph at lines 320--322
+Overfull \hbox (196.08444pt too wide) in paragraph at lines 321--323
 []\OT1/cmr/m/n/10 ecludian pro-jec-tion of point to el-lipse https://www.geomet
 rictools.com/Documentation/DistancePointEllipseEllipsoid.pdf 
  []
 
 
-Overfull \hbox (10.00075pt too wide) in paragraph at lines 323--325
+Overfull \hbox (10.00075pt too wide) in paragraph at lines 324--326
 []\OT1/cmr/m/n/10 https://math.stackexchange.com/questions/1775174/distance-fun
 ction-of-the-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--325
+Underfull \hbox (badness 10000) in paragraph at lines 324--326
 
  []
 
 
-Overfull \hbox (7.75075pt too wide) in paragraph at lines 328--329
+Overfull \hbox (7.75075pt too wide) in paragraph at lines 329--330
 []\OT1/cmr/m/n/10 https://math.stackexchange.com/questions/3390029/projecting-a
 -point-onto-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--333
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--336
+Underfull \hbox (badness 10000) in paragraph at lines 335--337
 
  []
 
 [6]
-Overfull \hbox (36.00082pt too wide) in paragraph at lines 340--341
+Overfull \hbox (36.00082pt too wide) in paragraph at lines 341--342
 []\OT1/cmr/m/n/10 https://www.geometrictools.com/Documentation/DistancePointEll
 ipseEllipsoid.pdf 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 340--341
+Underfull \hbox (badness 10000) in paragraph at lines 341--342
 
  []
 
-[7] (solutions.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
+
+ []
+
+<2_3_b_fig.jpeg, id=47, 462.528pt x 346.896pt>
+File: 2_3_b_fig.jpeg Graphic file (type jpg)
+<use 2_3_b_fig.jpeg>
+Package pdftex.def Info: 2_3_b_fig.jpeg  used on input line 349.
+(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 366--370
+
+ []
+
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.370 
+       <./2_3_b_fig.jpeg>] [8] (solutions.aux)
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 6550 strings out of 479765
- 98873 string characters out of 2876174
- 410785 words of memory out of 3000000
- 23448 multiletter control sequences out of 15000+200000
+ 7128 strings out of 479765
+ 109158 string characters out of 2876174
+ 424126 words of memory out of 3000000
+ 24010 multiletter control sequences out of 15000+200000
  540951 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,8n,72p,430b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 66i,12n,72p,430b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (7 pages, 191355 bytes).
+X 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmtt10.pfb>
+Output written on solutions.pdf (8 pages, 242586 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
- 11 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 112 PDF objects out of 1000 (max. 8388607)
+ 14 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

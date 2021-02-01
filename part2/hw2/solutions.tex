@@ -369,7 +369,36 @@ problem data $A_1, \dots, A_J \in R^{m \times n}, $
 $b \in R^m,$ and $\lambda > 0.$ We will apply the subgradient method. \\
 
 (a) (2 points) Show that the subgradient method with Polyak's step length updates the current point to a point at which the first order (linear) approximation has
-value $f^*$ (optimal value).
+value $f^*$ (optimal value).\\
 
+Solution\\
 
+% C:\! Convex_Optimization\ConvexOptimizationII\materials\lsocoee364b/02-subgrad_method_notes.pdf p. 9
+As noted in 02-subgrad \textunderscore method \textunderscore notes.pdf p. 9, the Polyak step length determined as
+$$
+\alpha_k = \frac{f(x^{(k)} - f*)}{\lVert g^{(k)}\rVert_2^2}
+$$
+
+where $g$ is the subgradient, $f^*$ is the optimal value.
+This is the consequence of the fact that
+$$
+f(x^{(k)} - \alpha g^{(k)}) \approx 
+f(x^{(k)}) + 
+g^{(k) T} (x^{(k)} - \alpha g^{(k)} - x^{(k)}) = 
+f(x^{(k)}) - \alpha g^{(k) T} g^{(k)}
+$$
+
+Replacing the lefthand side
+with $f^*$ and solving for $\alpha$ gives the step length above.
+
+$$
+\nabla 
+\frac{1}{2} \lVert b - \sum_{j = 1}^{J} 
+A_j x_j \rVert_2^2 
++ \lambda \cdot  \lVert \sum_{j = 1}^{J} 
+x_j^2 \rVert_2
+ = (\sum_{j = 1}^{J} A_j^T) ( b - \sum_{j = 1}^{J} 
+A_j x_j) + 2 \lambda (\sum_{j = 1}^{J} x_j)
+$$
+%https://www.reddit.com/r/askmath/comments/b5uutp/steps_for_how_derivativegradient_of_axbaxb_2at_axb/
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  27 JAN 2021 11:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  1 FEB 2021 16:49
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -592,15 +592,25 @@ has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
 l.370 
-       <./2_3_b_fig.jpeg>] [8] (solutions.aux)
+       <./2_3_b_fig.jpeg>]
+Underfull \hbox (badness 10000) in paragraph at lines 371--373
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
+
+ []
+
+[8] (solutions.aux)
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 7128 strings out of 479765
- 109158 string characters out of 2876174
+ 7129 strings out of 479765
+ 109176 string characters out of 2876174
  424126 words of memory out of 3000000
- 24010 multiletter control sequences out of 15000+200000
+ 24011 multiletter control sequences out of 15000+200000
  540951 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,12n,72p,430b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -618,7 +628,7 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (8 pages, 242586 bytes).
+Output written on solutions.pdf (8 pages, 243927 bytes).
 PDF statistics:
  112 PDF objects out of 1000 (max. 8388607)
  14 named destinations out of 1000 (max. 500000)

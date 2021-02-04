@@ -391,14 +391,28 @@ $$
 Replacing the lefthand side
 with $f^*$ and solving for $\alpha$ gives the step length above.
 
-$$
-\nabla 
+\begin{align*}
 \frac{1}{2} \lVert b - \sum_{j = 1}^{J} 
-A_j x_j \rVert_2^2 
-+ \lambda \cdot  \lVert \sum_{j = 1}^{J} 
-x_j^2 \rVert_2
- = (\sum_{j = 1}^{J} A_j^T) ( b - \sum_{j = 1}^{J} 
-A_j x_j) + 2 \lambda (\sum_{j = 1}^{J} x_j)
+A_j x_j \rVert_2^2 = & 
+(b - \sum_{j = 1}^{J} A_j x_j)^T (b - \sum_{j = 1}^{J} A_j x_j) \\ = &  
+b^T b - 2 b^T \sum_{j = 1}^{J} A_j x_j + \sum_{j = 1}^{J} x_j^T A_j^T \sum_{j = 1}^{J} A_j x_j
+\end{align*}
+
+Further we have
+
 $$
+\nabla_k b^Tb = 0
+$$
+
+$$
+\nabla_k b^T \sum_{j = 1}^{J} A_j x_j = 
+b^T A_k
+$$
+
+$$
+\nabla_k \sum_{j = 1}^{J} x_j^T A_j^T \sum_{j = 1}^{J} A_j x_j 
+= 2 A_k^T \sum_{j = 1}^{J} A_j x_j 
+$$
+
 %https://www.reddit.com/r/askmath/comments/b5uutp/steps_for_how_derivativegradient_of_axbaxb_2at_axb/
 \end{document}

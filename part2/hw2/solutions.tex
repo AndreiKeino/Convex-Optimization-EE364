@@ -359,8 +359,8 @@ Consider the optimization problem
 	\bigg \{ f(x_1, \dots, x_j) \coloneqq
 	\frac{1}{2} \lVert b - \sum_{j = 1}^{J} 
 	A_j x_j \rVert_2^2 
-	+ \lambda \cdot  \lVert \sum_{j = 1}^{J} 
-	x_j^2 \rVert_2
+	+ \lambda \cdot   \sum_{j = 1}^{J} 
+	\lVert x_j \rVert_2
 	\bigg \},
 	\\
 \end{align*}
@@ -406,7 +406,7 @@ $$
 
 $$
 \nabla_k b^T \sum_{j = 1}^{J} A_j x_j = 
-b^T A_k
+b^T A_k = A_k^T b
 $$
 
 $$
@@ -415,4 +415,16 @@ $$
 $$
 
 %https://www.reddit.com/r/askmath/comments/b5uutp/steps_for_how_derivativegradient_of_axbaxb_2at_axb/
+$$
+\nabla_k  \sum_{j = 1}^{J} \lVert x_j \rVert_2 = \frac{x_k} {\lVert x_k \rVert_2}
+$$
+i.e gradient by $x_k$ of all the value in 
+$\bigg \{ \dots \bigg \}$ is
+
+$$
+\nabla_k \bigg \{ \dots \bigg \} = b^T A_k + 
+A_k^T \sum_{j = 1}^{J} A_j x_j  + 
+\lambda \frac{x_k} {\lVert x_k \rVert_2}
+$$
+
 \end{document}

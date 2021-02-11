@@ -22,20 +22,18 @@ for k = 2:J
     AA = horzcat(AA, A(:, :, k));
     xx = vertcat(xx, x(:, k));
 end
-% now AA * x will be equal to sum_j(A(:, :, j) * x(:, j))
 
-b = AA * xx;
+b = xx;
+A = AA;
+% now A * x will be equal to sum_j(A(:, :, j) * x(:, j))
 
 cvx_begin
     variable x_min(n * J)
-    y_min = reshape(x_min, [n, J]);
-    a1 = norm(y_min(:, 1), 2);
-    for k = 2:J
-        a1 = a1 + norm(y_min(:, k), 2);
-    end   
-    minimize(0.5 * pow_pos(norm(b - AA * x_min, 2), 2) + lambda * a1);    
+ minimize(0.5 * pow_pos(b - A * x_min)  + lambda * sum((sum((reshape(x_min, [n, J])).^2, 1)).^(1/2)))
+%  y = reshape(x_min, [n, J])
+%  y1 = y.^2
+%  y2 = sum(y1, 1)
+%     
 cvx_end
-
-cvx_optval
 
 

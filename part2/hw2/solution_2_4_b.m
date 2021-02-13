@@ -36,6 +36,22 @@ cvx_begin
     minimize(0.5 * pow_pos(norm(b - AA * x_min, 2), 2) + lambda * a1);    
 cvx_end
 
-cvx_optval
+f_star = cvx_optval
+
+% calculation using Polyak step length
+f = [+Inf]; fbest = [+Inf];
+
+MAX_ITERS = 6;
+
+k = 1;
+
+while k < MAX_ITERS 
+    % subgradient calculation
+    
+    
+    k = k + 1;
+end
+
+
 
 

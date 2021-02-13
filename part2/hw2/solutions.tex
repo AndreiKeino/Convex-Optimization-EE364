@@ -368,16 +368,16 @@ with variable $x_1, \dots, x_J \in R^n, $ and
 problem data $A_1, \dots, A_J \in R^{m \times n}, $ 
 $b \in R^m,$ and $\lambda > 0.$ We will apply the subgradient method. \\
 
-(a) (2 points) Show that the subgradient method with Polyak's step length updates the current point to a point at which the first order (linear) approximation has
+\textbf{(a) (2 points)} Show that the subgradient method with Polyak's step length updates the current point to a point at which the first order (linear) approximation has
 value $f^*$ (optimal value).\\
 
-Solution\\
+\textbf{Solution}\\
 
 % C:\! Convex_Optimization\ConvexOptimizationII\materials\lsocoee364b/02-subgrad_method_notes.pdf p. 9
 As noted in 02-subgrad \textunderscore method \textunderscore notes.pdf p. 9, the Polyak step length determined as
-$$
-\alpha_k = \frac{f(x^{(k)} - f*)}{\lVert g^{(k)}\rVert_2^2}
-$$
+\begin{equation}\label{eq:Polyak1}
+\alpha_k = \frac{f(x^{(k)}) - f^*}{\lVert g^{(k)}\rVert_2^2}
+\end{equation}
 
 where $g$ is the subgradient, $f^*$ is the optimal value.
 This is the consequence of the fact that
@@ -389,7 +389,95 @@ f(x^{(k)}) - \alpha g^{(k) T} g^{(k)}
 $$
 
 Replacing the lefthand side
-with $f^*$ and solving for $\alpha$ gives the step length above.
+with $f^*$ and solving for $\alpha$ gives the step length above. \\
+
+\textbf{Proof:} \\
+
+\textbf{Assumptions:} \\
+
+ - We assume that there is a minimizer of $f,$ say $x^*.$ \\
+ 
+- We will assume that the norm of the subgradients is bounded, i.e., there is a $G$ such that
+$ \lVert g^{(k)}\rVert _2 \leq G$ for all k. \\
+
+- We’ll also assume that a number $R$ is known that satisfies
+$R \geq \lVert x^{(1)} - x^* \rVert_2.$ \\
+
+We have:\\
+\begin{align*}
+	\lVert x^{(k+1)} - x^* \rVert_2^2 & = 
+	\lVert x^{(k)} - \alpha_k g^{(k)} - x^* \rVert_2^2 \\ &=  
+	\lVert x^{(k)}  - x^* \rVert_2^2 - 
+	2 \alpha_k g^{(k)} (x^{(k)}  - x^*) + 
+	\alpha_k^2 \lVert g^{(k)} \rVert_2^2
+	\\ & \leq \lVert x^{(k)}  - x^* \rVert_2^2 - 
+	2 \alpha_k (f(x^{(k)})  - f^*) + 
+	\alpha_k^2 \lVert g^{(k)} \rVert_2^2\\
+\end{align*}
+
+where in the third line we used the definition of subgradient: \\ $f(x^*) \geq f(x^{(k)}) + g^{(k)T}(x^* - x^{(k)}).$ \\
+Applying the equation above recursively we'll get:\\
+$\lVert x^{(k+1)} - x^* \rVert_2^2 \leq 
+\lVert x^{(1)}  - x^* \rVert_2^2 - 
+2 \sum_{i = 1}^k \alpha_i (f(x^{(i)})  - f^*) + 
+\sum_{i = 1}^k \alpha_i^2 \lVert g^{(i)} \rVert_2^2$ \\
+
+Using $\lVert x^{(i+1)} - x^* \rVert_2^2 \geq 0$ and 
+$R \geq \lVert x^{(1)} - x^* \rVert_2$ we have \\
+
+\begin{equation}\label{eq:main1}
+2 \sum_{i = 1}^k \alpha_i (f(x^{(i)})  - f^*) \leq 
+R^2 + 
+\sum_{i = 1}^k \alpha_i^2 \lVert g^{(i)} \rVert_2^2
+\end{equation}
+
+Substituting the step size \ref{eq:Polyak1} in \ref{eq:main1} we get:\\
+
+\begin{equation*}
+	2 \sum_{i = 1}^k (f(x^{(i)})  - f^*)^2 
+	/ \lVert g^{(i)} \rVert_2^2 \leq 
+	R^2 + 
+	 \sum_{i = 1}^k (f(x^{(i)})  - f^*)^2 
+	/ \lVert g^{(i)} \rVert_2^2 
+\end{equation*}
+or 
+
+\begin{equation*}
+\sum_{i = 1}^k (f(x^{(i)})  - f^*)^2 
+/ \lVert g^{(i)} \rVert_2^2 \leq 
+	R^2
+\end{equation*}
+
+as, by the assumption 2 we have 
+$ \lVert g^{(k)}\rVert _2 \leq G$, so:\\
+
+\begin{equation*}
+	\sum_{i = 1}^k (f(x^{(i)})  - f^*)^2 
+	 \leq G^2 R^2
+\end{equation*}
+
+As $\sum_{i = 1}^k (f(x^{(i)})  - f^*)^2  \leq 
+k (f_{best}^{(k)} - f^*)^2$ we have:
+
+\begin{equation*}
+(f_{best}^{(k)} - f^*)^2
+\leq \frac{G^2 R^2}{k}
+\end{equation*}
+This means that 
+$(f_{best}^{(k)} - f^*) \rightarrow 0$ as $k \rightarrow \infty,$ and the number of steps needed before we can guarantee suboptimality $\epsilon$ is 
+$$\frac{G^2 R^2}{\epsilon ^2}.$$
+
+\textbf{(b) (2 points)}
+
+Let $J = 15,$ $n = 10,$ $m = 200$ and $\lambda = 1.$ Generate random matrices
+$A_1, \dots , A_J \in R^{m\times n}$ with independent Gaussian entries with mean $ 0$ and variance
+$1/m$, and, random vectors $x_1, \dots,  x_J \in 2 R^n$ with independent Gaussian with mean
+$0$ and variance $1/n$, then set 
+$b = \sum_{j = 1}^{J} A_j x_j.$
+Plot convergence in terms of the
+objective $f(x_1^{(k)}, \dots x_1^{(J)}).$ 
+Try different step length schedules, including Polyak's
+step length.
 
 \begin{align*}
 \frac{1}{2} \lVert b - \sum_{j = 1}^{J} 

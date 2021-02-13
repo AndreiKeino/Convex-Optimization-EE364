@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  5 FEB 2021 15:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  13 FEB 2021 11:57
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -602,15 +602,70 @@ Underfull \hbox (badness 10000) in paragraph at lines 374--375
 
  []
 
-[8] (solutions.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 391--393
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 396--397
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--399
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 400--402
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 403--405
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 406--407
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 418--424
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 425--427
+
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 434--435
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 451--453
+
+ []
+
+[9] [10] (solutions.aux)
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 7129 strings out of 479765
- 109176 string characters out of 2876174
- 424126 words of memory out of 3000000
- 24011 multiletter control sequences out of 15000+200000
+ 7135 strings out of 479765
+ 109235 string characters out of 2876174
+ 424208 words of memory out of 3000000
+ 24013 multiletter control sequences out of 15000+200000
  540951 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,12n,72p,430b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -628,9 +683,9 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (8 pages, 244720 bytes).
+Output written on solutions.pdf (10 pages, 252422 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 14 named destinations out of 1000 (max. 500000)
+ 124 PDF objects out of 1000 (max. 8388607)
+ 18 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

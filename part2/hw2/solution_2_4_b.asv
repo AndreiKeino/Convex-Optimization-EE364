@@ -72,7 +72,7 @@ while p < MAX_ITERS
   f(end+1) = fval;
   fbest(end+1) = min( fval, fbest(end) );
     
-    % gradient calculation
+    % subgradient calculation
     g = zeros([n * J, 1]);   
     for s = 1:J 
         first = 1 + (s - 1) * n;
@@ -85,14 +85,9 @@ while p < MAX_ITERS
             x_j = x(firstJ:lastJ);
             ss = ss + A(:, :, r) * x_j;
         end
-        
         x_k = x(first:last);
         g_k = A(:, :, s)' * (- b + ss) + lambda * (x_k / norm(x_k));
-        fprintf('s = '); s
-        fprintf('ss = '); ss
-        fprintf('g_k = '); g_k
-
-
+        frintf
         g(first:last) = g_k;
     end
     

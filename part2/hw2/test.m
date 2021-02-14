@@ -26,26 +26,24 @@ x = vertcat(x1, x2)
 sprintf('A * x = ')
 A * x
 lambda = 1
-cvx_begin
-    variable x_min(3, 2)
-    y = reshape(x, [3, 2])
-    
-    y1 = x.^2
-    y2 = sum(y1, 1)
-    % y3 = y2.^(1/2) % (Consider POW_P, POW_POS, or POW_ABS instead.)
-    % y3 = pow_p(y2, (1/2)) % (Consider POW_P, POW_POS, or POW_ABS instead.)
-    % y3 = pow_pos(y2, (1/2)) % (Consider POW_P, POW_POS, or POW_ABS instead.)
-    % y3 = pow_abs(y2, 0.5) % (Consider POW_P, POW_POS, or POW_ABS instead.)
-    y3 = sqrt(y2)
-    y4 = sum(y3)
-    z = sum((sum((reshape(x, [3, 2])).^2, 1)).^(1/2))
-    z = sum((sum((reshape(x, [3, 2])).^2, 1)).^(1/2))
-    % t = y
-    a1 = norm(x_min(:, 1) - 1, 2)
-    for k = 1:2
-        a1 = a1 + norm(x_min(:, 2) - k, 2)
-    end
-    
-    minimize(lambda * a)
-cvx_end
+
+J = 15;
+n = 10;
+m = 200;
+lambda = 1;
+
+A = sqrt(1 / m) * randn([m, n, J]);
+x = sqrt(1 / n) * randn([n, J]);
+fprintf('size A = '); size(A)
+fprintf('size x = '); size(x)
+
+AA = A(:, :, 1);
+xx = x(:, 1);
+for k = 2:J
+    AA = horzcat(AA, A(:, :, k));
+    xx = vertcat(xx, x(:, k));
+end
+% now AA * x will be equal to sum_j(A(:, :, j) * x(:, j))
+
+b = AA * xx;
 

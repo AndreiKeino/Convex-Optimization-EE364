@@ -480,7 +480,7 @@ Try different step length schedules, including Polyak's
 step length.
 
 \begin{align*}
-\frac{1}{2} \lVert b - \sum_{j = 1}^{J} 
+\lVert b - \sum_{j = 1}^{J} 
 A_j x_j \rVert_2^2 = & 
 (b - \sum_{j = 1}^{J} A_j x_j)^T (b - \sum_{j = 1}^{J} A_j x_j) \\ = &  
 b^T b - 2 b^T \sum_{j = 1}^{J} A_j x_j + \sum_{j = 1}^{J} x_j^T A_j^T \sum_{j = 1}^{J} A_j x_j
@@ -510,7 +510,7 @@ i.e gradient by $x_k$ of all the value in
 $\bigg \{ \dots \bigg \}$ is
 
 $$
-\nabla_k \bigg \{ \dots \bigg \} = b^T A_k + 
+\nabla_k \bigg \{ \dots \bigg \} = - A_k^T b + 
 A_k^T \sum_{j = 1}^{J} A_j x_j  + 
 \lambda \frac{x_k} {\lVert x_k \rVert_2}
 $$

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  14 FEB 2021 12:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  14 FEB 2021 19:23
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -657,15 +657,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 451--453
 
  []
 
-[9] [10] (solutions.aux)
+[9]
+<2_4_2.jpg, id=68, 562.1pt x 421.575pt>
+File: 2_4_2.jpg Graphic file (type jpg)
+<use 2_4_2.jpg>
+Package pdftex.def Info: 2_4_2.jpg  used on input line 525.
+(pdftex.def)             Requested size: 345.0pt x 258.74924pt.
+ [10pdfTeX warning (ext4): destination with the same identifier (name{figure.2}
+) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.530 \end{document}
+                     <./2_4_2.jpg>] (solutions.aux)
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 7135 strings out of 479765
- 109235 string characters out of 2876174
- 424208 words of memory out of 3000000
- 24013 multiletter control sequences out of 15000+200000
+ 7144 strings out of 479765
+ 109331 string characters out of 2876174
+ 424269 words of memory out of 3000000
+ 24019 multiletter control sequences out of 15000+200000
  540951 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,12n,72p,430b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -683,9 +694,9 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (10 pages, 252365 bytes).
+Output written on solutions.pdf (10 pages, 273912 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
- 18 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 127 PDF objects out of 1000 (max. 8388607)
+ 19 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

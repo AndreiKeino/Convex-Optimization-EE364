@@ -7,9 +7,9 @@ n = 10;
 m = 200;
 
 % tests
-J = 5;
+J = 4;
 n = 2;
-m = 4;
+m = 3;
 
 lambda = 1;
 
@@ -45,15 +45,19 @@ f_star = cvx_optval;
 % solution variables
 x_star = x_min;
 
-% calculation using Polyak step length
-f = [+Inf]; fbest = [+Inf];
 
-MAX_ITERS = 1;
 % initial value of x
-x1 = zeros([n * J, 1]);
+epsilon = 1e-12 * ones([n * J, 1]);
+x1 = zeros([n * J, 1]) + epsilon;
+epsilon2 = 1e-12 * ones([n, 1])
 
+% *****************************************************
+% calculation using Polyak step length
+% *****************************************************
+f = [+Inf]; fbest = [+Inf];
 x = x1;
 p = 0;
+MAX_ITERS = 36; 
 
 while p < MAX_ITERS 
   fprintf('p = ')
@@ -63,11 +67,11 @@ while p < MAX_ITERS
   for s = 1:J 
     first = 1 + (s - 1) * n;
     last = first + n - 1;
-    fprintf('size(x(first:last)) = ')
-    size(x(first:last))
+    % fprintf('size(x(first:last)) = ')
+    % size(x(first:last))
     fval = fval + norm(x(first:last));
   end
-  fprintf('fval = ')
+  % fprintf('fval = ')
   fval
   f(end+1) = fval;
   fbest(end+1) = min( fval, fbest(end) );
@@ -85,27 +89,163 @@ while p < MAX_ITERS
             x_j = x(firstJ:lastJ);
             ss = ss + A(:, :, r) * x_j;
         end
-        
+        % ss
         x_k = x(first:last);
-        g_k = A(:, :, s)' * (- b + ss) + lambda * (x_k / norm(x_k));
-        fprintf('s = '); s
-        fprintf('ss = '); ss
-        fprintf('g_k = '); g_k
-
-
+        % x_k
+        g_k = A(:, :, s)' * (- b + ss) + lambda * ((x_k + epsilon2) ./ norm(x_k + epsilon2));
+        % fprintf('s = '); s
+        % fprintf('ss = '); ss
+        % fprintf('g_k = '); g_k
         g(first:last) = g_k;
     end
     
-    fprintf('g = '); g
-    fprintf('size(g) = '); size(g)
+    % fprintf('g = '); g
+    % fprintf('size(g) = '); size(g)
     
     % calculate the Polyak step
-    alpha = (f_star - fval) / (norm(g))^2;
+    alpha = (fval - f_star) / (norm(g))^2;
     % update the x 
     x = x - alpha * g;
     p = p + 1;
+    x
 end
 
+conv_polyak = fbest - f_star
 
+% **************************************************
+% calculation using contant step length
+% **************************************************
+f = [+Inf]; fbest = [+Inf];
+x = x1;
+p = 0;
+MAX_ITERS = 36; 
+step = 1e-2
 
+while p < MAX_ITERS 
+  fprintf('p = ')
+  p
+  % objective values
+  fval = 0.5 * norm(b - AA * x)^2;
+  for s = 1:J 
+    first = 1 + (s - 1) * n;
+    last = first + n - 1;
+    % fprintf('size(x(first:last)) = ')
+    % size(x(first:last))
+    fval = fval + norm(x(first:last));
+  end
+  % fprintf('fval = ')
+  fval
+  f(end+1) = fval;
+  fbest(end+1) = min( fval, fbest(end) );
+    
+    % gradient calculation
+    g = zeros([n * J, 1]);   
+    for s = 1:J 
+        first = 1 + (s - 1) * n;
+        last = first + n - 1;
+        % calculate \sum(A_j * x_J)
+        ss = zeros([m, 1]); 
+        for r = 1:J
+            firstJ = 1 + (r - 1) * n;
+            lastJ = firstJ + n - 1;
+            x_j = x(firstJ:lastJ);
+            ss = ss + A(:, :, r) * x_j;
+        end
+        % ss
+        x_k = x(first:last);
+        % x_k
+        g_k = A(:, :, s)' * (- b + ss) + lambda * ((x_k + epsilon2) ./ norm(x_k + epsilon2));
+        % fprintf('s = '); s
+        % fprintf('ss = '); ss
+        % fprintf('g_k = '); g_k
+        g(first:last) = g_k;
+    end
+    
+    % fprintf('g = '); g
+    % fprintf('size(g) = '); size(g)
+    
+    % calculate the Polyak step
+    % alpha = (fval - f_star) / (norm(g))^2;
+    alpha = step
+    % update the x 
+    x = x - alpha * g;
+    p = p + 1;
+    x
+end
+
+conv_const = fbest - f_star
+
+% **************************************************
+% calculation using square summable but not summable step length
+% **************************************************
+f = [+Inf]; fbest = [+Inf];
+x = x1;
+p = 0;
+MAX_ITERS = 36; 
+step = 2
+
+while p < MAX_ITERS 
+  fprintf('p = ')
+  p
+  % objective values
+  fval = 0.5 * norm(b - AA * x)^2;
+  for s = 1:J 
+    first = 1 + (s - 1) * n;
+    last = first + n - 1;
+    % fprintf('size(x(first:last)) = ')
+    % size(x(first:last))
+    fval = fval + norm(x(first:last));
+  end
+  % fprintf('fval = ')
+  fval
+  f(end+1) = fval;
+  fbest(end+1) = min( fval, fbest(end) );
+    
+    % gradient calculation
+    g = zeros([n * J, 1]);   
+    for s = 1:J 
+        first = 1 + (s - 1) * n;
+        last = first + n - 1;
+        % calculate \sum(A_j * x_J)
+        ss = zeros([m, 1]); 
+        for r = 1:J
+            firstJ = 1 + (r - 1) * n;
+            lastJ = firstJ + n - 1;
+            x_j = x(firstJ:lastJ);
+            ss = ss + A(:, :, r) * x_j;
+        end
+        % ss
+        x_k = x(first:last);
+        % x_k
+        g_k = A(:, :, s)' * (- b + ss) + lambda * ((x_k + epsilon2) ./ norm(x_k + epsilon2));
+        % fprintf('s = '); s
+        % fprintf('ss = '); ss
+        % fprintf('g_k = '); g_k
+        g(first:last) = g_k;
+    end
+    
+    % fprintf('g = '); g
+    % fprintf('size(g) = '); size(g)
+    
+    % calculate the Polyak step
+    % alpha = (fval - f_star) / (norm(g))^2;
+    alpha = step / (p + 1)
+    % update the x 
+    x = x - alpha * g;
+    p = p + 1;
+    x
+end
+
+conv_sq_summ = fbest - f_star
+
+t = 0:MAX_ITERS;
+clf
+hold on
+plot(t, conv_polyak)
+plot(t, conv_const)
+plot(t, conv_sq_summ)
+ylabel('convergence')
+xlabel('step #')
+legend('Polyak step','Constant step', 'Square summable but not summable')
+hold off
 

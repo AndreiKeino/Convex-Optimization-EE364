@@ -63,7 +63,73 @@ there are at least one violation, we replace the gradient of the minimized funct
 
 
 
+\section*{3.2 (4 points)} 
+A randomized least squares solver. Consider the Least Squares minimization
+problem
+\begin{align*}
+	\text{minimize } & \frac{1}{2 m} 
+	\underbrace{\sum_{i = 1}^{m}
+	(b_i - a_i^T x)^2}_{f(x)}
+	\\
+	\text{subject to } & x \in R^n \\
+\end{align*}
+where $a_1, \dots , a_m$ are rows of matrix $A.$
+We will consider the stochastic
+subgradient descent iterates
+$$
+x^{t + 1} = x^t - \alpha_t g_t
+$$
+where $g_t$ is a noisy unbiased gradient of the objective function, i.e., $E[g^T|x^T] \in \partial f(x^t). $ \\
 
+a) (1 point) Let  $j$ will be a random index chosen from 
+$\{1, \dots, m\}$ such that for every index 
+$i \in \{1, \dots, m\}$ the probability that $j = i$
+is $p_i,$ i.e., 
+$$
+P(i = j) = p_i,
+$$
+for a given discrete probability distribution
+$p_1, \dots, p_m \geq 0, $
+$\sum_{i=1}^{m} = 1.$ 
+Show that 
+$$
+E(\frac{(a_j^T x - b_j)}{m p_j} a_j) \in \partial f(x)
+$$
+where the expectation is taken over the random variable $j.$ \\
 
+Solution: \\ \\
 
+$$
+f(x) = \frac{1}{2 m} (b - Ax)^T (b - Ax)
+$$
+The gradient of $f(x)$ is
+
+$$
+\frac{(A x - b)^T}{m} A
+$$
+or, component-wize
+$$
+\frac{(a_i^T x - b_i)}{m} a_i
+$$
+The expectation is
+\begin{align*}
+&E\frac{(a_j^T x - b_j)}{m p_j} a_j = \\
+&\frac{1}{m} (E(a_j^T x - b_j) a_j / p_j)  = \\
+&\frac{1}{m} (E(a_j^T x a_j / p_j) - E(b_ja_j / p_j))
+\end{align*}
+
+For the second member of equation:
+\begin{align*}
+E(b_j a_j / p_j)  = 
+\sum_{j=1}^m e_j p_j b_j a_j / p_j = 
+\sum_{j=1}^m e_j b_j a_j \\=  m  e_j b_j a_j.
+\end{align*}	
+the $e_j $  is the $j$-th component of the unit vector. \\
+So, $ E(b_j a_j/p_j) = m  e_j b_j a_j.$ \\
+The equality for the first member of the equation:
+$$
+E(a_j^T x a_j/p_j) = m e_j a_j^T x a_j
+$$
+can be proved in the same way.
+So, we're done.
 \end{document}

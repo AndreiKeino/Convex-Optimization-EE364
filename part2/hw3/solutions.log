@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  1 MAR 2021 12:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  1 MAR 2021 17:33
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -398,23 +398,43 @@ Package pdftex.def Info: fig_3_1_2.png  used on input line 59.
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
 l.63 
-      <./fig_3_1_1.png (PNG copy)>] [3pdfTeX warning (ext4): destination with t
-he same identifier (name{figure.2}) has been already used, duplicate ignored
+      <./fig_3_1_1.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 81--83
+
+ []
+
+[3pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.69 \end{document}
-                    <./fig_3_1_2.png (PNG copy)>] (solutions.aux)
+l.90 $$
+        <./fig_3_1_2.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 97--99
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+
+ []
+
+[4] (solutions.aux)
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 7124 strings out of 479765
- 109166 string characters out of 2876174
+ 7126 strings out of 479765
+ 109182 string characters out of 2876174
  421166 words of memory out of 3000000
  24014 multiletter control sequences out of 15000+200000
  540332 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,9n,72p,228b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 66i,15n,72p,228b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
@@ -428,9 +448,9 @@ ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (3 pages, 178834 bytes).
+Output written on solutions.pdf (4 pages, 187379 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
- 7 named destinations out of 1000 (max. 500000)
+ 87 PDF objects out of 1000 (max. 8388607)
+ 9 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

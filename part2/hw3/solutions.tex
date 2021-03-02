@@ -109,8 +109,9 @@ $$
 $$
 or, component-wize
 $$
-\frac{(a_i^T x - b_i)}{m} a_i
+e_i\frac{(a_i^T x - b_i)}{m} a_i
 $$
+there $e_i $  is the $i$-th component of the unit vector. \\
 The expectation is
 \begin{align*}
 &E\frac{(a_j^T x - b_j)}{m p_j} a_j = \\
@@ -122,13 +123,13 @@ For the second member of equation:
 \begin{align*}
 E(b_j a_j / p_j)  = 
 \sum_{j=1}^m e_j p_j b_j a_j / p_j = 
-\sum_{j=1}^m e_j b_j a_j \\=  m  e_j b_j a_j.
+\sum_{j=1}^m e_j b_j a_j \\=  e_j b_j a_j.
 \end{align*}	
-the $e_j $  is the $j$-th component of the unit vector. \\
-So, $ E(b_j a_j/p_j) = m  e_j b_j a_j.$ \\
+there $e_j $  is the $j$-th component of the unit vector. \\
+So, $ E(b_j a_j/p_j) = e_j b_j a_j.$ \\
 The equality for the first member of the equation:
 $$
-E(a_j^T x a_j/p_j) = m e_j a_j^T x a_j
+E(a_j^T x a_j/p_j) = e_j a_j^T x a_j
 $$
 can be proved in the same way.
 So, we're done.

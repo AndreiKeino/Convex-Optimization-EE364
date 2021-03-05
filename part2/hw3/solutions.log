@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  2 MAR 2021 08:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  5 MAR 2021 13:35
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -423,18 +423,62 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
-[4] (solutions.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--136
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 150--153
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
+
+ []
+
+
+Overfull \hbox (7.25064pt too wide) detected at line 175
+[]
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 188--190
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--207
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
+
+ []
+
+
+Overfull \hbox (4.32642pt too wide) in paragraph at lines 212--219
+\OT1/cmr/m/n/10 where $\OML/cmm/m/it/10 []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 A\
+OT1/cmr/m/n/10 )$ is the small-est sin-gu-lar value of $\OML/cmm/m/it/10 A:$ \O
+T1/cmr/m/n/10 Hint: note that $\OT1/cmr/bx/n/10 E\OT1/cmr/m/n/10 [\OMS/cmsy/m/n
+/10 jj\OML/cmm/m/it/10 e[]\OMS/cmsy/m/n/10 jj[]j\OML/cmm/m/it/10 e[]\OT1/cmr/m/
+n/10 ] =
+ []
+
+[6] (solutions.aux)
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 7126 strings out of 479765
- 109182 string characters out of 2876174
- 421166 words of memory out of 3000000
- 24014 multiletter control sequences out of 15000+200000
- 540332 words of font info for 48 fonts, out of 3000000 for 9000
+ 7134 strings out of 479765
+ 109249 string characters out of 2876174
+ 426166 words of memory out of 3000000
+ 24016 multiletter control sequences out of 15000+200000
+ 540951 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,15n,72p,228b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 66i,15n,72p,228b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
@@ -448,9 +492,9 @@ ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (4 pages, 187450 bytes).
+Output written on solutions.pdf (6 pages, 198607 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
- 9 named destinations out of 1000 (max. 500000)
+ 98 PDF objects out of 1000 (max. 8388607)
+ 13 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

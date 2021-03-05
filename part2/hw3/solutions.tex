@@ -76,9 +76,9 @@ problem
 where $a_1, \dots , a_m$ are rows of matrix $A.$
 We will consider the stochastic
 subgradient descent iterates
-$$
+\begin{equation} \tag {1}
 x^{t + 1} = x^t - \alpha_t g_t
-$$
+\end {equation}
 where $g_t$ is a noisy unbiased gradient of the objective function, i.e., $E[g^T|x^T] \in \partial f(x^t). $ \\
 
 a) (1 point) Let  $j$ will be a random index chosen from 
@@ -132,5 +132,101 @@ $$
 E(a_j^T x a_j/p_j) = e_j a_j^T x a_j
 $$
 can be proved in the same way.
-So, we're done.
+So, we're done. \\
+
+(b) \\
+Assume that $b = Ax*$ for some vector $x*$, i.e., 
+$x \in arg \; min f(x).$ Define the error vector 
+$e_t = x_t - x^*,$ where $x_t$ is the subgradient descent iterate in (1). Consider the the constant step size 
+$\alpha_t = \frac{m}{||A||_F^2},$ the unbiased the unbiased subgradient from part
+(a) sampled i.i.d. at every iteration, and the probability distribution
+$$
+p_i = \frac{||a_i||_2^2}{\sum_k ||a_k||_2^2} = \frac{||a_i||_2^2}{||A||_F^2}
+$$
+
+Show that the error vector $e_t$ obeys the time-varying linear dynamical system
+$$
+e_{t+1} = P_t e_t
+$$
+where $P_t$ is a (random) symmetric projection matrix, i.e., $P_t^T P_t = P_t^2 = P_t$ obeying 
+$\mathbf{E}P_t = I - \frac{1}{||A||_F^2} A^T A.$\\
+
+Solution: \\
+
+\begin{align*}
+& e_{t+1, j} = \\
+& \text{(from (1))}\\
+&x_{t,j} - \alpha_t g_{t,j} - x_j^* = \\
+& e_{t, j} - \alpha_t g_{t,j} = \\
+& \text{(using the equation for subgradient)}\\
+& e_{t, j} - y_j \alpha_t (a_j^T x_{t,j} - b_j) a_j / mp_j = \\
+& (\text{here } y_j \text{ is a random variable which is 
+	equal either to 0 or 1 with probability } p_j)\\
+& (\text{using the equation } e_t = x_t - x^*) \\
+& e_{t, j} - y_j \alpha_t (a_j^T (e_{t,j} + x^*_j) - b_j) a_j / mp_j = \\
+& (\text{as } a_j^T x^*_j - b_j = 0)\\
+& e_{t, j} - y_j \alpha_t a_t^T e_{t, j} a_j / mp_j = \\
+& e_{t, j}(1 - y_j \alpha_t a^T_j a_j / mp_j) = \\
+& e_{t, j}(1 - y_j a^T_j a_j / (m * p_j ||A||_F^2) = \; \\ 
+&(b1) \\
+& \text{using the given expression for } p_j:\\
+& e_{t, j}(1 - y_j a^T_j a_j / ||a_j||_2^2 = \\
+&e_{t, j}(1 - y_j)
+\end{align*}
+
+If we rewrite the last equation in the matrix form 
+we will get:
+
+$$
+e_{t + 1} = P e_t
+$$
+where $P = I - Y_j,$ where $Y_j$ is the matrix those
+elements are equal $\delta_{ij} y_i, $ i.e., all non-diagonal elements are zero, and diagonal of matrix consists of the $y_i.$
+This is evident that this matrix is a symmetric projection matrix, as 
+$$
+P = P^T, \; PP^T = P^2 = P.
+$$ \\ \\
+Using equation (b1) 
+$$
+e_{t + 1, j} = e_{t, i}(1 - y_j a_j^Ta_j/(m p_j ||A||_F^2))
+$$
+we get:
+$$
+P_{j, j} = (1 - y_j a_j^Ta_j/(m p_j ||A||_F^2))
+$$
+where $P_{j, j}$ is the $j, j-$ th element of matrix $P.$
+then
+$$
+\mathbf{E}P_{j, j} = 1 - \sum_{i=1}^{m} p_j a_j^Ta_j/(m p_j ||A||_F^2) 
+$$
+i.e, 
+$$
+\mathbf{E}P = I - A^TA/||A||_F^2
+$$
+\\
+
+(c) (1 point) Show that\\
+$$
+\mathbf{E}||e_{t+1}||^2_2 \leq 
+\big(1 - \frac{\sigma_{min}(A)^2}{||A||_F^2}\big) E(||e_t||^2_2)
+$$
+where $\sigma_{min}(A)$ is the smallest singular value of $A.$ Hint: note that 
+$
+\mathbf{E}[||e_{t+1}||^2_2|e_t] = 
+\mathbf{E} [e_t^T P_t^T P_t e_t |e_t] = 
+\mathbf{E} [e_t^T P_t e_t |e_t] = 
+e_t^T \mathbf{E}[P_t]e_t,$ and that 
+$$
+e^T A^T A e \geq \sigma_{min}(A)^2 e^T e.
+$$
+for every vector $e \in R^n.$ Apply this bound recursively to obtain a bound on $\mathbf{E}||e_{t}||^2_2,$ involving only $\mathbf{E}||e_{0}||^2_2,$ $||A||_F$, $\sigma_{min}(A).$
+
+
+
+
+
+
+
+
+
 \end{document}

@@ -135,7 +135,7 @@ can be proved in the same way.
 So, we're done. \\
 
 (b) \\
-Assume that $b = Ax*$ for some vector $x*$, i.e., 
+Assume that $b = Ax^*$ for some vector $x*$, i.e., 
 $x \in arg \; min f(x).$ Define the error vector 
 $e_t = x_t - x^*,$ where $x_t$ is the subgradient descent iterate in (1). Consider the the constant step size 
 $\alpha_t = \frac{m}{||A||_F^2},$ the unbiased the unbiased subgradient from part
@@ -219,14 +219,158 @@ e_t^T \mathbf{E}[P_t]e_t,$ and that
 $$
 e^T A^T A e \geq \sigma_{min}(A)^2 e^T e.
 $$
-for every vector $e \in R^n.$ Apply this bound recursively to obtain a bound on $\mathbf{E}||e_{t}||^2_2,$ involving only $\mathbf{E}||e_{0}||^2_2,$ $||A||_F$, $\sigma_{min}(A).$
+for every vector $e \in R^n.$ Apply this bound recursively to obtain a bound on $\mathbf{E}||e_{t}||^2_2,$ involving only $\mathbf{E}||e_{0}||^2_2,$ $||A||_F$, $\sigma_{min}(A).$ \\
+
+Solution: \\
+
+\begin{align*}
+& \mathbf{E}[||e_{t+1}||^2_2|e_t] = \\
+& \mathbf{E}e_t^T \mathbf{E}[P_t]e_t = \\ 
+&\mathbf{E}e^T_t (I - A^TA / ||A||_F^2)e = \\
+&\mathbf{E}(e^Te) - \mathbf{E}(e^TA^TAe) / ||A||_F^2 \leq \\
+&\mathbf{E}(e^Te) - \sigma_{min}(A)^2 \mathbf{E}(e^Te) 
+/ ||A||_F^2 
+=
+\\
+&\mathbf{E}(e^Te)(1 - \sigma_{min}(A)^2 / ||A||_F^2 )
+\end{align*}
+
+Applying this inequality recursively we will get 
+
+$$
+\mathbf{E}||e_{t+1}||^2_2 \leq 
+\big(1 - \frac{\sigma_{min}(A)^2}{||A||_F^2}\big)^t E(||e_1||^2_2)
+$$
+\\
+(d) (1 point) Assuming zero initialization, $x_0 = 0$, 
+how many iterations are needed
+to obtain $\mathbf{E}||x_t - x^*||_2^2 \leq 10^{-5}?$
+Your answer should depend on $||x^*||_2,$ $||A||_F$, 
+$\sigma_{min}(A).$ What is the computational complexity (number of real number multiplications) in $Big$ $O$ notation?
+\\
+Solution:\\
+
+Let $a = 1 - \frac{\sigma_{min}(A)^2}{||A||_F^2}.$\\
+Then we have 
+$\mathbf{E}||x_t - x^*||_2^2 \leq 10^{-5} 
+\leq a^{t - 1}||x^{*2}||_2^2, $ 
+or $a^{t-1} \geq 10^{-5} / ||x^*||_2^2.$ 
+Then $t \geq 1 + \log_a(10^{-5} / ||x^*||_2^2)$ or 
+$t \geq 1 + \frac{\log(10^{-5} / ||x^*||_2^2)}{\log(a)}$
+\\
+
+The computational complexity is:
+\begin{align*}
+	C((a_j - b_j) a_j / m) &= O(n (n + 1)) \\
+	C\big(\frac{m}{||A||_F^2} \big) &= O(1 + mn)
+\end{align*}
+
+So, the computational complexity 
+is 
+$O(\frac{\log(10^{-5} / ||x^*||_2^2)}{\log(a)} n(n+1)  + mn)$
+
+
+\section*{3.3 (4 points)} 
+
+(3 points) Log-optimal portfolio optimization using return oracle. We consider the portfolio optimization problem
+
+\begin{align*}
+	\text{maximize } &\mathbf{E}_r log(r^T x) \\
+	\text{subject to } & \mathbf{1}^T x = 1, \;
+	x \succeq 0\\
+\end{align*}
+
+with variable (portfolio weights) $x \in R^n$. The expectation is over the distribution of
+the (total) return vector $r \in R^n_{++},$ which is a random variable. (Although not relevant
+in this problem, the log-optimal portfolio maximizes the long-term growth of an initial
+investment, assuming the investments are re-balanced to the log-optimal portfolio after
+each investment period, and ignoring transaction costs.)
+In this problem we assume that we do not know the distribution of $r$ (other than
+that we have $r \succ 0$ almost surely). However, we have access to an oracle that will
+generate independent samples from the return distribution. (Although not relevant,
+these samples could come from historical data, or stochastic simulations, or a known
+or assumed distribution.) \\
+
+(a) (1 point) Explain how to use the (projected) stochastic subgradient method, using
+one return sample for each iteration, to find (in the limit) a log-optimal portfolio.
+Describe how to carry out the projection required, and how to update the portfolio
+in each iteration. \\
+
+Hint. Note that projecting $x^{(k)}$ onto the constraints involves projecting onto a
+simplex, or solving the optimization problem
+
+\begin{align}
+	\text{minimize } &(1/2)||z - x^{(k)}||_2^2 \nonumber \\
+	\text{subject to } & {1}^T z = 1, \;
+	z \succeq 0 \label{prob_3_4}
+\end{align} 
+
+with variable z. One way to solve the problem is to introduce a dual variable $\nu$
+for the equality constraint and write the (partial) Lagrangian as
+$$
+L(z, \nu) = (1/2)||z - x^{(k)}||_2^2 + \nu ({1}^T z - 1)
+$$
+with $\mathbf{dom} L(z, \nu) \in R^n_+ \times R$ (in other words, the 
+inequality constraint $z \succeq 0 $
+is implicit). Consider the single variable function
+$g(\nu)$ obtained by minimizing
+$L(z, \nu)$ over $z.$ The value $\nu^*$ that maximizes $g(\nu)$ 
+can be found using bisection,
+and the solution $z^*$ to problem \ref{prob_3_4} can be found given $\nu^*.$ \\
+
+Solution:\\
+
+As mentioned in the subgradient method slides, 
+the projection method given by:
+$$
+x^{(k+1)} = P(x^{(k)} - \alpha_k g^{(k)})
+$$
+where $P$ is the Euclidean projection on the constraints, 
+and $g^{(k)} \in \partial f(x^{(k)}).$
+The  Euclidean projection on the linear subspace 
+$\mathbf{1}^T x = 1$ is given by the minimization problem, as mentioned in the corresponding hint: 
+\begin{align}
+	\text{minimize } &(1/2)||z - x^{(k)}||_2^2 \nonumber \\
+	\text{subject to } & {1}^T z = 1, \;
+	z \succeq 0 
+\end{align} 
+We can find the equation for the $z^*$ using the dual problem, as described in the hint.
+$$
+\nabla_z L(z, \nu) = z - x^{(k)} + \nu z
+$$
+then value $z$ which minimizes $L(z, \nu)$ is
+$$
+z = x^{(k)} / (1 + \nu)
+$$
+substituting this value in the Lagrangian we get:
+$$
+L(\nu) = (1/2) \left|\frac{\nu}{\nu+1}\right| ||x^{(k)}||_2^2 + 
+\nu \big(\frac{1}{\nu + 1} \mathbf{1}^T x^{(k)} - 1 \big) 
+$$ 
+and the $argmin$ of $L(\nu)$ can be found using bisection. After that we can calculate the $z^*,$ which is the Euclidean projection of $x^{(k)} - \alpha_k g^{(k)}$ on the problem constraints.
 
 
 
-
-
-
-
-
-
+b) (1 point) Implement the method and run it on the problem with $n = 10$ assets,
+with return sample \verb|oracle log_opt_return_sample| in the file \verb|log_opt_return_sample.m.|
+This function called with argument $m$ returns an $n \times n$ matrix whose columns
+are independent return samples. We have also provided a function to project onto the simplex in p
+\verb|rojToSmplx.m.|
+You are welcome to look inside \verb|log_opt_return_sample.m| to see how we are gen-
+erating the sample. The distribution is a mixture of two log-normal distributions;
+you can think of one as the standard return model and the other as the return
+model in some abnormal regime. However, your stochastic subgradient algorithm
+can only call \verb|log_opt_return_sample(1),| once per iteration; you cannot use any
+information found inside the le in your implementation.
+To get a Monte Carlo approximation of the objective function value, you can generate a block of, say, 105 samples (using 
+\verb|R_emp=log_opt_return_sample(1e5),|
+which only needs to be done once), and then use 
+\verb|obj_hat = mean(log(R_emp'*x))|
+as your estimate of the objective function. Plot the (approximate) objective value
+versus iteration, as well as the best approximate objective value obtained up to
+that iteration. (Note that evaluating the objective will require far more compu-
+tation than each stochastic subgradient step.)
+You may need to play around with the step size selection in your method to get
+reasonable convergence. Remember that your objective value evaluation is only
+an approximation.	
 \end{document}

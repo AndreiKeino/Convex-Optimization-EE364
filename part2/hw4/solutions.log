@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  9 MAR 2021 12:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.26)  9 MAR 2021 11:01
 entering extended mode
 **./solutions.tex
 (solutions.tex
@@ -370,182 +370,28 @@ Overfull \hbox (36.96254pt too wide) in paragraph at lines 16--16
  \OT1/cmr/m/n/17.28 https://web.stanford.edu/class/ee364b/homework.html 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 30--34
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--46
-
- []
-
-<fig_3_1_1.png, id=3, 421.575pt x 316.18124pt>
-File: fig_3_1_1.png Graphic file (type png)
-<use fig_3_1_1.png>
-Package pdftex.def Info: fig_3_1_1.png  used on input line 53.
-(pdftex.def)             Requested size: 345.0pt x 258.75406pt.
 [1
 
 {C:/Users/Andrei/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<fig_3_1_2.png, id=24, 421.575pt x 316.18124pt>
-File: fig_3_1_2.png Graphic file (type png)
-<use fig_3_1_2.png>
-Package pdftex.def Info: fig_3_1_2.png  used on input line 59.
-(pdftex.def)             Requested size: 345.0pt x 258.75406pt.
- [2pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
- has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.63 
-      <./fig_3_1_1.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 81--83
-
- []
-
-[3pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.90 $$
-        <./fig_3_1_2.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 97--99
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--136
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 150--153
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 154--155
-
- []
-
-
-Overfull \hbox (7.25064pt too wide) detected at line 175
-[]
- []
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 188--190
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--207
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 208--209
-
- []
-
-
-Overfull \hbox (4.32642pt too wide) in paragraph at lines 212--219
-\OT1/cmr/m/n/10 where $\OML/cmm/m/it/10 []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 A\
-OT1/cmr/m/n/10 )$ is the small-est sin-gu-lar value of $\OML/cmm/m/it/10 A:$ \O
-T1/cmr/m/n/10 Hint: note that $\OT1/cmr/bx/n/10 E\OT1/cmr/m/n/10 [\OMS/cmsy/m/n
-/10 jj\OML/cmm/m/it/10 e[]\OMS/cmsy/m/n/10 jj[]j\OML/cmm/m/it/10 e[]\OT1/cmr/m/
-n/10 ] =
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--223
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
-
- []
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 243--252
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 253--261
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 283--293
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--298
-
- []
-
-[7]pdfTeX warning (ext4): destination with the same identifier (name{equation.0
-.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.306 \end{align}
-                 
-Underfull \hbox (badness 10000) in paragraph at lines 312--320
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 321--322
-
- []
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 364--376
-
- []
-
-[9] (solutions.aux)
+(solutions.aux)
 Package rerunfilecheck Info: File `solutions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 7140 strings out of 479765
- 109299 string characters out of 2876174
- 426206 words of memory out of 3000000
- 24017 multiletter control sequences out of 15000+200000
- 540951 words of font info for 50 fonts, out of 3000000 for 9000
+ 7095 strings out of 479765
+ 108803 string characters out of 2876174
+ 413040 words of memory out of 3000000
+ 23994 multiletter control sequences out of 15000+200000
+ 539402 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,15n,72p,228b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmtt10.pfb>
-Output written on solutions.pdf (9 pages, 227925 bytes).
+ 66i,6n,72p,228b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on solutions.pdf (1 page, 41558 bytes).
 PDF statistics:
- 119 PDF objects out of 1000 (max. 8388607)
- 18 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 PDF objects out of 1000 (max. 8388607)
+ 3 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

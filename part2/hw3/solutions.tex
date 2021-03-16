@@ -327,14 +327,14 @@ x^{(k+1)} = P(x^{(k)} - \alpha_k g^{(k)})
 $$
 where $P$ is the Euclidean projection on the constraints, 
 and $g^{(k)} \in \partial f(x^{(k)}).$
-The  Euclidean projection on the linear subspace 
+The Euclidean projection on the linear subspace 
 $\mathbf{1}^T x = 1$ is given by the minimization problem, as mentioned in the corresponding hint: 
 \begin{align}
 	\text{minimize } &(1/2)||z - x^{(k)}||_2^2 \nonumber \\
 	\text{subject to } & {1}^T z = 1, \;
 	z \succeq 0 
 \end{align} 
-We can find the equation for the $z^*$ using the dual problem, as described in the hint.
+We can find the equation for the $z^*$ using the dual problem, as described in the hint. 
 $$
 \nabla_z L(z, \nu) = z - x^{(k)} + \nu z
 $$
@@ -344,7 +344,7 @@ z = x^{(k)} / (1 + \nu)
 $$
 substituting this value in the Lagrangian we get:
 $$
-L(\nu) = (1/2) \left|\frac{\nu}{\nu+1}\right| ||x^{(k)}||_2^2 + 
+L(\nu) = (1/2) \bigg(\frac{\nu}{\nu+1}\bigg)^2 ||x^{(k)}||_2^2 + 
 \nu \big(\frac{1}{\nu + 1} \mathbf{1}^T x^{(k)} - 1 \big) 
 $$ 
 and the $argmin$ of $L(\nu)$ can be found using bisection. After that we can calculate the $z^*,$ which is the Euclidean projection of $x^{(k)} - \alpha_k g^{(k)}$ on the problem constraints.
@@ -372,5 +372,8 @@ that iteration. (Note that evaluating the objective will require far more compu-
 tation than each stochastic subgradient step.)
 You may need to play around with the step size selection in your method to get
 reasonable convergence. Remember that your objective value evaluation is only
-an approximation.	
+an approximation.	\\
+
+I can't solve problems (b) and (c) because I don't have the required files.
+
 \end{document}
